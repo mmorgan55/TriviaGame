@@ -1,7 +1,7 @@
 <resources>
   <string name="app_name">TriviaGame</string>
   <string name="game_title">Trivia Fun Times!</string>
-  <string name="button1_text">Button 1</string>
-  <string name="button2_text">Button 2</string>
-  <string name="button3_text">Button 3</string>
+  <string name="button1_text">Time \nConstraint</string>
+  <string name="button2_text">Increasing \nDifficulty</string>
+  <string name="button3_text">Relaxed</string>
 </resources>
