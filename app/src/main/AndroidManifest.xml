@@ -23,8 +23,6 @@
 
     <activity android:name=".RelaxedActivity">
     </activity>
-    <activity android:name=".CategoriesActivity">
-    </activity>
   </application>
 
 </manifest>

@@ -12,9 +12,17 @@
     <item>What is the name of Eragon's dragon in the book "Eragon"?</item>
     <item>Who painted "The Starry Night"?</item>
     <item>From which country did the piano originate?</item>
-    <item>The United States was the first country to launch a man into Space?</item>
+    <item>The United States was the first country to launch a man into Space.</item>
   </string-array>
 
-  <!-- TODO: Remove or change this placeholder text -->
-  <string name="hello_blank_fragment">Hello blank fragment</string>
+  <string-array name="categories">
+    <item>Physics</item>
+    <item>Math</item>
+    <item>Biology</item>
+    <item>Astronomy</item>
+    <item>Movies</item>
+    <item>Chemistry</item>
+    <item>Music</item>
+    <item>History</item>
+  </string-array>
 </resources>

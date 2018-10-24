@@ -1,82 +1,60 @@
 package edu.cnm.deepdive.triviagame;
 
 import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
 public class CategoriesFragment extends Fragment {
 
-  // TODO: Rename parameter arguments, choose names that match
-  // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-  private static final String ARG_PARAM1 = "param1";
-  private static final String ARG_PARAM2 = "param2";
-
-  // TODO: Rename and change types of parameters
-  private String mParam1;
-  private String mParam2;
-
-  private OnFragmentInteractionListener mListener;
-
-  public CategoriesFragment() {
-    // Required empty public constructor
-  }
-
-  public static CategoriesFragment newInstance(String param1, String param2) {
-    CategoriesFragment fragment = new CategoriesFragment();
-    Bundle args = new Bundle();
-    args.putString(ARG_PARAM1, param1);
-    args.putString(ARG_PARAM2, param2);
-    fragment.setArguments(args);
-    return fragment;
-  }
+  private List<TriviaCategory> categories;
+  private ListView categoryListView;
+  private CategoryAdapter adapter;
 
   @Override
-  public void onCreate(Bundle savedInstanceState) {
-    super.onCreate(savedInstanceState);
-    if (getArguments() != null) {
-      mParam1 = getArguments().getString(ARG_PARAM1);
-      mParam2 = getArguments().getString(ARG_PARAM2);
-    }
-  }
-
-  @Override
-  public View onCreateView(LayoutInflater inflater, ViewGroup container,
+  public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
       Bundle savedInstanceState) {
+
+    categories = new ArrayList<>();
+
+    for (String str : getResources().getStringArray(R.array.categories)) {
+      categories.add(new TriviaCategory(str));
+    }
+
+
     // Inflate the layout for this fragment
-    return inflater.inflate(R.layout.fragment_categories, container, false);
+    View layout = inflater.inflate(R.layout.fragment_categories, container, false);
+    categoryListView = layout.findViewById(R.id.category_list_view);
+    adapter = new CategoryAdapter(getActivity(), R.layout.category_item, categories);
+    categoryListView.setAdapter(adapter);
+    return layout;
   }
 
-  // TODO: Rename method, update argument and hook method into UI event
-  public void onButtonPressed(Uri uri) {
-    if (mListener != null) {
-      mListener.onFragmentInteraction(uri);
+  private class CategoryAdapter extends ArrayAdapter<TriviaCategory> {
+
+    public CategoryAdapter(@NonNull Context context, int resource) {
+      super(context, resource);
     }
-  }
 
-  @Override
-  public void onAttach(Context context) {
-    super.onAttach(context);
-    if (context instanceof OnFragmentInteractionListener) {
-      mListener = (OnFragmentInteractionListener) context;
-    } else {
-      throw new RuntimeException(context.toString()
-          + " must implement OnFragmentInteractionListener");
+    public CategoryAdapter(@NonNull Context context, int resource,
+        @NonNull List<TriviaCategory> objects) {
+      super(context, resource, objects);
     }
-  }
 
-  @Override
-  public void onDetach() {
-    super.onDetach();
-    mListener = null;
-  }
-
-  public interface OnFragmentInteractionListener {
-
-    // TODO: Update argument type and name
-    void onFragmentInteraction(Uri uri);
+    @NonNull
+    @Override
+    public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+      return super.getView(position, convertView, parent);
+    }
   }
 }
