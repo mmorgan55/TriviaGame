@@ -6,17 +6,28 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.widget.Button;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
   private Button timeButton;
   private Button diffButton;
   private Button relaxButton;
+  private TextView titleText;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
+
+    titleText = findViewById(R.id.textView);
+    titleText.setOnClickListener(new OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        float deg = titleText.getRotation() + -360F;
+        titleText.animate().rotation(deg).setInterpolator(new AccelerateDecelerateInterpolator());
+      }
+    });
 
     timeButton = findViewById(R.id.time_button);
     timeButton.setOnClickListener(new OnClickListener() {
@@ -31,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
     diffButton.setOnClickListener(new OnClickListener() {
       @Override
       public void onClick(View v) {
-        float deg = diffButton.getRotation() + 360F;
+        float deg = diffButton.getRotation() + -360F;
         diffButton.animate().rotation(deg).setInterpolator(new AccelerateDecelerateInterpolator());
       }
     });
