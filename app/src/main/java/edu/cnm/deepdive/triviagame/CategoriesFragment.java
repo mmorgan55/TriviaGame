@@ -31,8 +31,6 @@ public class CategoriesFragment extends Fragment {
       categories.add(new TriviaCategory(str));
     }
 
-
-    // Inflate the layout for this fragment
     View layout = inflater.inflate(R.layout.fragment_categories, container, false);
     categoryListView = layout.findViewById(R.id.category_list_view);
     adapter = new CategoryAdapter(getActivity(), R.layout.category_item, categories);
