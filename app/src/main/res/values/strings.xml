@@ -1,9 +1,9 @@
 <resources>
   <string name="app_name">TriviaGame</string>
   <string name="game_title">Trivia Fun Times!</string>
-  <string name="button1_text">Time \nConstraint</string>
-  <string name="button2_text">Increasing \nDifficulty</string>
-  <string name="button3_text">Relaxed</string>
+  <string name="button1_text">TIME \nCONSTRAINT</string>
+  <string name="button2_text">SUDDEN \nDEATH</string>
+  <string name="button3_text">RELAXED</string>
   <string name="categories_title">CATEGORIES</string>
   <string name="all_questions_category">ALL THE QUESTIONS</string>
 
