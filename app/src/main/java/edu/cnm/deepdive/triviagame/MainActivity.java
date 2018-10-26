@@ -2,11 +2,6 @@ package edu.cnm.deepdive.triviagame;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.animation.AccelerateDecelerateInterpolator;
-import android.widget.Button;
-import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 

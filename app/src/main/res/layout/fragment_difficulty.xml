@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:orientation="vertical"
+  tools:context=".DifficultyFragment">
+
+
+  <TextView
+    style="@style/TitleStyle"
+    android:layout_width="match_parent"
+    android:layout_height="118dp"
+    android:layout_marginStart="60dp"
+    android:layout_marginEnd="60dp"
+    android:fontFamily="@font/faster_one"
+    android:text="@string/difficulty_title"/>
+
+  <Button
+    android:id="@+id/easy_button"
+    android:layout_width="291dp"
+    android:layout_height="126dp"
+    android:layout_marginStart="60dp"
+    android:layout_marginEnd="60dp"
+    android:layout_marginBottom="55dp"
+    android:background="@drawable/easy_button"
+    android:text="@string/easy_button_text"/>
+
+  <Button
+    android:id="@+id/medium_button"
+    android:layout_width="291dp"
+    android:layout_height="126dp"
+    android:layout_marginStart="60dp"
+    android:layout_marginEnd="60dp"
+    android:layout_marginBottom="55dp"
+    android:background="@drawable/medium_button"
+    android:text="@string/medium_button_text"/>
+
+  <Button
+    android:id="@+id/hard_button"
+    android:layout_width="291dp"
+    android:layout_height="126dp"
+    android:layout_marginStart="60dp"
+    android:layout_marginEnd="60dp"
+    android:background="@drawable/hard_button"
+    android:text="@string/hard_button_text"/>
+
+
+</LinearLayout>

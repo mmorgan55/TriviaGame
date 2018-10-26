@@ -40,10 +40,6 @@ public class CategoriesFragment extends Fragment {
 
   private class CategoryAdapter extends ArrayAdapter<TriviaCategory> {
 
-    public CategoryAdapter(@NonNull Context context, int resource) {
-      super(context, resource);
-    }
-
     public CategoryAdapter(@NonNull Context context, int resource,
         @NonNull List<TriviaCategory> objects) {
       super(context, resource, objects);
@@ -55,4 +51,5 @@ public class CategoriesFragment extends Fragment {
       return super.getView(position, convertView, parent);
     }
   }
+
 }

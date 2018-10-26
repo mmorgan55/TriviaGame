@@ -28,4 +28,8 @@
 
   <!-- TODO: Remove or change this placeholder text -->
   <string name="hello_blank_fragment">Hello blank fragment</string>
+  <string name="difficulty_title">Difficulty</string>
+  <string name="easy_button_text">EASY</string>
+  <string name="medium_button_text">MEDIUM</string>
+  <string name="hard_button_text">HARD</string>
 </resources>
