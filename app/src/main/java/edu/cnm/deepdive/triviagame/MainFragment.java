@@ -38,33 +38,29 @@ public class MainFragment extends android.support.v4.app.Fragment {
 
   private void setListener() {
 
-    listener = new OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        int id = v.getId();
-        float deg = v.getRotation() + -360F;
-        v.animate().rotation(deg).setInterpolator(new AccelerateDecelerateInterpolator());
+    listener = v -> {
+      int id = v.getId();
+      float deg = v.getRotation() + -360F;
+      v.animate().rotation(deg).setInterpolator(new AccelerateDecelerateInterpolator());
 
-        switch (id) {
-          case R.id.time_button:
-            gameType = "time";
-            break;
-          case R.id.difficulty_button:
-            gameType = "difficult";
-            break;
-          case R.id.relaxed_button:
-            gameType = "relaxed";
-            break;
-          default:
-            gameType = "relaxed";
-            break;
-        }
-        getFragmentManager()
-            .beginTransaction().replace(R.id.fragment_container, difficultyFragment)
-            .addToBackStack("view")
-            .commit();
+      switch (id) {
+        case R.id.time_button:
+          gameType = "time";
+          break;
+        case R.id.difficulty_button:
+          gameType = "difficult";
+          break;
+        case R.id.relaxed_button:
+          gameType = "relaxed";
+          break;
+        default:
+          gameType = "relaxed";
+          break;
       }
-
+      getFragmentManager()
+          .beginTransaction().replace(R.id.fragment_container, difficultyFragment)
+          .addToBackStack("view")
+          .commit();
     };
   }
 

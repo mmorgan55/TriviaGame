@@ -8,19 +8,19 @@
   tools:context=".MainFragment">
 
   <TextView
-  android:id="@+id/textView"
-  style="@style/TitleStyle"
-  android:textStyle="italic"
-  android:fontFamily="@font/faster_one"
-  android:layout_width="wrap_content"
-  android:layout_height="wrap_content"
-  android:layout_gravity="center"
-  android:text="@string/game_title"
-  android:textAllCaps="false"
-  android:textSize="70sp"
-  android:gravity="center"
-  app:layout_constraintStart_toStartOf="parent"
-  app:layout_constraintTop_toTopOf="parent"/>
+    android:id="@+id/textView"
+    style="@style/TitleStyle"
+    android:textStyle="italic"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:fontFamily="@font/faster_one"
+    android:gravity="center"
+    android:text="@string/game_title"
+    android:textAllCaps="false"
+    android:textSize="70sp"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"/>
 
 
   <Button
@@ -30,7 +30,7 @@
   android:layout_marginBottom="200dp"
   android:layout_marginEnd="16dp"
   android:background="@drawable/play_time_button"
-  android:text="@string/button1_text"
+  android:text="@string/time_button_text"
   app:layout_constraintBottom_toBottomOf="parent"
   app:layout_constraintEnd_toEndOf="parent"/>
 
@@ -42,7 +42,7 @@
   android:layout_marginStart="16dp"
   android:layout_gravity="center"
   android:background="@drawable/play_difficult_button"
-  android:text="@string/button2_text"
+  android:text="@string/sudden_button_text"
   app:layout_constraintBottom_toBottomOf="parent"
   app:layout_constraintStart_toStartOf="parent"/>
 
@@ -54,7 +54,7 @@
   android:layout_marginEnd="116dp"
   android:layout_gravity="center"
   android:background="@drawable/play_relax_button"
-  android:text="@string/button3_text"
+  android:text="@string/relax_button_text"
   app:layout_constraintBottom_toBottomOf="parent"
   app:layout_constraintEnd_toEndOf="parent"/>
 

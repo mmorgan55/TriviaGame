@@ -35,15 +35,13 @@ public class DifficultyFragment extends Fragment {
     mediumButton.setOnClickListener(listener);
     hardButton.setOnClickListener(listener);
 
-
     return view;
   }
 
   private void setListener() {
 
-    listener = new OnClickListener() {
-      @Override
-      public void onClick(View v) {
+    listener = (v) -> {
+
         int id = v.getId();
         float deg = v.getRotation() + -360F;
         v.animate().rotation(deg).setInterpolator(new AccelerateDecelerateInterpolator());
@@ -64,9 +62,9 @@ public class DifficultyFragment extends Fragment {
         }
         getFragmentManager()
             .beginTransaction().replace(R.id.fragment_container, categoriesFragment)
-            .addToBackStack("view")
+            .addToBackStack("diff")
             .commit();
-      }
+
 
     };
   }
