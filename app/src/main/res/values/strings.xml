@@ -2,7 +2,7 @@
   <string name="app_name">TriviaGame</string>
   <string name="game_title">Trivia Fun Times!</string>
   <string name="time_button_text">TIME \nCONSTRAINT</string>
-  <string name="sudden_button_text">SUDDEN \nDEATH</string>
+  <string name="sudden_button_text">SUDDEN DEATH</string>
   <string name="relax_button_text">RELAXED</string>
   <string name="categories_title">CATEGORIES</string>
   <string name="all_questions_category">ALL THE QUESTIONS</string>

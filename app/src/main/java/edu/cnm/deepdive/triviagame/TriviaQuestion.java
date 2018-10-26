@@ -1,15 +1,15 @@
 package edu.cnm.deepdive.triviagame;
 
-
-import android.content.res.Resources;
 import java.util.List;
 
 public class TriviaQuestion {
 
-  private String[] questions;
-  private Resources resources;
+  private String category;
+  private String difficulty;
+  private String question;
+  private String answers;
 
-  public TriviaQuestion(String category, String difficulty, List<String> answers) {
-    questions = resources.getStringArray(R.array.initial_questions);
+  public TriviaQuestion(String question, String correctAnswer, List<String> answers) {
+
   }
 }
