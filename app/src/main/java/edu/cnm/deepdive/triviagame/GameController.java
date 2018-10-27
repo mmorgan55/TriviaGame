@@ -6,18 +6,32 @@ import java.util.List;
 
 public class GameController {
 
-  private String gameType;
   private String category;
   private String difficulty;
   private List<TriviaQuestion> questionList;
 
 
-  public GameController(String gameType, String difficulty, String category) {
-    
+  public GameController(String gameType) {
 
+    createDummyQuestions();
+
+    switch (gameType) {
+      case "relaxed":
+        new RelaxedGame(questionList);
+        break;
+      case "difficult":
+        new SuddenDeathGame(questionList);
+        break;
+      case "time":
+        new TimeConstraintGame(questionList);
+        break;
+      default:
+        new RelaxedGame(questionList);
+        break;
+    }
   }
 
-  private void createQuestions() {
+  private void createDummyQuestions() {
 
     questionList = new ArrayList<>();
 
@@ -42,4 +56,5 @@ public class GameController {
     questionList.add(new TriviaQuestion(four, answerFour[2], Arrays.asList(answerFour)));
     questionList.add(new TriviaQuestion(five, answerFive[3], Arrays.asList(answerFive)));
   }
+
 }
