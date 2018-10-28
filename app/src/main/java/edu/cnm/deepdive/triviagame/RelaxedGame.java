@@ -19,7 +19,7 @@ public class RelaxedGame {
     Scanner input = new Scanner(System.in);
     boolean gameOver = false;
     int questionIndex = 0;
-    int answer;
+    int answerIndex;
 
     while (!gameOver) {
       if (questionIndex == questionList.size()) {
@@ -30,10 +30,11 @@ public class RelaxedGame {
         System.out.println(questionList.get(questionIndex).getAnswers());
 
         System.out.println("Please put the index of your answer: ");
-        answer = input.nextInt();
+        answerIndex = input.nextInt();
 
         if (questionList.get(questionIndex)
-            .getAnswers().get(answer).equals(questionList.get(questionIndex).getCorrectAnswer())) {
+            .getAnswers().get(answerIndex)
+            .equals(questionList.get(questionIndex).getCorrectAnswer())) {
 
           System.out.println("Correct!");
           System.out.println("Onto the next question!");
