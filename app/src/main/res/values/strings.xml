@@ -8,8 +8,8 @@
   <string name="all_questions_category">ALL THE QUESTIONS</string>
 
   <string-array name="initial_questions">
-    <item>What is the frontman's name in the Band Megadeth?</item>
-    <item>What is the name of Eragon's dragon in the book "Eragon"?</item>
+    <item>What is the frontman\'s name in the Band Megadeth?</item>
+    <item>What is the name of Eragon\'s dragon in the book "Eragon"?</item>
     <item>Who painted "The Starry Night"?</item>
     <item>From which country did the piano originate?</item>
     <item>The United States was the first country to launch a man into Space.</item>
@@ -33,4 +33,6 @@
 
   <!-- TODO: Remove or change this placeholder text -->
   <string name="hello_blank_fragment">Hello blank fragment</string>
+  <string name="tally_correct">Correct</string>
+  <string name="tally_incorrect">Incorrect</string>
 </resources>

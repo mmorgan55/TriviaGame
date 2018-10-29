@@ -2,6 +2,7 @@ package edu.cnm.deepdive.triviagame;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import edu.cnm.deepdive.triviagame.view.MainFragment;
 
 public class MainActivity extends AppCompatActivity {
 

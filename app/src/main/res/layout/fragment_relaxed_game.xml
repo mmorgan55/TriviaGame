@@ -1,14 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
   xmlns:tools="http://schemas.android.com/tools"
   android:layout_width="match_parent"
   android:layout_height="match_parent"
-  tools:context=".RelaxedGameFragment">
+  android:orientation="vertical"
+  tools:context=".view.RelaxedGameFragment">
 
-  <!-- TODO: Update blank fragment layout -->
-  <TextView
+  <android.support.constraint.ConstraintLayout
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:text="@string/hello_blank_fragment"/>
+    android:layout_height="46dp"
+    android:orientation="horizontal">
 
-</FrameLayout>
+    <TextView
+      android:id="@+id/correct_tally"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="8dp"
+      android:layout_marginStart="8dp"
+      android:text="@string/tally_correct"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"/>
+
+    <TextView
+      android:id="@+id/incorrect_tally"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="8dp"
+      android:layout_marginEnd="8dp"
+      android:text="@string/tally_incorrect"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintTop_toTopOf="parent"/>
+  </android.support.constraint.ConstraintLayout>
+
+  <RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="602dp"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent">
+
+    <android.support.v7.widget.CardView
+      android:id="@+id/question_view"
+      android:layout_width="wrap_content"
+      android:layout_height="267dp"
+      android:layout_marginTop="44dp"
+      android:layout_marginStart="71dp"
+      android:layout_marginEnd="70dp"
+      android:layout_alignParentEnd="true"
+      android:layout_alignParentStart="true"
+      android:layout_alignParentTop="true">
+
+    </android.support.v7.widget.CardView>
+
+    <android.support.v7.widget.CardView
+      android:id="@+id/answers_view"
+      android:layout_width="wrap_content"
+      android:layout_height="156dp"
+      android:layout_marginBottom="75dp"
+      android:layout_marginStart="29dp"
+      android:layout_marginEnd="25dp"
+      android:layout_alignParentBottom="true"
+      android:layout_alignParentEnd="true"
+      android:layout_alignParentStart="true">
+
+    </android.support.v7.widget.CardView>
+
+  </RelativeLayout>
+
+</LinearLayout>

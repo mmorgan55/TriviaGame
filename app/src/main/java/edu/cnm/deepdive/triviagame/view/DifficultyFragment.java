@@ -1,4 +1,4 @@
-package edu.cnm.deepdive.triviagame;
+package edu.cnm.deepdive.triviagame.view;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -8,6 +8,8 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.widget.Button;
+import edu.cnm.deepdive.triviagame.R;
+import edu.cnm.deepdive.triviagame.view.CategoriesFragment;
 
 
 public class DifficultyFragment extends Fragment {

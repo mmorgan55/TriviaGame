@@ -1,4 +1,4 @@
-package edu.cnm.deepdive.triviagame;
+package edu.cnm.deepdive.triviagame.view;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -10,6 +10,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import edu.cnm.deepdive.triviagame.R;
+import edu.cnm.deepdive.triviagame.TriviaCategory;
 import java.util.ArrayList;
 import java.util.List;
 
