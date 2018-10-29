@@ -1,4 +1,4 @@
-package edu.cnm.deepdive.triviagame;
+package edu.cnm.deepdive.triviagame.model.entity;
 
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;

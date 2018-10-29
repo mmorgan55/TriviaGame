@@ -1,9 +1,10 @@
-package edu.cnm.deepdive.triviagame;
+package edu.cnm.deepdive.triviagame.model.entity;
 
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.ForeignKey;
 import android.support.annotation.NonNull;
+import edu.cnm.deepdive.triviagame.model.entity.TriviaCategory;
 import java.util.List;
 
 @Entity(
@@ -21,8 +22,6 @@ public class TriviaQuestion {
 
   @ColumnInfo(name = "question_id")
   private long questionId;
-
-  //private String category;
 
   @NonNull
   @ColumnInfo(name = "difficulty")

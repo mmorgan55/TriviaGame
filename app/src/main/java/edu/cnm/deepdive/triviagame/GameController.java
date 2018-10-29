@@ -1,5 +1,6 @@
 package edu.cnm.deepdive.triviagame;
 
+import edu.cnm.deepdive.triviagame.model.entity.TriviaQuestion;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;

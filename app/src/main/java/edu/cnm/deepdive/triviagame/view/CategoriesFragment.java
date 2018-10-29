@@ -11,7 +11,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import edu.cnm.deepdive.triviagame.R;
-import edu.cnm.deepdive.triviagame.TriviaCategory;
+import edu.cnm.deepdive.triviagame.model.entity.TriviaCategory;
 import java.util.ArrayList;
 import java.util.List;
 
