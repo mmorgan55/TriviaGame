@@ -31,9 +31,10 @@ public class TriviaAnswers {
   @ColumnInfo
   private boolean isCorrect;
 
-  public TriviaAnswers(@NonNull String answer, boolean isCorrect) {
+  public TriviaAnswers(@NonNull String answer, boolean isCorrect, long questionId) {
     this.answer = answer;
     this.isCorrect = isCorrect;
+    this.questionId = questionId;
   }
 
   public long getAnswersId() {

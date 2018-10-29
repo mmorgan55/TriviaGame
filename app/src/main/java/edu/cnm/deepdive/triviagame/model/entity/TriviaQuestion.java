@@ -4,8 +4,6 @@ import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.ForeignKey;
 import android.support.annotation.NonNull;
-import edu.cnm.deepdive.triviagame.model.entity.TriviaCategory;
-import java.util.List;
 
 @Entity(
     primaryKeys = {"question_id", "difficulty", "question"},
@@ -34,27 +32,16 @@ public class TriviaQuestion {
   @ColumnInfo(name = "question")
   private String question;
 
-  private String correctAnswer;
-  private List<String> answers;
 
-  public TriviaQuestion(String question, String correctAnswer, List<String> answers) {
+  public TriviaQuestion(String question, String difficulty, long category_id) {
     this.question = question;
-    this.correctAnswer = correctAnswer;
-    this.answers = answers;
+    this.categoryId = category_id;
     this.difficulty = "easy";
   }
 
   @NonNull
   public String getQuestion() {
     return question;
-  }
-
-  public String getCorrectAnswer() {
-    return correctAnswer;
-  }
-
-  public List<String> getAnswers() {
-    return answers;
   }
 
   @Override

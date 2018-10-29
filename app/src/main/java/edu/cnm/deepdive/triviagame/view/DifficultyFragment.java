@@ -44,28 +44,28 @@ public class DifficultyFragment extends Fragment {
 
     listener = (v) -> {
 
-        int id = v.getId();
-        float deg = v.getRotation() + -360F;
-        v.animate().rotation(deg).setInterpolator(new AccelerateDecelerateInterpolator());
+      int id = v.getId();
+      float deg = v.getRotation() + -360F;
+      v.animate().rotation(deg).setInterpolator(new AccelerateDecelerateInterpolator());
 
-        switch (id) {
-          case R.id.easy_button:
-            difficulty = "easy";
-            break;
-          case R.id.medium_button:
-            difficulty = "medium";
-            break;
-          case R.id.hard_button:
-            difficulty = "hard";
-            break;
-          default:
-           difficulty = "medium";
-            break;
-        }
-        getFragmentManager()
-            .beginTransaction().replace(R.id.fragment_container, categoriesFragment)
-            .addToBackStack("diff")
-            .commit();
+      switch (id) {
+        case R.id.easy_button:
+          difficulty = "easy";
+          break;
+        case R.id.medium_button:
+          difficulty = "medium";
+          break;
+        case R.id.hard_button:
+          difficulty = "hard";
+          break;
+        default:
+          difficulty = "medium";
+          break;
+      }
+      getFragmentManager()
+          .beginTransaction().replace(R.id.fragment_container, categoriesFragment)
+          .addToBackStack("diff")
+          .commit();
 
 
     };
