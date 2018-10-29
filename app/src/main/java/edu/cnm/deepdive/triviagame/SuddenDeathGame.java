@@ -23,7 +23,7 @@ public class SuddenDeathGame {
 
     while (!gameOver) {
       if (questionIndex == questionList.size()) {
-        System.out.printf("You got %d/%d questions correct!\n", questionsCorrect, totalQuestions);
+        System.out.printf("You got %d questions correct!\n", questionsCorrect);
         gameOver = true;
       } else {
         System.out.println(questionList.get(questionIndex).toString());
@@ -43,6 +43,7 @@ public class SuddenDeathGame {
 
         } else {
           System.out.println("Incorrect! Game Over!");
+          System.out.printf("You got %d questions correct!\n", questionsCorrect);
           gameOver = true;
         }
       }
