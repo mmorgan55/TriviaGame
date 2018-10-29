@@ -4,7 +4,6 @@ import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.ForeignKey;
 import android.support.annotation.NonNull;
-import java.util.List;
 
 @Entity(
     primaryKeys = {"answers_id", "correct_answer", "answers"},
@@ -18,20 +17,23 @@ import java.util.List;
     }
 )
 public class TriviaAnswers {
+
   @ColumnInfo(name = "answers_id")
   private long answersId;
 
-  @NonNull
-  @ColumnInfo(name = "correct_answer")
-  private String correctAnswer;
+  @ColumnInfo(name = "question_id")
+  private long questionId;
 
   @NonNull
-  @ColumnInfo(name = "answers")
-  private List<String> answers;
+  @ColumnInfo(name = "answer")
+  private String answer;
 
-  public TriviaAnswers(@NonNull String correctAnswer, @NonNull List<String> answers) {
-    this.correctAnswer = correctAnswer;
-    this.answers = answers;
+  @ColumnInfo
+  private boolean isCorrect;
+
+  public TriviaAnswers(@NonNull String answer, boolean isCorrect) {
+    this.answer = answer;
+    this.isCorrect = isCorrect;
   }
 
   public long getAnswersId() {
@@ -43,20 +45,27 @@ public class TriviaAnswers {
   }
 
   @NonNull
-  public String getCorrectAnswer() {
-    return correctAnswer;
+  public String getAnswer() {
+    return answer;
   }
 
-  public void setCorrectAnswer(@NonNull String correctAnswer) {
-    this.correctAnswer = correctAnswer;
+  public void setAnswer(@NonNull String correctAnswer) {
+    this.answer = correctAnswer;
   }
 
-  @NonNull
-  public List<String> getAnswers() {
-    return answers;
+  public boolean isCorrect() {
+    return isCorrect;
   }
 
-  public void setAnswers(@NonNull List<String> answers) {
-    this.answers = answers;
+  public void setCorrect(boolean correct) {
+    isCorrect = correct;
+  }
+
+  public long getQuestionId() {
+    return questionId;
+  }
+
+  public void setQuestionId(long questionId) {
+    this.questionId = questionId;
   }
 }

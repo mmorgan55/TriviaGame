@@ -23,6 +23,9 @@ public class TriviaQuestion {
   @ColumnInfo(name = "question_id")
   private long questionId;
 
+  @ColumnInfo(name = "category_id")
+  private long categoryId;
+
   @NonNull
   @ColumnInfo(name = "difficulty")
   private String difficulty;
