@@ -19,7 +19,7 @@ public class GameController {
       case "relaxed":
         new RelaxedGame(questionList);
         break;
-      case "difficult":
+      case "sudden":
         new SuddenDeathGame(questionList);
         break;
       case "time":

@@ -1,12 +1,37 @@
 package edu.cnm.deepdive.triviagame;
 
+import android.arch.persistence.room.ColumnInfo;
+import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.ForeignKey;
+import android.support.annotation.NonNull;
 import java.util.List;
 
+@Entity(
+    primaryKeys = {"question_id", "difficulty", "question"},
+    foreignKeys = {
+        @ForeignKey(
+            entity = TriviaCategory.class,
+            parentColumns = "category_id",
+            childColumns = "category_id",
+            onDelete = ForeignKey.CASCADE
+        )
+    }
+)
 public class TriviaQuestion {
 
-  private String category;
+  @ColumnInfo(name = "question_id")
+  private long questionId;
+
+  //private String category;
+
+  @NonNull
+  @ColumnInfo(name = "difficulty")
   private String difficulty;
+
+  @NonNull
+  @ColumnInfo(name = "question")
   private String question;
+
   private String correctAnswer;
   private List<String> answers;
 
@@ -14,8 +39,10 @@ public class TriviaQuestion {
     this.question = question;
     this.correctAnswer = correctAnswer;
     this.answers = answers;
+    this.difficulty = "easy";
   }
 
+  @NonNull
   public String getQuestion() {
     return question;
   }

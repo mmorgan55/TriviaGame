@@ -50,7 +50,7 @@ public class MainFragment extends android.support.v4.app.Fragment {
           gameType = "time";
           break;
         case R.id.difficulty_button:
-          gameType = "difficult";
+          gameType = "sudden";
           break;
         case R.id.relaxed_button:
           gameType = "relaxed";
