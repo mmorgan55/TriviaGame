@@ -31,5 +31,17 @@ public class TriviaCategory {
   public String toString() {
     return getCategoryTitle();
   }
+
+  public long getCategoryId() {
+    return categoryId;
+  }
+
+  public void setCategoryId(long categoryId) {
+    this.categoryId = categoryId;
+  }
+
+  public void setCategoryTitle(@NonNull String categoryTitle) {
+    this.categoryTitle = categoryTitle;
+  }
 }
 

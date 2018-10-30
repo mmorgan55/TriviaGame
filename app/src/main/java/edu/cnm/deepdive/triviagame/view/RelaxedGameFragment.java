@@ -17,5 +17,4 @@ public class RelaxedGameFragment extends android.support.v4.app.Fragment {
     return inflater.inflate(R.layout.fragment_relaxed_game, container, false);
   }
 
-
 }

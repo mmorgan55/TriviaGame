@@ -88,42 +88,42 @@ public abstract class TriviaDatabase extends RoomDatabase {
               "easy", catId));
 
       aDao.insert(new TriviaAnswers("Dave Mustaine", true, que1Id));
-      aDao.insert(new TriviaAnswers("David Ellefson", true, que1Id));
-      aDao.insert(new TriviaAnswers("Greg Handevidt", true, que1Id));
-      aDao.insert(new TriviaAnswers("Dijon Carruthers", true, que1Id));
+      aDao.insert(new TriviaAnswers("David Ellefson", false, que1Id));
+      aDao.insert(new TriviaAnswers("Greg Handevidt", false, que1Id));
+      aDao.insert(new TriviaAnswers("Dijon Carruthers", false, que1Id));
 
       long que2Id = qDao
           .insert(new TriviaQuestion("What is the name of Eragon's dragon in the book \"Eragon\"?",
               "easy", catId));
 
       aDao.insert(new TriviaAnswers("Saphira", true, que2Id));
-      aDao.insert(new TriviaAnswers("Rubyrta", true, que2Id));
-      aDao.insert(new TriviaAnswers("Onyxia", true, que2Id));
-      aDao.insert(new TriviaAnswers("Emeralda", true, que2Id));
+      aDao.insert(new TriviaAnswers("Rubyrta", false, que2Id));
+      aDao.insert(new TriviaAnswers("Onyxia", false, que2Id));
+      aDao.insert(new TriviaAnswers("Emeralda", false, que2Id));
 
       long que3Id = qDao.insert(new TriviaQuestion("Who painted \"The Starry Night\"?",
           "easy", catId));
 
-      aDao.insert(new TriviaAnswers("Galileo", true, que3Id));
+      aDao.insert(new TriviaAnswers("Galileo", false, que3Id));
       aDao.insert(new TriviaAnswers("Van Gogh", true, que3Id));
-      aDao.insert(new TriviaAnswers("Michaelangelo", true, que3Id));
-      aDao.insert(new TriviaAnswers("Da Vinci", true, que3Id));
+      aDao.insert(new TriviaAnswers("Michaelangelo", false, que3Id));
+      aDao.insert(new TriviaAnswers("Da Vinci", false, que3Id));
 
       long que4Id = qDao.insert(new TriviaQuestion("From which country did the piano originate?",
           "easy", catId));
 
-      aDao.insert(new TriviaAnswers("Germany", true, que4Id));
-      aDao.insert(new TriviaAnswers("France", true, que4Id));
+      aDao.insert(new TriviaAnswers("Germany", false, que4Id));
+      aDao.insert(new TriviaAnswers("France", false, que4Id));
       aDao.insert(new TriviaAnswers("Italy", true, que4Id));
-      aDao.insert(new TriviaAnswers("Austria", true, que4Id));
+      aDao.insert(new TriviaAnswers("Austria", false, que4Id));
 
       long que5Id = qDao.insert(
           new TriviaQuestion("The United States was the first country to put a man in Space.",
               "easy", catId));
 
-      aDao.insert(new TriviaAnswers("Yes", true, que5Id));
-      aDao.insert(new TriviaAnswers("No", true, que5Id));
-      aDao.insert(new TriviaAnswers("Maybe?", true, que5Id));
+      aDao.insert(new TriviaAnswers("Yes", false, que5Id));
+      aDao.insert(new TriviaAnswers("No", false, que5Id));
+      aDao.insert(new TriviaAnswers("Maybe?", false, que5Id));
       aDao.insert(new TriviaAnswers("Soviet Union", true, que5Id));
       forgetInstance(context);
       return null;
