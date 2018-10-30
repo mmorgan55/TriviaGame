@@ -49,7 +49,7 @@ public class CategoriesFragment extends Fragment {
       @Override
       public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         categorySelected = "Initial";
-        GameController game = new GameController();
+        GameController game = new GameController(getActivity());
       }
     });
     return layout;
