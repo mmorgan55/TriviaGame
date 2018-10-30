@@ -33,7 +33,7 @@ public abstract class TriviaDatabase extends RoomDatabase {
           .addCallback(new Callback(context.getApplicationContext()))
           .build();
     }
-    return null;
+    return instance;
   }
 
   public static synchronized void forgetInstance(Context context) {

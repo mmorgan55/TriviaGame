@@ -4,17 +4,18 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import edu.cnm.deepdive.triviagame.R;
 import edu.cnm.deepdive.triviagame.model.db.TriviaDatabase;
 import edu.cnm.deepdive.triviagame.model.entity.TriviaAnswers;
 import edu.cnm.deepdive.triviagame.model.entity.TriviaQuestion;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GameFragment extends Fragment {
+public abstract class GameFragment extends Fragment {
 
-  protected String category;
-  protected String difficulty;
-  protected String gameType;
+  protected String category = "";
+  protected String difficulty = "";
+  protected String gameType = "";
   protected List<TriviaQuestion> questions;
   protected List<TriviaAnswers> answers;
 
@@ -30,8 +31,9 @@ public class GameFragment extends Fragment {
     questions = new ArrayList<>();
     answers = new ArrayList<>();
 
-    questions = new QuestionTask().doInBackground();
-    answers = new AnswerTask().doInBackground();
+    new QuestionTask().execute();
+    new AnswerTask().execute();
+
   }
 
   private class QuestionTask extends AsyncTask<Void, Void, List<TriviaQuestion>> {
@@ -54,7 +56,7 @@ public class GameFragment extends Fragment {
 
       List<TriviaAnswers> answers = new ArrayList<>();
       for (TriviaQuestion q : questions) {
-        long queId = db.getTriviaQuestionDao().select(q).getQuestionId();
+        long queId = db.getTriviaQuestionDao().select(q.getQuestion()).getQuestionId();
         answers.addAll(db.getTriviaAnswersDao().select(queId));
       }
 

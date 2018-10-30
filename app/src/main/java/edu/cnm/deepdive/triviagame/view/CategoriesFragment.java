@@ -23,11 +23,6 @@ public class CategoriesFragment extends Fragment {
   private List<TriviaCategory> categories;
   private ListView categoryListView;
   private CategoryAdapter adapter;
-
-  public String getCategorySelected() {
-    return categorySelected;
-  }
-
   private String categorySelected;
 
   @Override
@@ -45,12 +40,9 @@ public class CategoriesFragment extends Fragment {
     adapter = new CategoryAdapter(getActivity(), R.layout.category_item, categories);
     categoryListView.setAdapter(adapter);
 
-    categoryListView.setOnItemClickListener(new OnItemClickListener() {
-      @Override
-      public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        categorySelected = "Initial";
-        GameController game = new GameController(getActivity());
-      }
+    categoryListView.setOnItemClickListener((parent, view, position, id) -> {
+      categorySelected = "Initial";
+      new GameController(getActivity());
     });
     return layout;
   }
@@ -67,6 +59,10 @@ public class CategoriesFragment extends Fragment {
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
       return super.getView(position, convertView, parent);
     }
+  }
+
+  public String getCategorySelected() {
+    return categorySelected;
   }
 
 }

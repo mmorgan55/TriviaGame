@@ -45,8 +45,6 @@ public class DifficultyFragment extends Fragment {
     listener = (v) -> {
 
       int id = v.getId();
-      float deg = v.getRotation() + -360F;
-      v.animate().rotation(deg).setInterpolator(new AccelerateDecelerateInterpolator());
 
       switch (id) {
         case R.id.easy_button:
@@ -66,8 +64,6 @@ public class DifficultyFragment extends Fragment {
           .beginTransaction().replace(R.id.fragment_container, categoriesFragment)
           .addToBackStack("diff")
           .commit();
-
-
     };
   }
 

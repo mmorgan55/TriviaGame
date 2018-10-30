@@ -17,6 +17,6 @@ public interface TriviaQuestionDao {
   List<TriviaQuestion> select(long categoryId);
 
   @Query("SELECT * FROM TriviaQuestion WHERE question = :question")
-  TriviaQuestion select(TriviaQuestion question);
+  TriviaQuestion select(String question);
 
 }
