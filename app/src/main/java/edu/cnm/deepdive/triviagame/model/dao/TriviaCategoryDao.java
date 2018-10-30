@@ -14,4 +14,7 @@ public interface TriviaCategoryDao {
 
   @Query("SELECT * FROM TriviaCategory ORDER BY category_id")
   List<TriviaCategory> select();
+
+  @Query("SELECT * FROM TriviaCategory WHERE category_title =:categoryTitle")
+  TriviaCategory select(String categoryTitle);
 }
