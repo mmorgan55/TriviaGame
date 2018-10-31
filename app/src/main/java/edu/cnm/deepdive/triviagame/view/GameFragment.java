@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import edu.cnm.deepdive.triviagame.R;
 import edu.cnm.deepdive.triviagame.model.db.TriviaDatabase;
 import edu.cnm.deepdive.triviagame.model.entity.TriviaAnswers;
+import edu.cnm.deepdive.triviagame.model.entity.TriviaCategory;
 import edu.cnm.deepdive.triviagame.model.entity.TriviaQuestion;
 import java.util.ArrayList;
 import java.util.List;
@@ -42,9 +43,13 @@ public abstract class GameFragment extends Fragment {
     protected List<TriviaQuestion> doInBackground(Void... voids) {
       TriviaDatabase db = TriviaDatabase.getInstance(getActivity());
 
-      long catId = db.getTriviaCategoryDao().select(category).getCategoryId();
+      TriviaCategory triviaCategory = db.getTriviaCategoryDao().select(category);
+      if (triviaCategory != null) {
+        long catId = triviaCategory.getCategoryId();
+        return db.getTriviaQuestionDao().select(catId);
+      }
 
-      return db.getTriviaQuestionDao().select(catId);
+      return null;
     }
   }
 
