@@ -15,4 +15,9 @@ public class SuddenDeathGameFragment extends GameFragment {
     // Inflate the layout for this fragment
     return inflater.inflate(R.layout.fragment_sudden_death_game, container, false);
   }
+
+  @Override
+  protected void updateUI() {
+
+  }
 }

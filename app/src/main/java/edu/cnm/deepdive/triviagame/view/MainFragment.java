@@ -32,7 +32,6 @@ public class MainFragment extends android.support.v4.app.Fragment {
     diffButton.setOnClickListener(listener);
     relaxButton.setOnClickListener(listener);
 
-
     return view;
   }
 

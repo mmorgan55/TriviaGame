@@ -16,4 +16,9 @@ public class TimeConstraintGameFragment extends GameFragment {
     // Inflate the layout for this fragment
     return inflater.inflate(R.layout.fragment_time_constraint_game, container, false);
   }
+
+  @Override
+  protected void updateUI() {
+
+  }
 }

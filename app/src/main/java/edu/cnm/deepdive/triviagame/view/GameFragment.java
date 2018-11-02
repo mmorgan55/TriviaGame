@@ -4,7 +4,6 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import edu.cnm.deepdive.triviagame.R;
 import edu.cnm.deepdive.triviagame.model.db.TriviaDatabase;
 import edu.cnm.deepdive.triviagame.model.entity.TriviaAnswers;
 import edu.cnm.deepdive.triviagame.model.entity.TriviaCategory;
@@ -33,11 +32,16 @@ public abstract class GameFragment extends Fragment {
     answers = new ArrayList<>();
 
     new QuestionTask().execute();
-    new AnswerTask().execute();
-
   }
 
+  protected abstract void updateUI();
+
+
   private class QuestionTask extends AsyncTask<Void, Void, List<TriviaQuestion>> {
+
+    public QuestionTask() {
+      super();
+    }
 
     @Override
     protected List<TriviaQuestion> doInBackground(Void... voids) {
@@ -46,26 +50,42 @@ public abstract class GameFragment extends Fragment {
       TriviaCategory triviaCategory = db.getTriviaCategoryDao().select(category);
       if (triviaCategory != null) {
         long catId = triviaCategory.getCategoryId();
-        return db.getTriviaQuestionDao().select(catId);
+        questions.addAll(db.getTriviaQuestionDao().select(catId));
+
+        return null;
       }
 
       return null;
     }
+
+    @Override
+    protected void onPostExecute(List<TriviaQuestion> triviaQuestions) {
+      new AnswerTask().execute();
+    }
   }
 
+
   private class AnswerTask extends AsyncTask<Void, Void, List<TriviaAnswers>> {
+
+    public AnswerTask() {
+      super();
+    }
 
     @Override
     protected List<TriviaAnswers> doInBackground(Void... voids) {
       TriviaDatabase db = TriviaDatabase.getInstance(getActivity());
 
-      List<TriviaAnswers> answers = new ArrayList<>();
       for (TriviaQuestion q : questions) {
         long queId = db.getTriviaQuestionDao().select(q.getQuestion()).getQuestionId();
         answers.addAll(db.getTriviaAnswersDao().select(queId));
       }
 
       return answers;
+    }
+
+    @Override
+    protected void onPostExecute(List<TriviaAnswers> triviaAnswers) {
+      updateUI();
     }
   }
 }

@@ -1,6 +1,5 @@
 package edu.cnm.deepdive.triviagame.view;
 
-
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
@@ -11,10 +10,8 @@ import android.widget.Button;
 import android.widget.TextView;
 import edu.cnm.deepdive.triviagame.R;
 import edu.cnm.deepdive.triviagame.model.entity.TriviaAnswers;
-import edu.cnm.deepdive.triviagame.model.entity.TriviaQuestion;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 public class RelaxedGameFragment extends GameFragment {
 
@@ -38,35 +35,31 @@ public class RelaxedGameFragment extends GameFragment {
     answers2 = view.findViewById(R.id.relaxed_answer_button2);
     answers3 = view.findViewById(R.id.relaxed_answer_button3);
     answers4 = view.findViewById(R.id.relaxed_answer_button4);
-    answers1.setText(String.valueOf(questions.size()));
-    answers2.setText(String.valueOf(answers.size()));
     answerButtons = new ArrayList<>();
     answerButtons.add(answers1);
     answerButtons.add(answers2);
     answerButtons.add(answers3);
     answerButtons.add(answers4);
 
-    //playGame();
-
     return view;
   }
 
-//  private void playGame() {
-//    boolean gameOver = false;
-//    int questionIndex = 0;
-//
-//    while (!gameOver) {
-//      long qId = questions.get(questionIndex).getQuestionId();
-//      questionText.setText(questions.get(questionIndex).getQuestion());
-//      int listIndex = 0;
-//      for (TriviaAnswers answer : answers) {
-//        if (answer.getQuestionId() == qId) {
-//          answerButtons.get(listIndex).setText(answer.getAnswer());
-//          listIndex++;
-//        }
-//      }
-//      gameOver = true;
-//    }
-//  }
+  @Override
+  protected void updateUI() {
+    boolean gameOver = false;
+    int questionIndex = 0;
 
+    while (!gameOver) {
+      long qId = questions.get(questionIndex).getQuestionId();
+      questionText.setText(questions.get(questionIndex).getQuestion());
+      int listIndex = 0;
+      for (TriviaAnswers answer : answers) {
+        if (answer.getQuestionId() == qId) {
+          answerButtons.get(listIndex).setText(answer.getAnswer());
+          listIndex++;
+        }
+      }
+      gameOver = true;
+    }
+  }
 }
