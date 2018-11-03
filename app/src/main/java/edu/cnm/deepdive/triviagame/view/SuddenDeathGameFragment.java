@@ -17,7 +17,7 @@ public class SuddenDeathGameFragment extends GameFragment {
   }
 
   @Override
-  protected void updateUI() {
+  protected void setupGame() {
 
   }
 }

@@ -31,8 +31,6 @@
   <string name="medium_button_text">MEDIUM</string>
   <string name="hard_button_text">HARD</string>
 
-  <!-- TODO: Remove or change this placeholder text -->
-  <string name="hello_blank_fragment">Hello blank fragment</string>
   <string name="tally_correct">Correct: %d</string>
   <string name="tally_incorrect">Incorrect: %d</string>
 </resources>

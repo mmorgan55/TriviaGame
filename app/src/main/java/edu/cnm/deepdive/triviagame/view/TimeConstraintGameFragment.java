@@ -18,7 +18,7 @@ public class TimeConstraintGameFragment extends GameFragment {
   }
 
   @Override
-  protected void updateUI() {
+  protected void setupGame() {
 
   }
 }

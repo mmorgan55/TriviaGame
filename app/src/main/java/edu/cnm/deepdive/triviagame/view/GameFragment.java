@@ -34,7 +34,7 @@ public abstract class GameFragment extends Fragment {
     new QuestionTask().execute();
   }
 
-  protected abstract void updateUI();
+  protected abstract void setupGame();
 
 
   private class QuestionTask extends AsyncTask<Void, Void, List<TriviaQuestion>> {
@@ -85,7 +85,7 @@ public abstract class GameFragment extends Fragment {
 
     @Override
     protected void onPostExecute(List<TriviaAnswers> triviaAnswers) {
-      updateUI();
+      setupGame();
     }
   }
 }
