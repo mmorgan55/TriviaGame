@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import edu.cnm.deepdive.triviagame.R;
 import edu.cnm.deepdive.triviagame.model.entity.TriviaAnswers;
+import edu.cnm.deepdive.triviagame.model.entity.TriviaQuestion;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,7 +24,10 @@ public class RelaxedGameFragment extends GameFragment {
   private Button answers3;
   private Button answers4;
   private List<Button> answerButtons;
+  int questionIndex = 0;
   private OnClickListener listener;
+  private TriviaAnswers correctAnswer;
+
 
   @Override
   public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
@@ -36,6 +40,13 @@ public class RelaxedGameFragment extends GameFragment {
     answers3 = view.findViewById(R.id.relaxed_answer_button3);
     answers4 = view.findViewById(R.id.relaxed_answer_button4);
     answerButtons = new ArrayList<>();
+
+    setListener();
+
+    answers1.setOnClickListener(listener);
+    answers2.setOnClickListener(listener);
+    answers3.setOnClickListener(listener);
+    answers4.setOnClickListener(listener);
     answerButtons.add(answers1);
     answerButtons.add(answers2);
     answerButtons.add(answers3);
@@ -46,20 +57,54 @@ public class RelaxedGameFragment extends GameFragment {
 
   @Override
   protected void updateUI() {
-    boolean gameOver = false;
-    int questionIndex = 0;
-
-    while (!gameOver) {
-      long qId = questions.get(questionIndex).getQuestionId();
-      questionText.setText(questions.get(questionIndex).getQuestion());
-      int listIndex = 0;
-      for (TriviaAnswers answer : answers) {
-        if (answer.getQuestionId() == qId) {
+    long qId = questions.get(questionIndex).getQuestionId();
+    questionText.setText(questions.get(questionIndex).getQuestion());
+    int listIndex = 0;
+    for (TriviaAnswers answer : answers) {
+      if (answer.getQuestionId() == qId) {
+        if (answer.isCorrect()) {
+          correctAnswer = answer;
+          answerButtons.get(listIndex).setText(answer.getAnswer());
+          listIndex++;
+        } else {
           answerButtons.get(listIndex).setText(answer.getAnswer());
           listIndex++;
         }
       }
-      gameOver = true;
     }
+  }
+
+  private void playGame() {
+    
+  }
+
+  private void upgateGame(boolean isCorrect) {
+    if (isCorrect) {
+      questionsCorrect++;
+      questionIndex++;
+      updateUI();
+    } else {
+      questionsCorrect++;
+      questionIndex++;
+    }
+  }
+
+  private void setListener() {
+    listener = v -> {
+      switch (v.getId()) {
+        case R.id.relaxed_answer_button1:
+          isAnswerCorrect(((Button) v).getText().toString());
+        case R.id.relaxed_answer_button2:
+          isAnswerCorrect(((Button) v).getText().toString());
+        case R.id.relaxed_answer_button3:
+          isAnswerCorrect(((Button) v).getText().toString());
+        case R.id.relaxed_answer_button4:
+          isAnswerCorrect(((Button) v).getText().toString());
+      }
+    };
+  }
+
+  private boolean isAnswerCorrect(String answer) {
+    return correctAnswer.getAnswer().equals(answer);
   }
 }
