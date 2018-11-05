@@ -85,6 +85,7 @@ public class SuddenDeathGameFragment extends GameFragment {
     if (isCorrect) {
       questionIndex++;
       questionsCorrect++;
+      continueGame();
     } else {
       questionIndex++;
       questionsIncorrect++;
@@ -94,6 +95,10 @@ public class SuddenDeathGameFragment extends GameFragment {
       Toast.makeText(getContext(), R.string.lose_text, Toast.LENGTH_LONG).show();
     }
 
+
+  }
+
+  private void continueGame() {
     if (questionIndex < questions.size()) {
       updateUI();
     } else {
