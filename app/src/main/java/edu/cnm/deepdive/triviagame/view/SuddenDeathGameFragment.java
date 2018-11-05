@@ -89,13 +89,13 @@ public class SuddenDeathGameFragment extends GameFragment {
     } else {
       questionIndex++;
       questionsIncorrect++;
+      correctTally.setText(getString(R.string.tally_correct, questionsCorrect));
+      incorrectTally.setText(getString(R.string.tally_incorrect, questionsIncorrect));
       for (Button button : answerButtons) {
         button.setEnabled(false);
       }
       Toast.makeText(getContext(), R.string.lose_text, Toast.LENGTH_LONG).show();
     }
-
-
   }
 
   private void continueGame() {
