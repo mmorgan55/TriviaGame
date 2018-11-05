@@ -8,6 +8,7 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 import edu.cnm.deepdive.triviagame.R;
 import edu.cnm.deepdive.triviagame.model.entity.TriviaAnswers;
 import java.util.ArrayList;
@@ -60,8 +61,7 @@ public class RelaxedGameFragment extends GameFragment {
   }
 
   private void updateUI() {
-    correctTally.setText(getString(R.string.tally_correct, questionsCorrect));
-    incorrectTally.setText(getString(R.string.tally_incorrect, questionsIncorrect));
+    updateTally(questionsCorrect, questionsIncorrect);
     long qId = questions.get(questionIndex).getQuestionId();
     questionText.setText(questions.get(questionIndex).getQuestion());
     int answerListIndex = 0;
@@ -91,11 +91,11 @@ public class RelaxedGameFragment extends GameFragment {
     if (questionIndex < questions.size()) {
       updateUI();
     } else {
-      correctTally.setText(getString(R.string.tally_correct, questionsCorrect));
-      incorrectTally.setText(getString(R.string.tally_incorrect, questionsIncorrect));
+      updateTally(questionsCorrect, questionsIncorrect);
       for (Button button : answerButtons) {
         button.setEnabled(false);
       }
+      Toast.makeText(getContext(), R.string.relaxed_win_text, Toast.LENGTH_LONG).show();
     }
   }
 
@@ -120,6 +120,11 @@ public class RelaxedGameFragment extends GameFragment {
 
   private boolean isAnswerCorrect(String answer) {
     return correctAnswer.getAnswer().equals(answer);
+  }
+
+  private void updateTally(int correct, int incorrect) {
+    correctTally.setText(getString(R.string.tally_correct, correct));
+    incorrectTally.setText(getString(R.string.tally_incorrect, incorrect));
   }
 
 }
