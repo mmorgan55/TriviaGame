@@ -1,5 +1,7 @@
 package edu.cnm.deepdive.triviagame.view;
 
+import static edu.cnm.deepdive.triviagame.MainActivity.bundle;
+
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -8,8 +10,6 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import edu.cnm.deepdive.triviagame.GameController;
@@ -20,16 +20,16 @@ import java.util.List;
 
 public class CategoriesFragment extends Fragment {
 
-  private List<TriviaCategory> categories;
   private ListView categoryListView;
-  private CategoryAdapter adapter;
+  private String gameType;
+  private String difficulty;
   private String categorySelected;
 
   @Override
   public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
       Bundle savedInstanceState) {
 
-    categories = new ArrayList<>();
+    List<TriviaCategory> categories = new ArrayList<>();
 
     for (String str : getResources().getStringArray(R.array.categories)) {
       categories.add(new TriviaCategory(str));
@@ -37,19 +37,21 @@ public class CategoriesFragment extends Fragment {
 
     View layout = inflater.inflate(R.layout.fragment_categories, container, false);
     categoryListView = layout.findViewById(R.id.category_list_view);
-    adapter = new CategoryAdapter(getActivity(), R.layout.category_item, categories);
+    CategoryAdapter adapter = new CategoryAdapter(getActivity(), R.layout.category_item,
+        categories);
     categoryListView.setAdapter(adapter);
 
     categoryListView.setOnItemClickListener((parent, view, position, id) -> {
-      categorySelected = "Initial";
-      new GameController(getActivity());
+      categorySelected = categoryListView.getItemAtPosition(position).toString();
+      bundle.putString("category", categorySelected);
+      new GameController(getActivity(), bundle);
     });
     return layout;
   }
 
   private class CategoryAdapter extends ArrayAdapter<TriviaCategory> {
 
-    public CategoryAdapter(@NonNull Context context, int resource,
+    CategoryAdapter(@NonNull Context context, int resource,
         @NonNull List<TriviaCategory> objects) {
       super(context, resource, objects);
     }
@@ -60,9 +62,4 @@ public class CategoriesFragment extends Fragment {
       return super.getView(position, convertView, parent);
     }
   }
-
-  public String getCategorySelected() {
-    return categorySelected;
-  }
-
 }

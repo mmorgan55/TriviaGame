@@ -15,7 +15,6 @@ public abstract class GameFragment extends Fragment {
 
   protected String category = "";
   protected String difficulty = "";
-  protected String gameType = "";
   protected List<TriviaQuestion> questions;
   protected List<TriviaAnswers> answers;
 
@@ -24,7 +23,6 @@ public abstract class GameFragment extends Fragment {
   public void onCreate(@Nullable Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
 
-    gameType = getArguments().getString("gameType");
     category = getArguments().getString("category");
     difficulty = getArguments().getString("difficulty");
 
@@ -39,7 +37,7 @@ public abstract class GameFragment extends Fragment {
 
   private class QuestionTask extends AsyncTask<Void, Void, List<TriviaQuestion>> {
 
-    public QuestionTask() {
+    QuestionTask() {
       super();
     }
 
@@ -67,7 +65,7 @@ public abstract class GameFragment extends Fragment {
 
   private class AnswerTask extends AsyncTask<Void, Void, List<TriviaAnswers>> {
 
-    public AnswerTask() {
+    AnswerTask() {
       super();
     }
 

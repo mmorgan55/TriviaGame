@@ -81,7 +81,7 @@ public abstract class TriviaDatabase extends RoomDatabase {
       TriviaQuestionDao qDao = db.getTriviaQuestionDao();
       TriviaAnswersDao aDao = db.getTriviaAnswersDao();
 
-      long catId = cDao.insert(new TriviaCategory("Initial"));
+      long catId = cDao.insert(new TriviaCategory("Physics"));
 
       long que1Id = qDao
           .insert(new TriviaQuestion("What is the frontman's name in the Band Megadeth?",
@@ -94,7 +94,7 @@ public abstract class TriviaDatabase extends RoomDatabase {
 
       long que2Id = qDao
           .insert(new TriviaQuestion("What is the name of Eragon's dragon in the book \"Eragon\"?",
-              "easy", catId));
+              "medium", catId));
 
       aDao.insert(new TriviaAnswers("Saphira", true, que2Id));
       aDao.insert(new TriviaAnswers("Rubyrta", false, que2Id));

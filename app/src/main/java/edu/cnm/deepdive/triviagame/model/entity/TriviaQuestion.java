@@ -39,7 +39,7 @@ public class TriviaQuestion {
   public TriviaQuestion(String question, String difficulty, long category_id) {
     this.question = question;
     this.categoryId = category_id;
-    this.difficulty = "easy";
+    this.difficulty = difficulty;
   }
 
   @NonNull
