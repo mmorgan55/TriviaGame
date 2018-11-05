@@ -36,4 +36,5 @@
 
   <string name="tally_correct">Correct: %d</string>
   <string name="tally_incorrect">Incorrect: %d</string>
+  <string name="timer">%d secs</string>
 </resources>
