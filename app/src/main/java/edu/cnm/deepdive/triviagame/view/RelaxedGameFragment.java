@@ -20,10 +20,6 @@ public class RelaxedGameFragment extends GameFragment {
   private TextView correctTally;
   private TextView incorrectTally;
   private TextView questionText;
-  private Button answers1;
-  private Button answers2;
-  private Button answers3;
-  private Button answers4;
   private List<Button> answerButtons;
   private int questionIndex = 0;
   private OnClickListener listener;
@@ -32,15 +28,16 @@ public class RelaxedGameFragment extends GameFragment {
   @Override
   public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
       Bundle savedInstanceState) {
+
     View view = inflater.inflate(R.layout.fragment_relaxed_game, container, false);
 
     questionText = view.findViewById(R.id.relaxed_question_text);
     correctTally = view.findViewById(R.id.relaxed_correct_tally);
     incorrectTally = view.findViewById(R.id.relaxed_incorrect_tally);
-    answers1 = view.findViewById(R.id.relaxed_answer_button1);
-    answers2 = view.findViewById(R.id.relaxed_answer_button2);
-    answers3 = view.findViewById(R.id.relaxed_answer_button3);
-    answers4 = view.findViewById(R.id.relaxed_answer_button4);
+    Button answers1 = view.findViewById(R.id.relaxed_answer_button1);
+    Button answers2 = view.findViewById(R.id.relaxed_answer_button2);
+    Button answers3 = view.findViewById(R.id.relaxed_answer_button3);
+    Button answers4 = view.findViewById(R.id.relaxed_answer_button4);
     answerButtons = new ArrayList<>();
 
     setListener();

@@ -23,7 +23,7 @@ public class GameController {
 
   //TODO Get rid of this after testing each gamemode
   public GameController(FragmentActivity context) {
-    this("relaxed", "easy", "Initial", context);
+    this("sudden", "easy", "Initial", context);
   }
 
   public GameController(String gameType, String difficulty, String category,

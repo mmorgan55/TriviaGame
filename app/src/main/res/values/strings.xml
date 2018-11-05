@@ -6,6 +6,8 @@
   <string name="relax_button_text">RELAXED</string>
   <string name="categories_title">CATEGORIES</string>
   <string name="all_questions_category">ALL THE QUESTIONS</string>
+  <string name="lose_text">YOU LOSE!</string>
+  <string name="sudden_win_text">YOU MADE IT!</string>
 
   <string-array name="initial_questions">
     <item>What is the frontman\'s name in the Band Megadeth?</item>
