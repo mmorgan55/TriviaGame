@@ -1,10 +1,10 @@
-package edu.cnm.deepdive.triviagame;
+package edu.cnm.deepdive.triviagame.controller;
 
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import edu.cnm.deepdive.triviagame.R;
 import edu.cnm.deepdive.triviagame.model.db.TriviaDatabase;
-import edu.cnm.deepdive.triviagame.model.entity.TriviaAnswers;
 import edu.cnm.deepdive.triviagame.view.MainFragment;
 
 public class MainActivity extends AppCompatActivity {

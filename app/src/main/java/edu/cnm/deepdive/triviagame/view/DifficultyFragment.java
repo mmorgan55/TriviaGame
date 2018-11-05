@@ -1,6 +1,6 @@
 package edu.cnm.deepdive.triviagame.view;
 
-import static edu.cnm.deepdive.triviagame.MainActivity.bundle;
+import static edu.cnm.deepdive.triviagame.controller.MainActivity.bundle;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
