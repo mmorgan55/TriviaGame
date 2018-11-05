@@ -48,7 +48,7 @@ public abstract class GameFragment extends Fragment {
       TriviaCategory triviaCategory = db.getTriviaCategoryDao().select(category);
       if (triviaCategory != null) {
         long catId = triviaCategory.getCategoryId();
-        questions.addAll(db.getTriviaQuestionDao().select(catId));
+        questions.addAll(db.getTriviaQuestionDao().select(catId, difficulty));
 
         return null;
       }

@@ -16,6 +16,9 @@ public interface TriviaQuestionDao {
   @Query("SELECT * FROM TriviaQuestion WHERE category_id = :categoryId")
   List<TriviaQuestion> select(long categoryId);
 
+  @Query("SELECT * FROM TriviaQuestion WHERE category_id = :categoryId AND difficulty = :difficulty")
+  List<TriviaQuestion> select(long categoryId, String difficulty);
+
   @Query("SELECT * FROM TriviaQuestion WHERE question = :question")
   TriviaQuestion select(String question);
 

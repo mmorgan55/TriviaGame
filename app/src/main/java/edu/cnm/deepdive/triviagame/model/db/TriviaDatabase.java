@@ -94,12 +94,14 @@ public abstract class TriviaDatabase extends RoomDatabase {
 
       long que2Id = qDao
           .insert(new TriviaQuestion("What is the name of Eragon's dragon in the book \"Eragon\"?",
-              "medium", catId));
+              "easy", catId));
 
       aDao.insert(new TriviaAnswers("Saphira", true, que2Id));
       aDao.insert(new TriviaAnswers("Rubyrta", false, que2Id));
       aDao.insert(new TriviaAnswers("Onyxia", false, que2Id));
       aDao.insert(new TriviaAnswers("Emeralda", false, que2Id));
+
+      catId = cDao.insert(new TriviaCategory("Math"));
 
       long que3Id = qDao.insert(new TriviaQuestion("Who painted \"The Starry Night\"?",
           "easy", catId));
