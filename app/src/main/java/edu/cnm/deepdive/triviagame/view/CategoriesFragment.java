@@ -21,8 +21,6 @@ import java.util.List;
 public class CategoriesFragment extends Fragment {
 
   private ListView categoryListView;
-  private String gameType;
-  private String difficulty;
   private String categorySelected;
 
   @Override

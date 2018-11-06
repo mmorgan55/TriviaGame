@@ -27,12 +27,14 @@ public class DifficultyFragment extends Fragment {
     Button easyButton = view.findViewById(R.id.easy_button);
     Button mediumButton = view.findViewById(R.id.medium_button);
     Button hardButton = view.findViewById(R.id.hard_button);
+    Button allButton = view.findViewById(R.id.all_button);
 
     setListener();
 
     easyButton.setOnClickListener(listener);
     mediumButton.setOnClickListener(listener);
     hardButton.setOnClickListener(listener);
+    allButton.setOnClickListener(listener);
 
     return view;
   }
@@ -53,6 +55,10 @@ public class DifficultyFragment extends Fragment {
           break;
         case R.id.hard_button:
           difficulty = "hard";
+          bundle.putString("difficulty", difficulty);
+          break;
+        case R.id.all_button:
+          difficulty = "all";
           bundle.putString("difficulty", difficulty);
           break;
         default:

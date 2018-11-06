@@ -101,14 +101,12 @@ public abstract class TriviaDatabase extends RoomDatabase {
       aDao.insert(new TriviaAnswers("Onyxia", false, que2Id));
       aDao.insert(new TriviaAnswers("Emeralda", false, que2Id));
 
-      catId = cDao.insert(new TriviaCategory("Math"));
-
       long que3Id = qDao.insert(new TriviaQuestion("Who painted \"The Starry Night\"?",
-          "easy", catId));
+          "medium", catId));
 
       aDao.insert(new TriviaAnswers("Galileo", false, que3Id));
       aDao.insert(new TriviaAnswers("Van Gogh", true, que3Id));
-      aDao.insert(new TriviaAnswers("Michaelangelo", false, que3Id));
+      aDao.insert(new TriviaAnswers("Michelangelo", false, que3Id));
       aDao.insert(new TriviaAnswers("Da Vinci", false, que3Id));
 
       long que4Id = qDao.insert(new TriviaQuestion("From which country did the piano originate?",
@@ -121,7 +119,7 @@ public abstract class TriviaDatabase extends RoomDatabase {
 
       long que5Id = qDao.insert(
           new TriviaQuestion("The United States was the first country to put a man in Space.",
-              "easy", catId));
+              "hard", catId));
 
       aDao.insert(new TriviaAnswers("Yes", false, que5Id));
       aDao.insert(new TriviaAnswers("No", false, que5Id));

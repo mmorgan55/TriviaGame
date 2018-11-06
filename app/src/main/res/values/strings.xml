@@ -23,6 +23,7 @@
   </string-array>
 
   <string-array name="categories">
+    <item>All</item>
     <item>Physics</item>
     <item>Math</item>
     <item>Biology</item>
