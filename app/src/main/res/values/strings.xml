@@ -7,8 +7,12 @@
   <string name="categories_title">CATEGORIES</string>
   <string name="all_questions_category">ALL THE QUESTIONS</string>
   <string name="relaxed_win_text">THAT\'S ALL OF THEM!</string>
-  <string name="lose_text">YOU LOSE!</string>
+  <string name="sudden_lose_text">YOU LOSE!</string>
   <string name="sudden_win_text">YOU MADE IT!</string>
+  <string name="time_correct_text">CORRECT!</string>
+  <string name="time_incorrect_text">INCORRECT! TRY AGAIN!</string>
+  <string name="time_lose_text">YOU RAN OUT OF TIME!</string>
+
 
   <string-array name="initial_questions">
     <item>What is the frontman\'s name in the Band Megadeth?</item>

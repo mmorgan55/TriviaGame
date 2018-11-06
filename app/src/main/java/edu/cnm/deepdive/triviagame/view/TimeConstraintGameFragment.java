@@ -73,9 +73,11 @@ public class TimeConstraintGameFragment extends GameFragment {
       questionIndex++;
       questionsCorrect++;
       currentTime += 5;
+      Toast.makeText(getContext(), R.string.time_correct_text, Toast.LENGTH_LONG).show();
       continueGame();
     } else {
       currentTime -= 15;
+      Toast.makeText(getContext(), R.string.time_incorrect_text, Toast.LENGTH_LONG).show();
       continueGame();
     }
   }
@@ -89,7 +91,7 @@ public class TimeConstraintGameFragment extends GameFragment {
           button.setEnabled(false);
         }
         timerText.setText(getString(R.string.timer, currentTime));
-        Toast.makeText(getContext(), R.string.lose_text, Toast.LENGTH_LONG).show();
+        Toast.makeText(getContext(), R.string.time_lose_text, Toast.LENGTH_LONG).show();
       } else {
         for (Button button : answerButtons) {
           button.setEnabled(false);

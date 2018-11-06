@@ -92,7 +92,7 @@ public class SuddenDeathGameFragment extends GameFragment {
       for (Button button : answerButtons) {
         button.setEnabled(false);
       }
-      Toast.makeText(getContext(), R.string.lose_text, Toast.LENGTH_LONG).show();
+      Toast.makeText(getContext(), R.string.sudden_lose_text, Toast.LENGTH_LONG).show();
     }
   }
 
