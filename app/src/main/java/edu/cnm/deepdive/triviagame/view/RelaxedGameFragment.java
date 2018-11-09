@@ -10,7 +10,6 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 import edu.cnm.deepdive.triviagame.R;
-import edu.cnm.deepdive.triviagame.RelaxedGame;
 import edu.cnm.deepdive.triviagame.model.entity.TriviaAnswers;
 import java.util.ArrayList;
 import java.util.List;
