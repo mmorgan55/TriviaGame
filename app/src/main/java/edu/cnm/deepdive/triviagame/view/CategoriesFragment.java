@@ -6,6 +6,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,6 +23,7 @@ public class CategoriesFragment extends Fragment {
 
   private ListView categoryListView;
   private String categorySelected;
+  private FloatingActionButton fab;
 
   @Override
   public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
