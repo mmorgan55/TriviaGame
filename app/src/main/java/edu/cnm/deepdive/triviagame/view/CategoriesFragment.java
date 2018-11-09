@@ -10,6 +10,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
@@ -29,17 +30,23 @@ public class CategoriesFragment extends Fragment {
   public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
       Bundle savedInstanceState) {
 
+    View layout = inflater.inflate(R.layout.fragment_categories, container, false);
     List<TriviaCategory> categories = new ArrayList<>();
+    fab = layout.findViewById(R.id.fab);
 
     for (String str : getResources().getStringArray(R.array.categories)) {
       categories.add(new TriviaCategory(str));
     }
 
-    View layout = inflater.inflate(R.layout.fragment_categories, container, false);
     categoryListView = layout.findViewById(R.id.category_list_view);
     CategoryAdapter adapter = new CategoryAdapter(getActivity(), R.layout.category_item,
         categories);
     categoryListView.setAdapter(adapter);
+
+    fab.setOnClickListener(v -> {
+      AddCategoriesFragment fragment = new AddCategoriesFragment();
+      fragment.show(getFragmentManager(), "add categories dialog");
+    });
 
     categoryListView.setOnItemClickListener((parent, view, position, id) -> {
       categorySelected = categoryListView.getItemAtPosition(position).toString();

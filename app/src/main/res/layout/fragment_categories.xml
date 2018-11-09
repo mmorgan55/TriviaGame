@@ -2,9 +2,9 @@
 <LinearLayout
   xmlns:android="http://schemas.android.com/apk/res/android"
   xmlns:tools="http://schemas.android.com/tools"
-  android:orientation="vertical"
   android:layout_width="match_parent"
   android:layout_height="match_parent"
+  android:orientation="vertical"
   tools:context=".view.CategoriesFragment">
 
   <TextView
@@ -17,19 +17,27 @@
     android:fontFamily="@font/faster_one"
     android:text="@string/categories_title"/>
 
-  <ListView
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/category_list_view"
+  <android.support.design.widget.CoordinatorLayout
     android:layout_width="match_parent"
-    android:layout_height="526dp"/>
+    android:layout_height="match_parent">
 
-<android.support.design.widget.FloatingActionButton
-  android:id="@+id/fab"
-  android:layout_width="wrap_content"
-  android:layout_height="wrap_content"
-  android:layout_gravity="center"
-  android:src="@drawable/ic_add"
-  android:backgroundTint="@color/fabColor"/>
+
+    <ListView
+      xmlns:android="http://schemas.android.com/apk/res/android"
+      android:id="@+id/category_list_view"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"/>
+
+    <android.support.design.widget.FloatingActionButton
+      android:id="@+id/fab"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_margin="10dp"
+      android:layout_gravity="bottom|end"
+      android:backgroundTint="@color/fabColor"
+      android:src="@drawable/ic_add"/>
+
+  </android.support.design.widget.CoordinatorLayout>
 
 
 </LinearLayout>
