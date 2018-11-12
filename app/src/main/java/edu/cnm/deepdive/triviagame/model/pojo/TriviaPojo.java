@@ -9,7 +9,7 @@ public class TriviaPojo {
   @Json(name = "response_code")
   private Integer responseCode;
   @Json(name = "results")
-  private List<Result> results = null;
+  private List<TriviaResult> results = null;
 
   public Integer getResponseCode() {
     return responseCode;
@@ -19,16 +19,16 @@ public class TriviaPojo {
     this.responseCode = responseCode;
   }
 
-  public List<Result> getResults() {
+  public List<TriviaResult> getResults() {
     return results;
   }
 
-  public void setResults(List<Result> results) {
+  public void setResults(List<TriviaResult> results) {
     this.results = results;
   }
 
 
-  public class Result {
+  public class TriviaResult {
 
     @Json(name = "category")
     private String category;
