@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
         .beginTransaction().replace(R.id.fragment_container, mainFragment).commit();
   }
 
-  public class InitializeDatabase extends AsyncTask<Void, Void, Void>{
+  private class InitializeDatabase extends AsyncTask<Void, Void, Void>{
 
     @Override
     protected Void doInBackground(Void... voids) {
