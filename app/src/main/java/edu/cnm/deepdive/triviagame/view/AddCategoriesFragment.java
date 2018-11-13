@@ -57,7 +57,7 @@ public class AddCategoriesFragment extends DialogFragment {
     setMap();
     setItemListener();
 
-    for (String str : getResources().getStringArray(R.array.categories)) {
+    for (String str : categoryMap.keySet()) {
       categories.add(new TriviaCategory(str));
     }
 
@@ -68,24 +68,10 @@ public class AddCategoriesFragment extends DialogFragment {
     return view;
   }
 
-  private class AddCategoryAdapter extends ArrayAdapter<TriviaCategory> {
-
-    AddCategoryAdapter(@NonNull Context context, int resource,
-        @NonNull List<TriviaCategory> objects) {
-      super(context, resource, objects);
-    }
-
-    @NonNull
-    @Override
-    public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-      return super.getView(position, convertView, parent);
-    }
-  }
-
   private void setItemListener() {
     addList.setOnItemClickListener((parent, view, position, id) -> {
       categoryName = addList.getItemAtPosition(position).toString();
-      new AddCategoryTask().execute(categoryMap.get(categoryName));
+      new AddCategoryTask().execute(categoryMap.get(categoryName), categoryName);
     });
   }
 
@@ -105,6 +91,20 @@ public class AddCategoriesFragment extends DialogFragment {
     categoryMap.put("Vehicles", 28);
     categoryMap.put("Anime & Manga", 31);
     categoryMap.put("Cartoons", 32);
+  }
+
+  private class AddCategoryAdapter extends ArrayAdapter<TriviaCategory> {
+
+    AddCategoryAdapter(@NonNull Context context, int resource,
+        @NonNull List<TriviaCategory> objects) {
+      super(context, resource, objects);
+    }
+
+    @NonNull
+    @Override
+    public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+      return super.getView(position, convertView, parent);
+    }
   }
 
   private class AddCategoryTask extends AsyncTask<Object, Void, TriviaPojo> {
@@ -128,9 +128,8 @@ public class AddCategoriesFragment extends DialogFragment {
           .build();
 
       TriviaService service = retrofit.create(TriviaService.class);
-      Response<TriviaPojo> response;
       try {
-        response = service
+        Response<TriviaPojo> response = service
             .get(QUESTIONS_REQUESTED, (int) params[0], QUESTIONS_TYPE).execute();
         if (response.isSuccessful()) {
           pojo = response.body();
@@ -151,6 +150,7 @@ public class AddCategoriesFragment extends DialogFragment {
         }
       } catch (IOException e) {
         //Do nothing; pojo is already null;
+        e.printStackTrace();
       } finally {
         if (pojo == null) {
           cancel(true);

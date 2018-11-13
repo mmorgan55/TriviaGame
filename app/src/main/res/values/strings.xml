@@ -34,6 +34,24 @@
     <item>History</item>
   </string-array>
 
+  <string-array name="add_categories">
+    <item>Books</item>
+    <item>Movies</item>
+    <item>Music</item>
+    <item>TV Shows</item>
+    <item>Videogames</item>
+    <item>Boardgames</item>
+    <item>Science &amp; Nature</item>
+    <item>Computers</item>
+    <item>Sports</item>
+    <item>Geography</item>
+    <item>History</item>
+    <item>Animals</item>
+    <item>Vehicles</item>
+    <item>Anime &amp; Manga</item>
+    <item>Cartoons</item>
+  </string-array>
+
   <string name="difficulty_title">DIFFICULTY</string>
   <string name="easy_button_text">EASY</string>
   <string name="medium_button_text">MEDIUM</string>
@@ -44,8 +62,6 @@
   <string name="timer">%d secs</string>
   <string name="all_button_text">ALL DIFFICULTIES</string>
 
-  <!-- TODO: Remove or change this placeholder text -->
-  <string name="hello_blank_fragment">Hello blank fragment</string>
   <string name="add_categories_title">ADD CATEGORIES</string>
   <string name="base_url">https://opentdb.com/</string>
 </resources>
