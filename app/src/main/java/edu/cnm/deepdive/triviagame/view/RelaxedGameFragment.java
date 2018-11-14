@@ -104,7 +104,6 @@ public class RelaxedGameFragment extends GameFragment {
       for (Button button : answerButtons) {
         button.setEnabled(false);
       }
-      Toast.makeText(getContext(), R.string.relaxed_win_text, Toast.LENGTH_LONG).show();
       Bundle bundle = new Bundle();
       bundle.putInt("correct", questionsCorrect);
       bundle.putInt("total", questions.size());
