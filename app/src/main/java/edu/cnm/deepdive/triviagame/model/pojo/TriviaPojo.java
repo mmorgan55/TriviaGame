@@ -28,7 +28,7 @@ public class TriviaPojo {
   }
 
 
-  public class TriviaResult {
+  public static class TriviaResult {
 
     @Json(name = "category")
     private String category;

@@ -48,6 +48,8 @@ public class CategoriesFragment extends Fragment {
       fragment.show(getFragmentManager(), "add categories dialog");
     });
 
+    new NewCategoryTask().execute();
+
     categoryListView.setOnItemClickListener((parent, view, position, id) -> {
       categorySelected = categoryListView.getItemAtPosition(position).toString();
       bundle.putString("category", categorySelected);
