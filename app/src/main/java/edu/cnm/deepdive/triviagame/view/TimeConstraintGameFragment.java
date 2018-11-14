@@ -9,6 +9,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import edu.cnm.deepdive.triviagame.R;
 import edu.cnm.deepdive.triviagame.model.entity.TriviaAnswers;
 import java.util.ArrayList;
@@ -22,11 +24,24 @@ public class TimeConstraintGameFragment extends GameFragment {
   private static final int TIMER_PERIOD = 1000;
 
   private int questionsCorrect = 0;
-  private TextView correctTally;
-  private TextView timerText;
+
+  @BindView(R.id.time_question_text)
+  TextView questionText;
+  @BindView(R.id.time_correct_tally)
+  TextView correctTally;
+  @BindView(R.id.time_timer)
+  TextView timerText;
+  @BindView(R.id.time_answer_button1)
+  Button answers1;
+  @BindView(R.id.time_answer_button2)
+  Button answers2;
+  @BindView(R.id.time_answer_button3)
+  Button answers3;
+  @BindView(R.id.time_answer_button4)
+  Button answers4;
+
   private Timer timer;
   private int currentTime = 60;
-  private TextView questionText;
   private List<Button> answerButtons;
   private int questionIndex = 0;
   private OnClickListener listener;
@@ -37,15 +52,10 @@ public class TimeConstraintGameFragment extends GameFragment {
       Bundle savedInstanceState) {
 
     View view = inflater.inflate(R.layout.fragment_time_constraint_game, container, false);
-    questionText = view.findViewById(R.id.time_question_text);
-    correctTally = view.findViewById(R.id.time_correct_tally);
-    timerText = view.findViewById(R.id.time_timer);
-    timer = new Timer();
-    Button answers1 = view.findViewById(R.id.time_answer_button1);
-    Button answers2 = view.findViewById(R.id.time_answer_button2);
-    Button answers3 = view.findViewById(R.id.time_answer_button3);
-    Button answers4 = view.findViewById(R.id.time_answer_button4);
+    ButterKnife.bind(this, view);
+
     answerButtons = new ArrayList<>();
+    timer = new Timer();
 
     setListener();
 
