@@ -24,6 +24,14 @@ public class RelaxedGameFragment extends GameFragment {
   TextView incorrectTally;
   @BindView(R.id.relaxed_question_text)
   TextView questionText;
+  @BindView(R.id.relaxed_answer_button1)
+  Button answers1;
+  @BindView(R.id.relaxed_answer_button2)
+  Button answers2;
+  @BindView(R.id.relaxed_answer_button3)
+  Button answers3;
+  @BindView(R.id.relaxed_answer_button4)
+  Button answers4;
 
   private int questionsCorrect = 0;
   private int questionsIncorrect = 0;
@@ -39,10 +47,6 @@ public class RelaxedGameFragment extends GameFragment {
     View view = inflater.inflate(R.layout.fragment_relaxed_game, container, false);
     ButterKnife.bind(this, view);
 
-    Button answers1 = view.findViewById(R.id.relaxed_answer_button1);
-    Button answers2 = view.findViewById(R.id.relaxed_answer_button2);
-    Button answers3 = view.findViewById(R.id.relaxed_answer_button3);
-    Button answers4 = view.findViewById(R.id.relaxed_answer_button4);
     answerButtons = new ArrayList<>();
 
     setListener();
