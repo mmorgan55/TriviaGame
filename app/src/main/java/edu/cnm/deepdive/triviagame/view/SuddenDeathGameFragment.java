@@ -9,6 +9,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import edu.cnm.deepdive.triviagame.R;
 import edu.cnm.deepdive.triviagame.model.entity.TriviaAnswers;
 import java.util.ArrayList;
@@ -17,11 +19,23 @@ import java.util.List;
 
 public class SuddenDeathGameFragment extends GameFragment {
 
+  @BindView(R.id.sudden_correct_tally)
+  TextView correctTally;
+  @BindView(R.id.sudden_incorrect_tally)
+  TextView incorrectTally;
+  @BindView(R.id.sudden_question_text)
+  TextView questionText;
+  @BindView(R.id.sudden_answer_button1)
+  Button answers1;
+  @BindView(R.id.sudden_answer_button2)
+  Button answers2;
+  @BindView(R.id.sudden_answer_button3)
+  Button answers3;
+  @BindView(R.id.sudden_answer_button4)
+  Button answers4;
+
   private int questionsCorrect = 0;
   private int questionsIncorrect = 0;
-  private TextView correctTally;
-  private TextView incorrectTally;
-  private TextView questionText;
   private List<Button> answerButtons;
   private int questionIndex = 0;
   private OnClickListener listener;
@@ -32,14 +46,8 @@ public class SuddenDeathGameFragment extends GameFragment {
       Bundle savedInstanceState) {
 
     View view = inflater.inflate(R.layout.fragment_sudden_death_game, container, false);
+    ButterKnife.bind(this, view);
 
-    questionText = view.findViewById(R.id.sudden_question_text);
-    correctTally = view.findViewById(R.id.sudden_correct_tally);
-    incorrectTally = view.findViewById(R.id.sudden_incorrect_tally);
-    Button answers1 = view.findViewById(R.id.sudden_answer_button1);
-    Button answers2 = view.findViewById(R.id.sudden_answer_button2);
-    Button answers3 = view.findViewById(R.id.sudden_answer_button3);
-    Button answers4 = view.findViewById(R.id.sudden_answer_button4);
     answerButtons = new ArrayList<>();
 
     setListener();
