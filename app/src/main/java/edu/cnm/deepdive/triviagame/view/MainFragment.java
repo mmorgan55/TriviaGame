@@ -15,7 +15,7 @@ public class MainFragment extends android.support.v4.app.Fragment {
 
   private String gameType;
   private OnClickListener listener;
-  private DifficultyFragment difficultyFragment = new DifficultyFragment();
+  private CategoriesFragment categoriesFragment = new CategoriesFragment();
 
   @Override
   public View onCreateView(@NonNull final LayoutInflater inflater, final ViewGroup container,
@@ -60,9 +60,9 @@ public class MainFragment extends android.support.v4.app.Fragment {
           break;
       }
 
-      difficultyFragment.setArguments(bundle);
+      categoriesFragment.setArguments(bundle);
       getFragmentManager()
-          .beginTransaction().replace(R.id.fragment_container, difficultyFragment)
+          .beginTransaction().replace(R.id.fragment_container, categoriesFragment)
           .addToBackStack("main")
           .commit();
     };

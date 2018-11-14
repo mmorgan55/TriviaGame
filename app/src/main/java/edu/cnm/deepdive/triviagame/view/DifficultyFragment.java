@@ -10,13 +10,13 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
+import edu.cnm.deepdive.triviagame.GameController;
 import edu.cnm.deepdive.triviagame.R;
 
 public class DifficultyFragment extends Fragment {
 
   private OnClickListener listener;
   private String difficulty;
-  private CategoriesFragment categoriesFragment = new CategoriesFragment();
 
   @Override
   public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
@@ -67,11 +67,7 @@ public class DifficultyFragment extends Fragment {
           break;
       }
 
-      categoriesFragment.setArguments(bundle);
-      getFragmentManager()
-          .beginTransaction().replace(R.id.fragment_container, categoriesFragment)
-          .addToBackStack("diff")
-          .commit();
+      new GameController(getActivity(), bundle);
     };
   }
 }

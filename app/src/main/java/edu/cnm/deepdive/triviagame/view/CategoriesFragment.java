@@ -28,6 +28,7 @@ public class CategoriesFragment extends Fragment {
   private String categorySelected;
   private List<String> categories;
   private FloatingActionButton fab;
+  private DifficultyFragment difficultyFragment = new DifficultyFragment();
 
   @Override
   public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
@@ -35,7 +36,6 @@ public class CategoriesFragment extends Fragment {
 
     View layout = inflater.inflate(R.layout.fragment_categories, container, false);
     categories = new ArrayList<>();
-    categories.add("Physics");
     fab = layout.findViewById(R.id.fab);
 
     categoryListView = layout.findViewById(R.id.category_list_view);
@@ -53,7 +53,8 @@ public class CategoriesFragment extends Fragment {
     categoryListView.setOnItemClickListener((parent, view, position, id) -> {
       categorySelected = categoryListView.getItemAtPosition(position).toString();
       bundle.putString("category", categorySelected);
-      new GameController(getActivity(), bundle);
+      getFragmentManager().beginTransaction().replace(R.id.fragment_container, difficultyFragment)
+          .addToBackStack("categories").commit();
     });
     return layout;
   }
