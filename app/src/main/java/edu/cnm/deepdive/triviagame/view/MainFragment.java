@@ -9,9 +9,18 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import edu.cnm.deepdive.triviagame.R;
 
 public class MainFragment extends android.support.v4.app.Fragment {
+
+  @BindView(R.id.time_button)
+  Button timeButton;
+  @BindView(R.id.difficulty_button)
+  Button diffButton;
+  @BindView(R.id.relaxed_button)
+  Button relaxButton;
 
   private String gameType;
   private OnClickListener listener;
@@ -22,10 +31,7 @@ public class MainFragment extends android.support.v4.app.Fragment {
       Bundle savedInstanceState) {
 
     View view = inflater.inflate(R.layout.fragment_main, container, false);
-
-    Button timeButton = view.findViewById(R.id.time_button);
-    Button diffButton = view.findViewById(R.id.difficulty_button);
-    Button relaxButton = view.findViewById(R.id.relaxed_button);
+    ButterKnife.bind(this, view);
 
     setListener();
 

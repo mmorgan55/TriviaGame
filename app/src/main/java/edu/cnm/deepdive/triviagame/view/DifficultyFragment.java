@@ -10,10 +10,21 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import edu.cnm.deepdive.triviagame.GameController;
 import edu.cnm.deepdive.triviagame.R;
 
 public class DifficultyFragment extends Fragment {
+
+  @BindView(R.id.easy_button)
+  Button easyButton;
+  @BindView(R.id.medium_button)
+  Button mediumButton;
+  @BindView(R.id.hard_button)
+  Button hardButton;
+  @BindView(R.id.all_button)
+  Button allButton;
 
   private OnClickListener listener;
   private String difficulty;
@@ -23,11 +34,7 @@ public class DifficultyFragment extends Fragment {
       Bundle savedInstanceState) {
 
     View view = inflater.inflate(R.layout.fragment_difficulty, container, false);
-
-    Button easyButton = view.findViewById(R.id.easy_button);
-    Button mediumButton = view.findViewById(R.id.medium_button);
-    Button hardButton = view.findViewById(R.id.hard_button);
-    Button allButton = view.findViewById(R.id.all_button);
+    ButterKnife.bind(this, view);
 
     setListener();
 
