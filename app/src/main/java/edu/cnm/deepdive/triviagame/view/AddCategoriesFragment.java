@@ -182,7 +182,6 @@ public class AddCategoriesFragment extends DialogFragment {
     @Override
     protected void onPostExecute(TriviaPojo triviaPojo) {
       progressSpinner.setVisibility(View.GONE);
-      //categoryMap.remove()
     }
 
     @Override
