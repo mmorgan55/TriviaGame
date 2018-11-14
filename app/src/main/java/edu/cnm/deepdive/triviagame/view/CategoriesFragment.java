@@ -14,7 +14,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import edu.cnm.deepdive.triviagame.GameController;
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import edu.cnm.deepdive.triviagame.R;
 import edu.cnm.deepdive.triviagame.model.dao.TriviaCategoryDao;
 import edu.cnm.deepdive.triviagame.model.db.TriviaDatabase;
@@ -24,38 +25,27 @@ import java.util.List;
 
 public class CategoriesFragment extends Fragment {
 
-  private ListView categoryListView;
+  @BindView(R.id.category_list_view)
+  ListView categoryListView;
+
+  @BindView(R.id.fab)
+  FloatingActionButton fab;
+
   private String categorySelected;
   private List<String> categories;
-  private FloatingActionButton fab;
+
   private DifficultyFragment difficultyFragment = new DifficultyFragment();
 
   @Override
   public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
       Bundle savedInstanceState) {
-
     View layout = inflater.inflate(R.layout.fragment_categories, container, false);
+    ButterKnife.bind(this, layout);
+
     categories = new ArrayList<>();
-    fab = layout.findViewById(R.id.fab);
 
-    categoryListView = layout.findViewById(R.id.category_list_view);
-    CategoryAdapter adapter = new CategoryAdapter(getActivity(), R.layout.category_item,
-        categories);
-    categoryListView.setAdapter(adapter);
+    new CheckCategoryTask().execute();
 
-    fab.setOnClickListener(v -> {
-      AddCategoriesFragment fragment = new AddCategoriesFragment();
-      fragment.show(getFragmentManager(), "add categories dialog");
-    });
-
-    new NewCategoryTask().execute();
-
-    categoryListView.setOnItemClickListener((parent, view, position, id) -> {
-      categorySelected = categoryListView.getItemAtPosition(position).toString();
-      bundle.putString("category", categorySelected);
-      getFragmentManager().beginTransaction().replace(R.id.fragment_container, difficultyFragment)
-          .addToBackStack("categories").commit();
-    });
     return layout;
   }
 
@@ -73,7 +63,7 @@ public class CategoriesFragment extends Fragment {
     }
   }
 
-  private class NewCategoryTask extends AsyncTask<Void, Void, TriviaCategory> {
+  private class CheckCategoryTask extends AsyncTask<Void, Void, TriviaCategory> {
 
     @Override
     protected TriviaCategory doInBackground(Void... voids) {
@@ -88,7 +78,21 @@ public class CategoriesFragment extends Fragment {
 
     @Override
     protected void onPostExecute(TriviaCategory triviaCategory) {
-      super.onPostExecute(triviaCategory);
+      CategoryAdapter adapter = new CategoryAdapter(getActivity(), R.layout.category_item,
+          categories);
+      categoryListView.setAdapter(adapter);
+
+      fab.setOnClickListener(v -> {
+        AddCategoriesFragment fragment = new AddCategoriesFragment();
+        fragment.show(getFragmentManager(), "add categories dialog");
+      });
+
+      categoryListView.setOnItemClickListener((parent, view, position, id) -> {
+        categorySelected = categoryListView.getItemAtPosition(position).toString();
+        bundle.putString("category", categorySelected);
+        getFragmentManager().beginTransaction().replace(R.id.fragment_container, difficultyFragment)
+            .addToBackStack("categories").commit();
+      });
     }
   }
 }

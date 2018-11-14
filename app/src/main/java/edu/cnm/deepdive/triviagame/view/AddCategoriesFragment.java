@@ -39,6 +39,8 @@ public class AddCategoriesFragment extends DialogFragment {
   private static final Integer QUESTIONS_REQUESTED = 50;
   private static final String QUESTIONS_TYPE = "multiple";
 
+  private static List<String> prevAddedCategories = new ArrayList<>();
+
   private ListView addList;
   private ProgressBar progressSpinner;
   private Map<String, Integer> categoryMap;
@@ -72,6 +74,7 @@ public class AddCategoriesFragment extends DialogFragment {
     addList.setOnItemClickListener((parent, view, position, id) -> {
       categoryName = addList.getItemAtPosition(position).toString();
       new AddCategoryTask().execute(categoryMap.get(categoryName), categoryName);
+      updateMap(prevAddedCategories, categoryName);
     });
   }
 
@@ -91,6 +94,23 @@ public class AddCategoriesFragment extends DialogFragment {
     categoryMap.put("Vehicles", 28);
     categoryMap.put("Anime & Manga", 31);
     categoryMap.put("Cartoons", 32);
+
+    updateMap(prevAddedCategories);
+  }
+
+  private void updateMap(List<String> prevAddedCategories) {
+
+    for (String s: prevAddedCategories) {
+      categoryMap.remove(s);
+    }
+  }
+
+  private void updateMap(List<String> prevAddedCategories, String categoryName) {
+    prevAddedCategories.add(categoryName);
+
+    for (String s: prevAddedCategories) {
+      categoryMap.remove(s);
+    }
   }
 
   private class AddCategoryAdapter extends ArrayAdapter<TriviaCategory> {
