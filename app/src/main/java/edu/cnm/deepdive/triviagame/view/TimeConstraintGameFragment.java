@@ -2,6 +2,7 @@ package edu.cnm.deepdive.triviagame.view;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -100,8 +101,15 @@ public class TimeConstraintGameFragment extends GameFragment {
         for (Button button : answerButtons) {
           button.setEnabled(false);
         }
+        timer.cancel();
+        timer.purge();
         timerText.setText(getString(R.string.timer, currentTime));
-        Toast.makeText(getContext(), R.string.time_lose_text, Toast.LENGTH_LONG).show();
+        Bundle bundle = new Bundle();
+        bundle.putInt("correct", questionsCorrect);
+        bundle.putInt("total", questions.size());
+        Fragment fragment = new PostGameFragment();
+        fragment.setArguments(bundle);
+        getFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).commit();
       } else {
         for (Button button : answerButtons) {
           button.setEnabled(false);
@@ -110,7 +118,12 @@ public class TimeConstraintGameFragment extends GameFragment {
         timer.purge();
         updateTally(questionsCorrect);
         timerText.setText(getString(R.string.timer, currentTime));
-        Toast.makeText(getContext(), R.string.sudden_win_text, Toast.LENGTH_LONG).show();
+        Bundle bundle = new Bundle();
+        bundle.putInt("correct", questionsCorrect);
+        bundle.putInt("total", questions.size());
+        Fragment fragment = new PostGameFragment();
+        fragment.setArguments(bundle);
+        getFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).commit();
       }
     }
   }
