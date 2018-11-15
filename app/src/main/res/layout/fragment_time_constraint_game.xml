@@ -88,7 +88,7 @@
         android:layout_height="match_parent">
 
         <Button
-          android:id="@+id/time_answer_button1"
+          android:id="@+id/time_text_button1"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
           android:layout_marginTop="10dp"
@@ -98,7 +98,7 @@
           android:background="@drawable/answer_button_style"/>
 
         <Button
-          android:id="@+id/time_answer_button2"
+          android:id="@+id/time_text_button2"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
           android:layout_marginTop="10dp"
@@ -108,7 +108,7 @@
           android:background="@drawable/answer_button_style"/>
 
         <Button
-          android:id="@+id/time_answer_button3"
+          android:id="@+id/time_text_button3"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
           android:layout_marginBottom="10dp"
@@ -118,7 +118,7 @@
           android:background="@drawable/answer_button_style"/>
 
         <Button
-          android:id="@+id/time_answer_button4"
+          android:id="@+id/time_text_button4"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
           android:layout_marginBottom="10dp"

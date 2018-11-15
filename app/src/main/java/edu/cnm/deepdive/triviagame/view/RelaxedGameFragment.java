@@ -7,9 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import edu.cnm.deepdive.triviagame.R;
@@ -25,18 +23,18 @@ public class RelaxedGameFragment extends GameFragment {
   TextView incorrectTally;
   @BindView(R.id.relaxed_question_text)
   TextView questionText;
-  @BindView(R.id.relaxed_answer_button1)
-  Button answers1;
-  @BindView(R.id.relaxed_answer_button2)
-  Button answers2;
-  @BindView(R.id.relaxed_answer_button3)
-  Button answers3;
-  @BindView(R.id.relaxed_answer_button4)
-  Button answers4;
+  @BindView(R.id.relaxed_text_button1)
+  TextView answers1;
+  @BindView(R.id.relaxed_text_button2)
+  TextView answers2;
+  @BindView(R.id.relaxed_text_button3)
+  TextView answers3;
+  @BindView(R.id.relaxed_text_button4)
+  TextView answers4;
 
   private int questionsCorrect = 0;
   private int questionsIncorrect = 0;
-  private List<Button> answerButtons;
+  private List<TextView> answerTexts;
   private int questionIndex = 0;
   private OnClickListener listener;
   private TriviaAnswers correctAnswer;
@@ -48,7 +46,7 @@ public class RelaxedGameFragment extends GameFragment {
     View view = inflater.inflate(R.layout.fragment_relaxed_game, container, false);
     ButterKnife.bind(this, view);
 
-    answerButtons = new ArrayList<>();
+    answerTexts = new ArrayList<>();
 
     setListener();
 
@@ -56,10 +54,10 @@ public class RelaxedGameFragment extends GameFragment {
     answers2.setOnClickListener(listener);
     answers3.setOnClickListener(listener);
     answers4.setOnClickListener(listener);
-    answerButtons.add(answers1);
-    answerButtons.add(answers2);
-    answerButtons.add(answers3);
-    answerButtons.add(answers4);
+    answerTexts.add(answers1);
+    answerTexts.add(answers2);
+    answerTexts.add(answers3);
+    answerTexts.add(answers4);
 
     return view;
   }
@@ -78,10 +76,10 @@ public class RelaxedGameFragment extends GameFragment {
       if (answer.getQuestionId() == qId) {
         if (answer.isCorrect()) {
           correctAnswer = answer;
-          answerButtons.get(answerListIndex).setText(answer.getAnswer());
+          answerTexts.get(answerListIndex).setText(answer.getAnswer());
           answerListIndex++;
         } else {
-          answerButtons.get(answerListIndex).setText(answer.getAnswer());
+          answerTexts.get(answerListIndex).setText(answer.getAnswer());
           answerListIndex++;
         }
       }
@@ -101,8 +99,8 @@ public class RelaxedGameFragment extends GameFragment {
       updateUI();
     } else {
       updateTally(questionsCorrect, questionsIncorrect);
-      for (Button button : answerButtons) {
-        button.setEnabled(false);
+      for (TextView text : answerTexts) {
+        text.setEnabled(false);
       }
       Bundle bundle = new Bundle();
       bundle.putInt("correct", questionsCorrect);
@@ -116,17 +114,17 @@ public class RelaxedGameFragment extends GameFragment {
   private void setListener() {
     listener = v -> {
       switch (v.getId()) {
-        case R.id.relaxed_answer_button1:
-          updateGame(isAnswerCorrect(((Button) v).getText().toString()));
+        case R.id.relaxed_text_button1:
+          updateGame(isAnswerCorrect(((TextView) v).getText().toString()));
           break;
-        case R.id.relaxed_answer_button2:
-          updateGame(isAnswerCorrect(((Button) v).getText().toString()));
+        case R.id.relaxed_text_button2:
+          updateGame(isAnswerCorrect(((TextView) v).getText().toString()));
           break;
-        case R.id.relaxed_answer_button3:
-          updateGame(isAnswerCorrect(((Button) v).getText().toString()));
+        case R.id.relaxed_text_button3:
+          updateGame(isAnswerCorrect(((TextView) v).getText().toString()));
           break;
-        case R.id.relaxed_answer_button4:
-          updateGame(isAnswerCorrect(((Button) v).getText().toString()));
+        case R.id.relaxed_text_button4:
+          updateGame(isAnswerCorrect(((TextView) v).getText().toString()));
           break;
       }
     };

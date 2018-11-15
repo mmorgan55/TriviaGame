@@ -32,18 +32,18 @@ public class TimeConstraintGameFragment extends GameFragment {
   TextView correctTally;
   @BindView(R.id.time_timer)
   TextView timerText;
-  @BindView(R.id.time_answer_button1)
-  Button answers1;
-  @BindView(R.id.time_answer_button2)
-  Button answers2;
-  @BindView(R.id.time_answer_button3)
-  Button answers3;
-  @BindView(R.id.time_answer_button4)
-  Button answers4;
+  @BindView(R.id.time_text_button1)
+  TextView answers1;
+  @BindView(R.id.time_text_button2)
+  TextView answers2;
+  @BindView(R.id.time_text_button3)
+  TextView answers3;
+  @BindView(R.id.time_text_button4)
+  TextView answers4;
 
   private Timer timer;
   private int currentTime = 60;
-  private List<Button> answerButtons;
+  private List<TextView> answerTexts;
   private int questionIndex = 0;
   private OnClickListener listener;
   private TriviaAnswers correctAnswer;
@@ -55,7 +55,7 @@ public class TimeConstraintGameFragment extends GameFragment {
     View view = inflater.inflate(R.layout.fragment_time_constraint_game, container, false);
     ButterKnife.bind(this, view);
 
-    answerButtons = new ArrayList<>();
+    answerTexts = new ArrayList<>();
     timer = new Timer();
 
     setListener();
@@ -64,10 +64,10 @@ public class TimeConstraintGameFragment extends GameFragment {
     answers2.setOnClickListener(listener);
     answers3.setOnClickListener(listener);
     answers4.setOnClickListener(listener);
-    answerButtons.add(answers1);
-    answerButtons.add(answers2);
-    answerButtons.add(answers3);
-    answerButtons.add(answers4);
+    answerTexts.add(answers1);
+    answerTexts.add(answers2);
+    answerTexts.add(answers3);
+    answerTexts.add(answers4);
 
     return view;
   }
@@ -98,8 +98,8 @@ public class TimeConstraintGameFragment extends GameFragment {
       updateUI();
     } else {
       if (currentTime <= 0) {
-        for (Button button : answerButtons) {
-          button.setEnabled(false);
+        for (TextView text : answerTexts) {
+          text.setEnabled(false);
         }
         timer.cancel();
         timer.purge();
@@ -111,8 +111,8 @@ public class TimeConstraintGameFragment extends GameFragment {
         fragment.setArguments(bundle);
         getFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).commit();
       } else {
-        for (Button button : answerButtons) {
-          button.setEnabled(false);
+        for (TextView text : answerTexts) {
+          text.setEnabled(false);
         }
         timer.cancel();
         timer.purge();
@@ -137,10 +137,10 @@ public class TimeConstraintGameFragment extends GameFragment {
       if (answer.getQuestionId() == qId) {
         if (answer.isCorrect()) {
           correctAnswer = answer;
-          answerButtons.get(answerListIndex).setText(answer.getAnswer());
+          answerTexts.get(answerListIndex).setText(answer.getAnswer());
           answerListIndex++;
         } else {
-          answerButtons.get(answerListIndex).setText(answer.getAnswer());
+          answerTexts.get(answerListIndex).setText(answer.getAnswer());
           answerListIndex++;
         }
       }
@@ -150,17 +150,17 @@ public class TimeConstraintGameFragment extends GameFragment {
   private void setListener() {
     listener = v -> {
       switch (v.getId()) {
-        case R.id.time_answer_button1:
-          updateGame(isAnswerCorrect(((Button) v).getText().toString()));
+        case R.id.time_text_button1:
+          updateGame(isAnswerCorrect(((TextView) v).getText().toString()));
           break;
-        case R.id.time_answer_button2:
-          updateGame(isAnswerCorrect(((Button) v).getText().toString()));
+        case R.id.time_text_button2:
+          updateGame(isAnswerCorrect(((TextView) v).getText().toString()));
           break;
-        case R.id.time_answer_button3:
-          updateGame(isAnswerCorrect(((Button) v).getText().toString()));
+        case R.id.time_text_button3:
+          updateGame(isAnswerCorrect(((TextView) v).getText().toString()));
           break;
-        case R.id.time_answer_button4:
-          updateGame(isAnswerCorrect(((Button) v).getText().toString()));
+        case R.id.time_text_button4:
+          updateGame(isAnswerCorrect(((TextView) v).getText().toString()));
           break;
       }
     };
