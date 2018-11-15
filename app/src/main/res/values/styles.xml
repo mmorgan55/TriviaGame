@@ -29,6 +29,10 @@
   <style name="IncorrectTallyStyle" parent="TallyStyle">
     <item name="android:textColor">#FFFF0000</item>
   </style>
+  
+  <style name="AnswerTextStyle" parent="AppTheme">
+    <item name="android:textStyle">bold</item>
+  </style>
 
 
 </resources>
