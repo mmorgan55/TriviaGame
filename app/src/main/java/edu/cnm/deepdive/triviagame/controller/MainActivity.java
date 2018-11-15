@@ -1,12 +1,14 @@
 package edu.cnm.deepdive.triviagame.controller;
 
 import android.os.AsyncTask;
+import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import butterknife.ButterKnife;
 import edu.cnm.deepdive.triviagame.R;
 import edu.cnm.deepdive.triviagame.model.db.TriviaDatabase;
 import edu.cnm.deepdive.triviagame.view.MainFragment;
+import edu.cnm.deepdive.triviagame.view.PostGameFragment;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -28,8 +30,16 @@ public class MainActivity extends AppCompatActivity {
 
   @Override
   public void onBackPressed() {
-    getSupportFragmentManager().findFragmentById(R.id.fragment_container);
-    super.onBackPressed();
+    if (getSupportFragmentManager()
+        .findFragmentById(R.id.fragment_container) instanceof PostGameFragment) {
+      Fragment fragment = new MainFragment();
+      getSupportFragmentManager()
+          .popBackStack("main", android.support.v4.app.FragmentManager.POP_BACK_STACK_INCLUSIVE);
+      getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment)
+          .commit();
+    } else {
+      super.onBackPressed();
+    }
   }
 
   private class InitializeDatabase extends AsyncTask<Void, Void, Void> {
