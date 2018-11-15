@@ -39,33 +39,24 @@ public class AddCategoriesFragment extends DialogFragment {
   private static final Integer QUESTIONS_REQUESTED = 50;
   private static final String QUESTIONS_TYPE = "multiple";
 
-  private static List<String> prevAddedCategories = new ArrayList<>();
-
+  private List<String> prevAddedCategories = new ArrayList<>();
   private ListView addList;
   private ProgressBar progressSpinner;
   private Map<String, Integer> categoryMap;
   private String categoryName;
+  List<TriviaCategory> categories;
 
   @Override
   public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
       Bundle savedInstanceState) {
 
     View view = inflater.inflate(R.layout.fragment_add_categories, container, false);
-    List<TriviaCategory> categories = new ArrayList<>();
+    categories = new ArrayList<>();
     addList = view.findViewById(R.id.add_category_list_view);
     progressSpinner = view.findViewById(R.id.progress_spinner);
     progressSpinner.setVisibility(View.GONE);
     categoryMap = new HashMap<>();
-    setMap();
-    setItemListener();
-
-    for (String str : categoryMap.keySet()) {
-      categories.add(new TriviaCategory(str));
-    }
-
-    AddCategoryAdapter adapter = new AddCategoryAdapter(getActivity(), R.layout.add_category_item,
-        categories);
-    addList.setAdapter(adapter);
+    new checkCategoriesTask().execute();
 
     return view;
   }
@@ -95,7 +86,9 @@ public class AddCategoriesFragment extends DialogFragment {
     categoryMap.put("Anime & Manga", 31);
     categoryMap.put("Cartoons", 32);
 
-    updateMap(prevAddedCategories);
+    for (String s : prevAddedCategories) {
+      categoryMap.remove(s);
+    }
   }
 
   private void updateMap(List<String> prevAddedCategories) {
@@ -187,6 +180,31 @@ public class AddCategoriesFragment extends DialogFragment {
     @Override
     protected void onCancelled() {
       progressSpinner.setVisibility(View.GONE);
+    }
+  }
+
+  private class checkCategoriesTask extends AsyncTask<Void, Void, Void> {
+
+    @Override
+    protected Void doInBackground(Void... lists) {
+      TriviaDatabase db = TriviaDatabase.getInstance(getActivity());
+      TriviaCategoryDao cDao = db.getTriviaCategoryDao();
+      prevAddedCategories.addAll(cDao.allTitles());
+      return null;
+    }
+
+    @Override
+    protected void onPostExecute(Void aVoid) {
+      setMap();
+      setItemListener();
+
+      for (String str : categoryMap.keySet()) {
+        categories.add(new TriviaCategory(str));
+      }
+
+      AddCategoryAdapter adapter = new AddCategoryAdapter(getActivity(), R.layout.add_category_item,
+          categories);
+      addList.setAdapter(adapter);
     }
   }
 }

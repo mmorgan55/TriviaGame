@@ -16,7 +16,6 @@ public class TriviaCategory {
   @ColumnInfo(name = "category_title")
   private String categoryTitle;
 
-
   public TriviaCategory(@NonNull String categoryTitle) {
     this.categoryTitle = categoryTitle;
   }

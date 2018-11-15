@@ -2,8 +2,10 @@ package edu.cnm.deepdive.triviagame.view;
 
 import android.app.FragmentManager;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
@@ -34,9 +36,12 @@ public class PostGameFragment extends android.support.v4.app.Fragment {
 
     totalQuestions = getArguments().getInt("total");
     correctQuestions = getArguments().getInt("correct");
+    Fragment fragment = new MainFragment();
 
-    mainMenuButton.setOnClickListener(
-        v -> getFragmentManager().popBackStack("main", FragmentManager.POP_BACK_STACK_INCLUSIVE));
+    mainMenuButton.setOnClickListener(v -> {
+      getFragmentManager().popBackStack("main", android.support.v4.app.FragmentManager.POP_BACK_STACK_INCLUSIVE);
+      getFragmentManager().beginTransaction().replace(R.id. fragment_container, fragment).commit();
+    });
 
     questionsCorrectText.setText(getString(R.string.questions_correct, correctQuestions));
     setGrade(correctQuestions, totalQuestions);

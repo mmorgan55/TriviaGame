@@ -26,6 +26,12 @@ public class MainActivity extends AppCompatActivity {
         .beginTransaction().replace(R.id.fragment_container, mainFragment).commit();
   }
 
+  @Override
+  public void onBackPressed() {
+    getSupportFragmentManager().findFragmentById(R.id.fragment_container);
+    super.onBackPressed();
+  }
+
   private class InitializeDatabase extends AsyncTask<Void, Void, Void> {
 
     @Override

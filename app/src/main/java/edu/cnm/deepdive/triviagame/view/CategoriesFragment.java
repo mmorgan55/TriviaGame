@@ -92,9 +92,7 @@ public class CategoriesFragment extends Fragment {
       TriviaDatabase db = TriviaDatabase.getInstance(getActivity());
       TriviaCategoryDao cDao = db.getTriviaCategoryDao();
 
-      for (TriviaCategory tc : cDao.select()) {
-        categories.add(tc.getCategoryTitle());
-      }
+      categories.addAll(cDao.allTitles());
       return null;
     }
 
