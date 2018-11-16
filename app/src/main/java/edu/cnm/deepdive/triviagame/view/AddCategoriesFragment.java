@@ -28,6 +28,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import org.apache.commons.text.StringEscapeUtils;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.Retrofit.Builder;
@@ -39,12 +40,13 @@ public class AddCategoriesFragment extends DialogFragment {
   private static final Integer QUESTIONS_REQUESTED = 50;
   private static final String QUESTIONS_TYPE = "multiple";
 
-  private List<String> prevAddedCategories = new ArrayList<>();
+  private List<TriviaCategory> prevAddedCategories = new ArrayList<>();
   private ListView addList;
   private ProgressBar progressSpinner;
   private Map<String, Integer> categoryMap;
   private String categoryName;
-  List<TriviaCategory> categories;
+  private List<TriviaCategory> categories;
+  private AddCategoryAdapter adapter;
 
   @Override
   public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
@@ -65,7 +67,6 @@ public class AddCategoriesFragment extends DialogFragment {
     addList.setOnItemClickListener((parent, view, position, id) -> {
       categoryName = addList.getItemAtPosition(position).toString();
       new AddCategoryTask().execute(categoryMap.get(categoryName), categoryName);
-      updateMap(prevAddedCategories, categoryName);
     });
   }
 
@@ -86,23 +87,20 @@ public class AddCategoriesFragment extends DialogFragment {
     categoryMap.put("Anime & Manga", 31);
     categoryMap.put("Cartoons", 32);
 
-    for (String s : prevAddedCategories) {
-      categoryMap.remove(s);
+    for (TriviaCategory tc : prevAddedCategories) {
+      categoryMap.remove(tc.getCategoryTitle());
     }
   }
 
-  private void updateMap(List<String> prevAddedCategories) {
+  private void updateMap(List<TriviaCategory> prevAddedCategories, String categoryName) {
+    prevAddedCategories.add(new TriviaCategory(categoryName));
 
-    for (String s: prevAddedCategories) {
-      categoryMap.remove(s);
+    for (TriviaCategory tc : prevAddedCategories) {
+      categoryMap.remove(tc.getCategoryTitle());
     }
-  }
 
-  private void updateMap(List<String> prevAddedCategories, String categoryName) {
-    prevAddedCategories.add(categoryName);
-
-    for (String s: prevAddedCategories) {
-      categoryMap.remove(s);
+    for (String str : categoryMap.keySet()) {
+      categories.add(new TriviaCategory(str));
     }
   }
 
@@ -154,9 +152,13 @@ public class AddCategoriesFragment extends DialogFragment {
 
           for (TriviaResult result : pojo.getResults()) {
             long queId = qDao
-                .insert(new TriviaQuestion(result.getQuestion(), result.getDifficulty(), catId));
-            aDao.insert(new TriviaAnswers(result.getCorrectAnswer(), true, queId));
+                .insert(new TriviaQuestion(StringEscapeUtils.unescapeHtml4(result.getQuestion()),
+                    result.getDifficulty(), catId));
+            aDao.insert(
+                new TriviaAnswers(StringEscapeUtils.unescapeHtml4(result.getCorrectAnswer()), true,
+                    queId));
             for (String s : result.getIncorrectAnswers()) {
+              s = StringEscapeUtils.unescapeHtml4(s);
               aDao.insert(new TriviaAnswers(s, false, queId));
             }
           }
@@ -175,6 +177,9 @@ public class AddCategoriesFragment extends DialogFragment {
     @Override
     protected void onPostExecute(TriviaPojo triviaPojo) {
       progressSpinner.setVisibility(View.GONE);
+      categories.clear();
+      updateMap(prevAddedCategories, categoryName);
+      adapter.notifyDataSetChanged();
     }
 
     @Override
@@ -189,7 +194,7 @@ public class AddCategoriesFragment extends DialogFragment {
     protected Void doInBackground(Void... lists) {
       TriviaDatabase db = TriviaDatabase.getInstance(getActivity());
       TriviaCategoryDao cDao = db.getTriviaCategoryDao();
-      prevAddedCategories.addAll(cDao.allTitles());
+      prevAddedCategories.addAll(cDao.select());
       return null;
     }
 
@@ -202,7 +207,7 @@ public class AddCategoriesFragment extends DialogFragment {
         categories.add(new TriviaCategory(str));
       }
 
-      AddCategoryAdapter adapter = new AddCategoryAdapter(getActivity(), R.layout.add_category_item,
+      adapter = new AddCategoryAdapter(getActivity(), R.layout.add_category_item,
           categories);
       addList.setAdapter(adapter);
     }

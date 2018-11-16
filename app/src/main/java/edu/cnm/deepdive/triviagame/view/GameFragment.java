@@ -18,7 +18,6 @@ public abstract class GameFragment extends Fragment {
   protected List<TriviaQuestion> questions;
   protected List<TriviaAnswers> answers;
 
-
   @Override
   public void onCreate(@Nullable Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -66,7 +65,6 @@ public abstract class GameFragment extends Fragment {
       new AnswerTask().execute();
     }
   }
-
 
   private class AnswerTask extends AsyncTask<Void, Void, List<TriviaAnswers>> {
 

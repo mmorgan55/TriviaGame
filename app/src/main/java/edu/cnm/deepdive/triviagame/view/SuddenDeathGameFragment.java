@@ -90,8 +90,6 @@ public class SuddenDeathGameFragment extends GameFragment {
       questionsCorrect++;
       continueGame();
     } else {
-      questionIndex++;
-      updateTally(questionsCorrect);
       for (TextView text : answerTexts) {
         text.setEnabled(false);
       }
