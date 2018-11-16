@@ -20,8 +20,6 @@ public class SuddenDeathGameFragment extends GameFragment {
 
   @BindView(R.id.sudden_correct_tally)
   TextView correctTally;
-  @BindView(R.id.sudden_incorrect_tally)
-  TextView incorrectTally;
   @BindView(R.id.sudden_question_text)
   TextView questionText;
   @BindView(R.id.sudden_text_button1)
@@ -34,7 +32,6 @@ public class SuddenDeathGameFragment extends GameFragment {
   TextView answers4;
 
   private int questionsCorrect = 0;
-  private int questionsIncorrect = 0;
   private List<TextView> answerTexts;
   private int questionIndex = 0;
   private OnClickListener listener;
@@ -69,7 +66,7 @@ public class SuddenDeathGameFragment extends GameFragment {
   }
 
   private void updateUI() {
-    updateTally(questionsCorrect, questionsIncorrect);
+    updateTally(questionsCorrect);
     long qId = questions.get(questionIndex).getQuestionId();
     questionText.setText(questions.get(questionIndex).getQuestion());
     int answerListIndex = 0;
@@ -94,8 +91,7 @@ public class SuddenDeathGameFragment extends GameFragment {
       continueGame();
     } else {
       questionIndex++;
-      questionsIncorrect++;
-      updateTally(questionsCorrect, questionsIncorrect);
+      updateTally(questionsCorrect);
       for (TextView text : answerTexts) {
         text.setEnabled(false);
       }
@@ -112,7 +108,7 @@ public class SuddenDeathGameFragment extends GameFragment {
     if (questionIndex < questions.size()) {
       updateUI();
     } else {
-      updateTally(questionsCorrect, questionsIncorrect);
+      updateTally(questionsCorrect);
       for (TextView text : answerTexts) {
         text.setEnabled(false);
       }
@@ -148,8 +144,7 @@ public class SuddenDeathGameFragment extends GameFragment {
     return correctAnswer.getAnswer().equals(answer);
   }
 
-  private void updateTally(int correct, int incorrect) {
+  private void updateTally(int correct) {
     correctTally.setText(getString(R.string.tally_correct, correct));
-    incorrectTally.setText(getString(R.string.tally_incorrect, incorrect));
   }
 }

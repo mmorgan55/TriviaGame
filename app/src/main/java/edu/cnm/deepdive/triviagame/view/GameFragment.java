@@ -4,8 +4,6 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.widget.TextView;
-import edu.cnm.deepdive.triviagame.R;
 import edu.cnm.deepdive.triviagame.model.db.TriviaDatabase;
 import edu.cnm.deepdive.triviagame.model.entity.TriviaAnswers;
 import edu.cnm.deepdive.triviagame.model.entity.TriviaCategory;
@@ -90,6 +88,7 @@ public abstract class GameFragment extends Fragment {
 
     @Override
     protected void onPostExecute(List<TriviaAnswers> triviaAnswers) {
+
       setupGame();
     }
   }
