@@ -76,13 +76,11 @@ public class AddCategoriesFragment extends DialogFragment {
     categoryMap.put("Music", 12);
     categoryMap.put("TV Shows", 14);
     categoryMap.put("Videogames", 15);
-    categoryMap.put("Boardgames", 16);
     categoryMap.put("Science & Nature", 17);
     categoryMap.put("Computers", 18);
     categoryMap.put("Sports", 21);
     categoryMap.put("Geography", 22);
     categoryMap.put("History", 23);
-    categoryMap.put("Animals", 27);
     categoryMap.put("Vehicles", 28);
     categoryMap.put("Anime & Manga", 31);
     categoryMap.put("Cartoons", 32);

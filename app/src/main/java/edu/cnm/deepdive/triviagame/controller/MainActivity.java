@@ -57,8 +57,8 @@ public class MainActivity extends AppCompatActivity {
             .commit();
       });
       builder.setNegativeButton("No", (dialog, which) -> {
-        /*Nothing here; pressing "No" will default to screen this was called on,
-         which is what I want to happen.*/
+        /*Nothing here; pressing "No" will go back to the screen this was called
+         on, which is what I want.*/
       });
       builder.show();
     } else {
