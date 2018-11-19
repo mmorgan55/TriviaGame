@@ -12,6 +12,8 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.ProgressBar;
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import edu.cnm.deepdive.triviagame.R;
 import edu.cnm.deepdive.triviagame.model.dao.TriviaAnswersDao;
 import edu.cnm.deepdive.triviagame.model.dao.TriviaCategoryDao;
@@ -40,9 +42,12 @@ public class AddCategoriesFragment extends DialogFragment {
   private static final Integer QUESTIONS_REQUESTED = 50;
   private static final String QUESTIONS_TYPE = "multiple";
 
+  @BindView(R.id.add_category_list_view)
+  ListView addList;
+  @BindView(R.id.progress_spinner)
+  ProgressBar progressSpinner;
+
   private List<TriviaCategory> prevAddedCategories = new ArrayList<>();
-  private ListView addList;
-  private ProgressBar progressSpinner;
   private Map<String, Integer> categoryMap;
   private String categoryName;
   private List<TriviaCategory> categories;
@@ -53,9 +58,8 @@ public class AddCategoriesFragment extends DialogFragment {
       Bundle savedInstanceState) {
 
     View view = inflater.inflate(R.layout.fragment_add_categories, container, false);
+    ButterKnife.bind(this, view);
     categories = new ArrayList<>();
-    addList = view.findViewById(R.id.add_category_list_view);
-    progressSpinner = view.findViewById(R.id.progress_spinner);
     progressSpinner.setVisibility(View.GONE);
     categoryMap = new HashMap<>();
     new checkCategoriesTask().execute();
