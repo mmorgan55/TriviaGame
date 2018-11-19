@@ -69,5 +69,7 @@
   <string name="questions_correct">CORRECT: %d</string>
   <string name="game_grade">GRADE: %s</string>
   <string name="game_grade_text">%s</string>
+  <string name="sign_in_error">Unable to sign in. Please check your credentials and connection.</string>
+  <string name="sign_out">Sign Out</string>
 
 </resources>

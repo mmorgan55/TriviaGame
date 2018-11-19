@@ -1,13 +1,17 @@
 package edu.cnm.deepdive.triviagame.controller;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AlertDialog.Builder;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import butterknife.ButterKnife;
 import edu.cnm.deepdive.triviagame.R;
+import edu.cnm.deepdive.triviagame.TriviaApplication;
 import edu.cnm.deepdive.triviagame.model.db.TriviaDatabase;
 import edu.cnm.deepdive.triviagame.view.GameFragment;
 import edu.cnm.deepdive.triviagame.view.MainFragment;
@@ -53,12 +57,42 @@ public class MainActivity extends AppCompatActivity {
             .commit();
       });
       builder.setNegativeButton("No", (dialog, which) -> {
-        //Nothing here; pressing "No" will default to screen this was called on, which is wanted.
+        /*Nothing here; pressing "No" will default to screen this was called on,
+         which is what I want to happen.*/
       });
       builder.show();
     } else {
       super.onBackPressed();
     }
+  }
+
+  @Override
+  public boolean onCreateOptionsMenu(Menu menu) {
+    getMenuInflater().inflate(R.menu.options, menu);
+    return true;
+  }
+
+  @Override
+  public boolean onOptionsItemSelected(MenuItem item) {
+    boolean handled = true;
+    switch (item.getItemId()) {
+      case R.id.sign_out:
+        signOut();
+        break;
+      default:
+        handled = super.onOptionsItemSelected(item);
+    }
+    return handled;
+  }
+
+  private void signOut() {
+    TriviaApplication app = TriviaApplication.getInstance();
+    app.getClient().signOut().addOnCompleteListener(this, (task) -> {
+      app.setAccount(null);
+      Intent intent = new Intent(this, LoginActivity.class);
+      intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+      startActivity(intent);
+    });
   }
 
   private class InitializeDatabase extends AsyncTask<Void, Void, Void> {
