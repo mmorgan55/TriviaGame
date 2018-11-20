@@ -53,6 +53,8 @@ public class AddCategoriesFragment extends DialogFragment {
   private List<TriviaCategory> categories;
   private AddCategoryAdapter adapter;
 
+  private CategoriesFragment categoriesFragment;
+
   @Override
   public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
       Bundle savedInstanceState) {
@@ -103,6 +105,18 @@ public class AddCategoriesFragment extends DialogFragment {
 
     for (String str : categoryMap.keySet()) {
       categories.add(new TriviaCategory(str));
+    }
+  }
+
+  public void setCategoriesFragment(CategoriesFragment categoriesFragment) {
+    this.categoriesFragment = categoriesFragment;
+  }
+
+  @Override
+  public void onStop() {
+    super.onStop();
+    if (categoriesFragment != null) {
+      categoriesFragment.refreshData();
     }
   }
 
@@ -213,5 +227,10 @@ public class AddCategoriesFragment extends DialogFragment {
           categories);
       addList.setAdapter(adapter);
     }
+  }
+
+  @Override
+  public void onDetach() {
+    super.onDetach();
   }
 }

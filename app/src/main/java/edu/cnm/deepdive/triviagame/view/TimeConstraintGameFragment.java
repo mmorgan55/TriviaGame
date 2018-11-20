@@ -116,7 +116,7 @@ public class TimeConstraintGameFragment extends GameFragment {
         }
         timer.cancel();
         timer.purge();
-        updateTally(questionsCorrect);
+        updateTally(questionsCorrect, correctTally);
         timerText.setText(getString(R.string.timer, currentTime));
         Bundle bundle = new Bundle();
         bundle.putInt("correct", questionsCorrect);
@@ -129,7 +129,7 @@ public class TimeConstraintGameFragment extends GameFragment {
   }
 
   private void updateUI() {
-    updateTally(questionsCorrect);
+    updateTally(questionsCorrect, correctTally);
     long qId = questions.get(questionIndex).getQuestionId();
     questionText.setText(questions.get(questionIndex).getQuestion());
     int answerListIndex = 0;
@@ -151,16 +151,16 @@ public class TimeConstraintGameFragment extends GameFragment {
     listener = v -> {
       switch (v.getId()) {
         case R.id.time_text_button1:
-          updateGame(isAnswerCorrect(((TextView) v).getText().toString()));
+          updateGame(isAnswerCorrect(((TextView) v).getText().toString(), correctAnswer));
           break;
         case R.id.time_text_button2:
-          updateGame(isAnswerCorrect(((TextView) v).getText().toString()));
+          updateGame(isAnswerCorrect(((TextView) v).getText().toString(), correctAnswer));
           break;
         case R.id.time_text_button3:
-          updateGame(isAnswerCorrect(((TextView) v).getText().toString()));
+          updateGame(isAnswerCorrect(((TextView) v).getText().toString(), correctAnswer));
           break;
         case R.id.time_text_button4:
-          updateGame(isAnswerCorrect(((TextView) v).getText().toString()));
+          updateGame(isAnswerCorrect(((TextView) v).getText().toString(), correctAnswer));
           break;
       }
     };
@@ -184,13 +184,5 @@ public class TimeConstraintGameFragment extends GameFragment {
     };
 
     timer.scheduleAtFixedRate(task, TIMER_START_DELAY, TIMER_PERIOD);
-  }
-
-  private boolean isAnswerCorrect(String answer) {
-    return correctAnswer.getAnswer().equals(answer);
-  }
-
-  private void updateTally(int correct) {
-    correctTally.setText(getString(R.string.tally_correct, correct));
   }
 }

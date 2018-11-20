@@ -40,7 +40,6 @@ public class CategoriesFragment extends Fragment {
     View layout = inflater.inflate(R.layout.fragment_categories, container, false);
     ButterKnife.bind(this, layout);
     initialize();
-    new CheckCategoryTask().execute();
     return layout;
   }
 
@@ -58,6 +57,7 @@ public class CategoriesFragment extends Fragment {
   private void setFabListener() {
     fab.setOnClickListener(v -> {
       AddCategoriesFragment fragment = new AddCategoriesFragment();
+      fragment.setCategoriesFragment(this);
       fragment.show(getFragmentManager(), "add categories dialog");
     });
   }
@@ -69,6 +69,16 @@ public class CategoriesFragment extends Fragment {
       getFragmentManager().beginTransaction().replace(R.id.fragment_container, difficultyFragment)
           .addToBackStack("categories").commit();
     });
+  }
+
+  @Override
+  public void onResume() {
+    super.onResume();
+    new CheckCategoryTask().execute();
+  }
+
+  public void refreshData() {
+    new CheckCategoryTask().execute();
   }
 
   private class CategoryAdapter extends ArrayAdapter<String> {
@@ -91,7 +101,7 @@ public class CategoriesFragment extends Fragment {
     protected TriviaCategory doInBackground(Void... voids) {
       TriviaDatabase db = TriviaDatabase.getInstance(getActivity());
       TriviaCategoryDao cDao = db.getTriviaCategoryDao();
-
+      categories.clear();
       categories.addAll(cDao.allTitles());
       return null;
     }

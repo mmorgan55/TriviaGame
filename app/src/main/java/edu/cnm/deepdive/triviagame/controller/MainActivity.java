@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
     setContentView(R.layout.activity_main);
     ButterKnife.bind(this);
 
-    new InitializeDatabase().execute();
+    new InitializeDatabaseTask().execute();
 
     MainFragment mainFragment = new MainFragment();
 
@@ -95,7 +95,7 @@ public class MainActivity extends AppCompatActivity {
     });
   }
 
-  private class InitializeDatabase extends AsyncTask<Void, Void, Void> {
+  private class InitializeDatabaseTask extends AsyncTask<Void, Void, Void> {
 
     @Override
     protected Void doInBackground(Void... voids) {

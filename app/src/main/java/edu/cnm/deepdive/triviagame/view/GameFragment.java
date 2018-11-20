@@ -4,6 +4,8 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.widget.TextView;
+import edu.cnm.deepdive.triviagame.R;
 import edu.cnm.deepdive.triviagame.model.db.TriviaDatabase;
 import edu.cnm.deepdive.triviagame.model.entity.TriviaAnswers;
 import edu.cnm.deepdive.triviagame.model.entity.TriviaCategory;
@@ -13,10 +15,11 @@ import java.util.List;
 
 public abstract class GameFragment extends Fragment {
 
-  protected String category = "";
-  protected String difficulty = "";
   protected List<TriviaQuestion> questions;
   protected List<TriviaAnswers> answers;
+
+  private String category = "";
+  private String difficulty = "";
 
   @Override
   public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -33,6 +36,20 @@ public abstract class GameFragment extends Fragment {
 
   protected abstract void setupGame();
 
+  protected void updateTally(int correct, int incorrect, TextView correctTally,
+      TextView incorrectTally) {
+    correctTally.setText(getString(R.string.tally_correct, correct));
+    incorrectTally.setText(getString(R.string.tally_incorrect, incorrect));
+  }
+
+  protected void updateTally(int correct, TextView correctTally) {
+    correctTally.setText(getString(R.string.tally_correct, correct));
+  }
+
+  protected boolean isAnswerCorrect(String answer, TriviaAnswers correctAnswer) {
+    return correctAnswer.getAnswer().equals(answer);
+  }
+
   private class QuestionTask extends AsyncTask<Void, Void, List<TriviaQuestion>> {
 
     QuestionTask() {
@@ -48,12 +65,10 @@ public abstract class GameFragment extends Fragment {
       if (triviaCategory != null && difficulty.equals("all")) {
         long catId = triviaCategory.getCategoryId();
         questions.addAll(db.getTriviaQuestionDao().select(catId));
-
         return null;
       } else if (triviaCategory != null) {
         long catId = triviaCategory.getCategoryId();
         questions.addAll(db.getTriviaQuestionDao().select(catId, difficulty));
-
         return null;
       }
 

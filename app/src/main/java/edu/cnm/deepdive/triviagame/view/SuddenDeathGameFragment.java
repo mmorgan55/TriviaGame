@@ -66,7 +66,7 @@ public class SuddenDeathGameFragment extends GameFragment {
   }
 
   private void updateUI() {
-    updateTally(questionsCorrect);
+    updateTally(questionsCorrect, correctTally);
     long qId = questions.get(questionIndex).getQuestionId();
     questionText.setText(questions.get(questionIndex).getQuestion());
     int answerListIndex = 0;
@@ -106,7 +106,7 @@ public class SuddenDeathGameFragment extends GameFragment {
     if (questionIndex < questions.size()) {
       updateUI();
     } else {
-      updateTally(questionsCorrect);
+      updateTally(questionsCorrect, correctTally);
       for (TextView text : answerTexts) {
         text.setEnabled(false);
       }
@@ -123,26 +123,18 @@ public class SuddenDeathGameFragment extends GameFragment {
     listener = v -> {
       switch (v.getId()) {
         case R.id.sudden_text_button1:
-          updateGame(isAnswerCorrect(((TextView) v).getText().toString()));
+          updateGame(isAnswerCorrect(((TextView) v).getText().toString(), correctAnswer));
           break;
         case R.id.sudden_text_button2:
-          updateGame(isAnswerCorrect(((TextView) v).getText().toString()));
+          updateGame(isAnswerCorrect(((TextView) v).getText().toString(), correctAnswer));
           break;
         case R.id.sudden_text_button3:
-          updateGame(isAnswerCorrect(((TextView) v).getText().toString()));
+          updateGame(isAnswerCorrect(((TextView) v).getText().toString(), correctAnswer));
           break;
         case R.id.sudden_text_button4:
-          updateGame(isAnswerCorrect(((TextView) v).getText().toString()));
+          updateGame(isAnswerCorrect(((TextView) v).getText().toString(), correctAnswer));
           break;
       }
     };
-  }
-
-  private boolean isAnswerCorrect(String answer) {
-    return correctAnswer.getAnswer().equals(answer);
-  }
-
-  private void updateTally(int correct) {
-    correctTally.setText(getString(R.string.tally_correct, correct));
   }
 }

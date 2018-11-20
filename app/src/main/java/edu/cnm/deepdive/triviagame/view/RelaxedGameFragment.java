@@ -47,7 +47,6 @@ public class RelaxedGameFragment extends GameFragment {
     ButterKnife.bind(this, view);
 
     answerTexts = new ArrayList<>();
-
     setListener();
 
     answers1.setOnClickListener(listener);
@@ -67,8 +66,8 @@ public class RelaxedGameFragment extends GameFragment {
     updateUI();
   }
 
-  private void updateUI() {
-    updateTally(questionsCorrect, questionsIncorrect);
+ public void updateUI() {
+    updateTally(questionsCorrect, questionsIncorrect, correctTally, incorrectTally);
     long qId = questions.get(questionIndex).getQuestionId();
     questionText.setText(questions.get(questionIndex).getQuestion());
     int answerListIndex = 0;
@@ -98,7 +97,7 @@ public class RelaxedGameFragment extends GameFragment {
     if (questionIndex < questions.size()) {
       updateUI();
     } else {
-      updateTally(questionsCorrect, questionsIncorrect);
+      updateTally(questionsCorrect, questionsIncorrect, correctTally, incorrectTally);
       for (TextView text : answerTexts) {
         text.setEnabled(false);
       }
@@ -115,28 +114,18 @@ public class RelaxedGameFragment extends GameFragment {
     listener = v -> {
       switch (v.getId()) {
         case R.id.relaxed_text_button1:
-          updateGame(isAnswerCorrect(((TextView) v).getText().toString()));
+          updateGame(isAnswerCorrect(((TextView) v).getText().toString(), correctAnswer));
           break;
         case R.id.relaxed_text_button2:
-          updateGame(isAnswerCorrect(((TextView) v).getText().toString()));
+          updateGame(isAnswerCorrect(((TextView) v).getText().toString(), correctAnswer));
           break;
         case R.id.relaxed_text_button3:
-          updateGame(isAnswerCorrect(((TextView) v).getText().toString()));
+          updateGame(isAnswerCorrect(((TextView) v).getText().toString(), correctAnswer));
           break;
         case R.id.relaxed_text_button4:
-          updateGame(isAnswerCorrect(((TextView) v).getText().toString()));
+          updateGame(isAnswerCorrect(((TextView) v).getText().toString(), correctAnswer));
           break;
       }
     };
   }
-
-  private boolean isAnswerCorrect(String answer) {
-    return correctAnswer.getAnswer().equals(answer);
-  }
-
-  private void updateTally(int correct, int incorrect) {
-    correctTally.setText(getString(R.string.tally_correct, correct));
-    incorrectTally.setText(getString(R.string.tally_incorrect, incorrect));
-  }
-
 }
