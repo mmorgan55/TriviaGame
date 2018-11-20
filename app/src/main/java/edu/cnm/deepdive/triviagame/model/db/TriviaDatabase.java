@@ -18,7 +18,6 @@ import edu.cnm.deepdive.triviagame.model.entity.TriviaCategory;
 import edu.cnm.deepdive.triviagame.model.entity.TriviaQuestion;
 import edu.cnm.deepdive.triviagame.model.pojo.TriviaPojo;
 import edu.cnm.deepdive.triviagame.model.pojo.TriviaPojo.TriviaResult;
-import java.io.BufferedReader;
 import java.io.IOException;
 import okio.Okio;
 import org.apache.commons.text.StringEscapeUtils;
@@ -45,7 +44,7 @@ public abstract class TriviaDatabase extends RoomDatabase {
     return instance;
   }
 
-  public static synchronized void forgetInstance(Context context) {
+  private static synchronized void forgetInstance(Context context) {
     instance = null;
   }
 
@@ -59,7 +58,7 @@ public abstract class TriviaDatabase extends RoomDatabase {
 
     private Context context;
 
-    public Callback(Context context) {
+    Callback(Context context) {
       this.context = context;
     }
 
@@ -79,7 +78,7 @@ public abstract class TriviaDatabase extends RoomDatabase {
 
     private Context context;
 
-    public PrepopulateTask(Context context) {
+    PrepopulateTask(Context context) {
       this.context = context;
     }
 
