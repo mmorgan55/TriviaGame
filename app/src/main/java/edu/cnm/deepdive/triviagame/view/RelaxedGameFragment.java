@@ -2,7 +2,6 @@ package edu.cnm.deepdive.triviagame.view;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -66,7 +65,7 @@ public class RelaxedGameFragment extends GameFragment {
     updateUI();
   }
 
- public void updateUI() {
+  public void updateUI() {
     updateTally(questionsCorrect, questionsIncorrect, correctTally, incorrectTally);
     long qId = questions.get(questionIndex).getQuestionId();
     questionText.setText(questions.get(questionIndex).getQuestion());
@@ -101,12 +100,7 @@ public class RelaxedGameFragment extends GameFragment {
       for (TextView text : answerTexts) {
         text.setEnabled(false);
       }
-      Bundle bundle = new Bundle();
-      bundle.putInt("correct", questionsCorrect);
-      bundle.putInt("total", questions.size());
-      Fragment fragment = new PostGameFragment();
-      fragment.setArguments(bundle);
-      getFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).commit();
+      moveToPostGame(questionsCorrect);
     }
   }
 

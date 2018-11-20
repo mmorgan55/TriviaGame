@@ -104,12 +104,7 @@ public class TimeConstraintGameFragment extends GameFragment {
         timer.cancel();
         timer.purge();
         timerText.setText(getString(R.string.timer, currentTime));
-        Bundle bundle = new Bundle();
-        bundle.putInt("correct", questionsCorrect);
-        bundle.putInt("total", questions.size());
-        Fragment fragment = new PostGameFragment();
-        fragment.setArguments(bundle);
-        getFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).commit();
+        moveToPostGame(questionsCorrect);
       } else {
         for (TextView text : answerTexts) {
           text.setEnabled(false);
@@ -118,12 +113,7 @@ public class TimeConstraintGameFragment extends GameFragment {
         timer.purge();
         updateTally(questionsCorrect, correctTally);
         timerText.setText(getString(R.string.timer, currentTime));
-        Bundle bundle = new Bundle();
-        bundle.putInt("correct", questionsCorrect);
-        bundle.putInt("total", questions.size());
-        Fragment fragment = new PostGameFragment();
-        fragment.setArguments(bundle);
-        getFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).commit();
+        moveToPostGame(questionsCorrect);
       }
     }
   }

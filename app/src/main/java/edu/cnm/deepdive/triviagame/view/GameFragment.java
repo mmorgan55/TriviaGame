@@ -51,6 +51,15 @@ public abstract class GameFragment extends Fragment {
     return correctAnswer.getAnswer().equals(answer);
   }
 
+  protected void moveToPostGame(int questionsCorrect) {
+    Bundle bundle = new Bundle();
+    bundle.putInt("correct", questionsCorrect);
+    bundle.putInt("total", questions.size());
+    Fragment fragment = new PostGameFragment();
+    fragment.setArguments(bundle);
+    getFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).commit();
+  }
+
   private class QuestionTask extends AsyncTask<Void, Void, List<TriviaQuestion>> {
 
     QuestionTask() {
