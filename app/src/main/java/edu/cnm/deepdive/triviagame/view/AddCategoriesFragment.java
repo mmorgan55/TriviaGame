@@ -64,9 +64,17 @@ public class AddCategoriesFragment extends DialogFragment {
     categories = new ArrayList<>();
     progressSpinner.setVisibility(View.GONE);
     categoryMap = new HashMap<>();
-    new checkCategoriesTask().execute();
+    new CheckAddCategoriesTask().execute();
 
     return view;
+  }
+
+  @Override
+  public void onStop() {
+    super.onStop();
+    if (categoriesFragment != null) {
+      categoriesFragment.refreshData();
+    }
   }
 
   private void setItemListener() {
@@ -110,14 +118,6 @@ public class AddCategoriesFragment extends DialogFragment {
 
   public void setCategoriesFragment(CategoriesFragment categoriesFragment) {
     this.categoriesFragment = categoriesFragment;
-  }
-
-  @Override
-  public void onStop() {
-    super.onStop();
-    if (categoriesFragment != null) {
-      categoriesFragment.refreshData();
-    }
   }
 
   private class AddCategoryAdapter extends ArrayAdapter<TriviaCategory> {
@@ -204,7 +204,7 @@ public class AddCategoriesFragment extends DialogFragment {
     }
   }
 
-  private class checkCategoriesTask extends AsyncTask<Void, Void, Void> {
+  private class CheckAddCategoriesTask extends AsyncTask<Void, Void, Void> {
 
     @Override
     protected Void doInBackground(Void... lists) {
@@ -227,10 +227,5 @@ public class AddCategoriesFragment extends DialogFragment {
           categories);
       addList.setAdapter(adapter);
     }
-  }
-
-  @Override
-  public void onDetach() {
-    super.onDetach();
   }
 }

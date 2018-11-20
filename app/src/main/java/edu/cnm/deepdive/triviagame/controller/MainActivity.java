@@ -44,11 +44,13 @@ public class MainActivity extends AppCompatActivity {
           .popBackStack("main", android.support.v4.app.FragmentManager.POP_BACK_STACK_INCLUSIVE);
       getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment)
           .commit();
+
     } else if (getSupportFragmentManager()
         .findFragmentById(R.id.fragment_container) instanceof GameFragment) {
       AlertDialog.Builder builder = new Builder(this);
       builder.setTitle("Back to Game Select");
       builder.setMessage("Are you sure to want to go back to game select?");
+
       builder.setPositiveButton("Yes", (dialog, which) -> {
         Fragment fragment = new MainFragment();
         getSupportFragmentManager()
@@ -56,11 +58,13 @@ public class MainActivity extends AppCompatActivity {
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment)
             .commit();
       });
+
       builder.setNegativeButton("No", (dialog, which) -> {
-        /*Nothing here; pressing "No" will go back to the screen this was called
-         on, which is what I want.*/
+        /*Nothing here; pressing "No" will go back to the game this was called
+         on, which is the desired functionality.*/
       });
       builder.show();
+
     } else {
       super.onBackPressed();
     }

@@ -11,6 +11,7 @@ import edu.cnm.deepdive.triviagame.model.entity.TriviaAnswers;
 import edu.cnm.deepdive.triviagame.model.entity.TriviaCategory;
 import edu.cnm.deepdive.triviagame.model.entity.TriviaQuestion;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public abstract class GameFragment extends Fragment {
@@ -101,7 +102,8 @@ public abstract class GameFragment extends Fragment {
 
     @Override
     protected void onPostExecute(List<TriviaAnswers> triviaAnswers) {
-
+      Collections.shuffle(questions);
+      Collections.shuffle(answers);
       setupGame();
     }
   }
