@@ -13,45 +13,6 @@
   <string name="time_incorrect_text">INCORRECT! TRY AGAIN!</string>
   <string name="time_lose_text">YOU RAN OUT OF TIME!</string>
 
-
-  <string-array name="initial_questions">
-    <item>What is the frontman\'s name in the Band Megadeth?</item>
-    <item>What is the name of Eragon\'s dragon in the book "Eragon"?</item>
-    <item>Who painted "The Starry Night"?</item>
-    <item>From which country did the piano originate?</item>
-    <item>The United States was the first country to launch a man into Space.</item>
-  </string-array>
-
-  <string-array name="categories">
-    <item>All</item>
-    <item>Physics</item>
-    <item>Math</item>
-    <item>Biology</item>
-    <item>Astronomy</item>
-    <item>Movies</item>
-    <item>Chemistry</item>
-    <item>Music</item>
-    <item>History</item>
-  </string-array>
-
-  <string-array name="add_categories">
-    <item>Books</item>
-    <item>Movies</item>
-    <item>Music</item>
-    <item>TV Shows</item>
-    <item>Videogames</item>
-    <item>Boardgames</item>
-    <item>Science &amp; Nature</item>
-    <item>Computers</item>
-    <item>Sports</item>
-    <item>Geography</item>
-    <item>History</item>
-    <item>Animals</item>
-    <item>Vehicles</item>
-    <item>Anime &amp; Manga</item>
-    <item>Cartoons</item>
-  </string-array>
-
   <string name="difficulty_title">DIFFICULTY</string>
   <string name="easy_button_text">EASY</string>
   <string name="medium_button_text">MEDIUM</string>
@@ -71,5 +32,13 @@
   <string name="game_grade_text">%s</string>
   <string name="sign_in_error">Unable to sign in. Please check your credentials and connection.</string>
   <string name="sign_out">Sign Out</string>
+
+  <string name="relaxed_high_score">Relaxed High Score: %d</string>
+  <string name="sudden_high_score">Sudden Death High Score: %d</string>
+  <string name="time_high_score">Time Constraint High Score: %d</string>
+
+  <string name="relaxed_high_score_key">RELAXED_HIGH_SCORE</string>
+  <string name="sudden_high_score_key">SUDDEN_HIGH_SCORE</string>
+  <string name="time_high_score_key">TIME_HIGH_SCORE</string>
 
 </resources>

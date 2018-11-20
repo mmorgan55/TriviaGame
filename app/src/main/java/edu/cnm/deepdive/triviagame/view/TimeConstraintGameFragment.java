@@ -2,12 +2,10 @@ package edu.cnm.deepdive.triviagame.view;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 import butterknife.BindView;
@@ -24,8 +22,6 @@ public class TimeConstraintGameFragment extends GameFragment {
   private static final int TIMER_START_DELAY = 0;
   private static final int TIMER_PERIOD = 1000;
 
-  private int questionsCorrect = 0;
-
   @BindView(R.id.time_question_text)
   TextView questionText;
   @BindView(R.id.time_correct_tally)
@@ -41,6 +37,7 @@ public class TimeConstraintGameFragment extends GameFragment {
   @BindView(R.id.time_text_button4)
   TextView answers4;
 
+  private int questionsCorrect = 0;
   private Timer timer;
   private int currentTime = 60;
   private List<TextView> answerTexts;
@@ -104,7 +101,7 @@ public class TimeConstraintGameFragment extends GameFragment {
         timer.cancel();
         timer.purge();
         timerText.setText(getString(R.string.timer, currentTime));
-        moveToPostGame(questionsCorrect);
+        moveToPostGame(questionsCorrect, "time");
       } else {
         for (TextView text : answerTexts) {
           text.setEnabled(false);
@@ -113,7 +110,7 @@ public class TimeConstraintGameFragment extends GameFragment {
         timer.purge();
         updateTally(questionsCorrect, correctTally);
         timerText.setText(getString(R.string.timer, currentTime));
-        moveToPostGame(questionsCorrect);
+        moveToPostGame(questionsCorrect, "time");
       }
     }
   }

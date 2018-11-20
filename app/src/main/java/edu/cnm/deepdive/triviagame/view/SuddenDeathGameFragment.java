@@ -92,7 +92,7 @@ public class SuddenDeathGameFragment extends GameFragment {
       for (TextView text : answerTexts) {
         text.setEnabled(false);
       }
-      moveToPostGame(questionsCorrect);
+      moveToPostGame(questionsCorrect, "sudden");
     }
   }
 
@@ -104,7 +104,7 @@ public class SuddenDeathGameFragment extends GameFragment {
       for (TextView text : answerTexts) {
         text.setEnabled(false);
       }
-      moveToPostGame(questionsCorrect);
+      moveToPostGame(questionsCorrect, "sudden");
     }
   }
 
