@@ -11,7 +11,6 @@ public class GameController {
 
   public GameController(FragmentActivity context, Bundle bundle)  {
     GameFragment fragment;
-
     String gameType = bundle.getString("gameType");
 
     switch (gameType) {
@@ -30,7 +29,6 @@ public class GameController {
     }
 
     fragment.setArguments(bundle);
-
     context.getSupportFragmentManager().beginTransaction()
         .replace(R.id.fragment_container, fragment).commit();
   }

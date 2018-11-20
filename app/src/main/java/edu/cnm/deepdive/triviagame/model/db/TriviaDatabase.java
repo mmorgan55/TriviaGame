@@ -7,12 +7,21 @@ import android.arch.persistence.room.RoomDatabase;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.support.annotation.NonNull;
+import com.squareup.moshi.JsonAdapter;
+import com.squareup.moshi.Moshi;
+import edu.cnm.deepdive.triviagame.R;
 import edu.cnm.deepdive.triviagame.model.dao.TriviaAnswersDao;
 import edu.cnm.deepdive.triviagame.model.dao.TriviaCategoryDao;
 import edu.cnm.deepdive.triviagame.model.dao.TriviaQuestionDao;
 import edu.cnm.deepdive.triviagame.model.entity.TriviaAnswers;
 import edu.cnm.deepdive.triviagame.model.entity.TriviaCategory;
 import edu.cnm.deepdive.triviagame.model.entity.TriviaQuestion;
+import edu.cnm.deepdive.triviagame.model.pojo.TriviaPojo;
+import edu.cnm.deepdive.triviagame.model.pojo.TriviaPojo.TriviaResult;
+import java.io.BufferedReader;
+import java.io.IOException;
+import okio.Okio;
+import org.apache.commons.text.StringEscapeUtils;
 
 @Database(
     entities = {TriviaCategory.class, TriviaQuestion.class, TriviaAnswers.class},
@@ -76,56 +85,34 @@ public abstract class TriviaDatabase extends RoomDatabase {
 
     @Override
     protected Void doInBackground(Void... voids) {
-      TriviaDatabase db = getInstance(context);
-      TriviaCategoryDao cDao = db.getTriviaCategoryDao();
-      TriviaQuestionDao qDao = db.getTriviaQuestionDao();
-      TriviaAnswersDao aDao = db.getTriviaAnswersDao();
+      try {
+        TriviaDatabase db = getInstance(context);
+        Moshi moshi = new Moshi.Builder().build();
+        JsonAdapter<TriviaPojo> jsonAdapter = moshi.adapter(TriviaPojo.class);
+        TriviaPojo pojo = jsonAdapter.fromJson(Okio.buffer(Okio.source(
+            context.getResources().openRawResource(R.raw.preload))));
+        TriviaCategoryDao cDao = db.getTriviaCategoryDao();
+        TriviaQuestionDao qDao = db.getTriviaQuestionDao();
+        TriviaAnswersDao aDao = db.getTriviaAnswersDao();
 
-      long catId = cDao.insert(new TriviaCategory("Physics"));
+        long catId = cDao.insert(new TriviaCategory("General Knowledge"));
 
-      long que1Id = qDao
-          .insert(new TriviaQuestion("What is the frontman's name in the Band Megadeth?",
-              "easy", catId));
-
-      aDao.insert(new TriviaAnswers("Dave Mustaine", true, que1Id));
-      aDao.insert(new TriviaAnswers("David Ellefson", false, que1Id));
-      aDao.insert(new TriviaAnswers("Greg Handevidt", false, que1Id));
-      aDao.insert(new TriviaAnswers("Dijon Carruthers", false, que1Id));
-
-      long que2Id = qDao
-          .insert(new TriviaQuestion("What is the name of Eragon's dragon in the book \"Eragon\"?",
-              "easy", catId));
-
-      aDao.insert(new TriviaAnswers("Saphira", true, que2Id));
-      aDao.insert(new TriviaAnswers("Rubyrta", false, que2Id));
-      aDao.insert(new TriviaAnswers("Onyxia", false, que2Id));
-      aDao.insert(new TriviaAnswers("Emeralda", false, que2Id));
-
-      long que3Id = qDao.insert(new TriviaQuestion("Who painted \"The Starry Night\"?",
-          "medium", catId));
-
-      aDao.insert(new TriviaAnswers("Galileo", false, que3Id));
-      aDao.insert(new TriviaAnswers("Van Gogh", true, que3Id));
-      aDao.insert(new TriviaAnswers("Michelangelo", false, que3Id));
-      aDao.insert(new TriviaAnswers("Da Vinci", false, que3Id));
-
-      long que4Id = qDao.insert(new TriviaQuestion("From which country did the piano originate?",
-          "easy", catId));
-
-      aDao.insert(new TriviaAnswers("Germany", false, que4Id));
-      aDao.insert(new TriviaAnswers("France", false, que4Id));
-      aDao.insert(new TriviaAnswers("Italy", true, que4Id));
-      aDao.insert(new TriviaAnswers("Austria", false, que4Id));
-
-      long que5Id = qDao.insert(
-          new TriviaQuestion("The United States was the first country to put a man in Space.",
-              "hard", catId));
-
-      aDao.insert(new TriviaAnswers("Yes", false, que5Id));
-      aDao.insert(new TriviaAnswers("No", false, que5Id));
-      aDao.insert(new TriviaAnswers("Maybe?", false, que5Id));
-      aDao.insert(new TriviaAnswers("Soviet Union", true, que5Id));
-      forgetInstance(context);
+        for (TriviaResult result : pojo.getResults()) {
+          long queId = qDao
+              .insert(new TriviaQuestion(StringEscapeUtils.unescapeHtml4(result.getQuestion()),
+                  result.getDifficulty(), catId));
+          aDao.insert(
+              new TriviaAnswers(StringEscapeUtils.unescapeHtml4(result.getCorrectAnswer()), true,
+                  queId));
+          for (String s : result.getIncorrectAnswers()) {
+            s = StringEscapeUtils.unescapeHtml4(s);
+            aDao.insert(new TriviaAnswers(s, false, queId));
+          }
+        }
+        forgetInstance(context);
+      } catch (IOException e) {
+        e.printStackTrace();
+      }
       return null;
     }
   }

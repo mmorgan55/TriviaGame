@@ -19,8 +19,8 @@ public abstract class GameFragment extends Fragment {
   protected List<TriviaQuestion> questions;
   protected List<TriviaAnswers> answers;
 
-  private String category = "";
-  private String difficulty = "";
+  private String category;
+  private String difficulty;
 
   @Override
   public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -63,14 +63,9 @@ public abstract class GameFragment extends Fragment {
 
   private class QuestionTask extends AsyncTask<Void, Void, List<TriviaQuestion>> {
 
-    QuestionTask() {
-      super();
-    }
-
     @Override
     protected List<TriviaQuestion> doInBackground(Void... voids) {
       TriviaDatabase db = TriviaDatabase.getInstance(getActivity());
-
       TriviaCategory triviaCategory = db.getTriviaCategoryDao().select(category);
 
       if (triviaCategory != null && difficulty.equals("all")) {
@@ -93,10 +88,6 @@ public abstract class GameFragment extends Fragment {
   }
 
   private class AnswerTask extends AsyncTask<Void, Void, List<TriviaAnswers>> {
-
-    AnswerTask() {
-      super();
-    }
 
     @Override
     protected List<TriviaAnswers> doInBackground(Void... voids) {

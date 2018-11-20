@@ -36,7 +36,6 @@ import retrofit2.Retrofit;
 import retrofit2.Retrofit.Builder;
 import retrofit2.converter.moshi.MoshiConverterFactory;
 
-
 public class AddCategoriesFragment extends DialogFragment {
 
   private static final Integer QUESTIONS_REQUESTED = 50;
@@ -47,12 +46,11 @@ public class AddCategoriesFragment extends DialogFragment {
   @BindView(R.id.progress_spinner)
   ProgressBar progressSpinner;
 
-  private List<TriviaCategory> prevAddedCategories = new ArrayList<>();
+  private List<TriviaCategory> prevAddedCategories;
   private Map<String, Integer> categoryMap;
   private String categoryName;
   private List<TriviaCategory> categories;
   private AddCategoryAdapter adapter;
-
   private CategoriesFragment categoriesFragment;
 
   @Override
@@ -62,6 +60,7 @@ public class AddCategoriesFragment extends DialogFragment {
     View view = inflater.inflate(R.layout.fragment_add_categories, container, false);
     ButterKnife.bind(this, view);
     categories = new ArrayList<>();
+    prevAddedCategories = new ArrayList<>();
     progressSpinner.setVisibility(View.GONE);
     categoryMap = new HashMap<>();
     new CheckAddCategoriesTask().execute();
@@ -135,10 +134,6 @@ public class AddCategoriesFragment extends DialogFragment {
   }
 
   private class AddCategoryTask extends AsyncTask<Object, Void, TriviaPojo> {
-
-    AddCategoryTask() {
-      super();
-    }
 
     @Override
     protected void onPreExecute() {

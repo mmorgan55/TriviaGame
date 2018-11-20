@@ -27,7 +27,6 @@ public class TriviaPojo {
     this.results = results;
   }
 
-
   public static class TriviaResult {
 
     @Json(name = "category")

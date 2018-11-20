@@ -19,6 +19,7 @@ import java.util.TimerTask;
 
 public class TimeConstraintGameFragment extends GameFragment {
 
+  private static final String GAME_TYPE = "time";
   private static final int TIMER_START_DELAY = 0;
   private static final int TIMER_PERIOD = 1000;
 
@@ -101,7 +102,7 @@ public class TimeConstraintGameFragment extends GameFragment {
         timer.cancel();
         timer.purge();
         timerText.setText(getString(R.string.timer, currentTime));
-        moveToPostGame(questionsCorrect, "time");
+        moveToPostGame(questionsCorrect, GAME_TYPE);
       } else {
         for (TextView text : answerTexts) {
           text.setEnabled(false);
@@ -110,7 +111,7 @@ public class TimeConstraintGameFragment extends GameFragment {
         timer.purge();
         updateTally(questionsCorrect, correctTally);
         timerText.setText(getString(R.string.timer, currentTime));
-        moveToPostGame(questionsCorrect, "time");
+        moveToPostGame(questionsCorrect, GAME_TYPE);
       }
     }
   }

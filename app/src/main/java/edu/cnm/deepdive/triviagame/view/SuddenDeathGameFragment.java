@@ -17,6 +17,8 @@ import java.util.List;
 
 public class SuddenDeathGameFragment extends GameFragment {
 
+  private static final String GAME_TYPE = "sudden";
+
   @BindView(R.id.sudden_correct_tally)
   TextView correctTally;
   @BindView(R.id.sudden_question_text)
@@ -92,7 +94,7 @@ public class SuddenDeathGameFragment extends GameFragment {
       for (TextView text : answerTexts) {
         text.setEnabled(false);
       }
-      moveToPostGame(questionsCorrect, "sudden");
+      moveToPostGame(questionsCorrect, GAME_TYPE);
     }
   }
 
@@ -104,7 +106,7 @@ public class SuddenDeathGameFragment extends GameFragment {
       for (TextView text : answerTexts) {
         text.setEnabled(false);
       }
-      moveToPostGame(questionsCorrect, "sudden");
+      moveToPostGame(questionsCorrect, GAME_TYPE);
     }
   }
 

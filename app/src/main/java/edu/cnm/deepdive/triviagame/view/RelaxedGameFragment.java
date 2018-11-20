@@ -16,6 +16,8 @@ import java.util.List;
 
 public class RelaxedGameFragment extends GameFragment {
 
+  public static final String GAME_TYPE = "relaxed";
+
   @BindView(R.id.relaxed_correct_tally)
   TextView correctTally;
   @BindView(R.id.relaxed_incorrect_tally)
@@ -100,7 +102,7 @@ public class RelaxedGameFragment extends GameFragment {
       for (TextView text : answerTexts) {
         text.setEnabled(false);
       }
-      moveToPostGame(questionsCorrect, "relaxed");
+      moveToPostGame(questionsCorrect, GAME_TYPE);
     }
   }
 
