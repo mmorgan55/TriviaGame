@@ -1,7 +1,5 @@
 package edu.cnm.deepdive.triviagame.view;
 
-import static edu.cnm.deepdive.triviagame.controller.MainActivity.bundle;
-
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
@@ -12,6 +10,7 @@ import android.widget.Button;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import edu.cnm.deepdive.triviagame.R;
+import edu.cnm.deepdive.triviagame.controller.MainActivity;
 
 public class MainFragment extends android.support.v4.app.Fragment {
 
@@ -49,27 +48,27 @@ public class MainFragment extends android.support.v4.app.Fragment {
 
       switch (id) {
         case R.id.time_button:
-          gameType = "time";
-          bundle.putString("gameType", gameType);
+          gameType = getString(R.string.time_game_string_key);
+          MainActivity.getBundle().putString(getString(R.string.game_type_string_key), gameType);
           break;
         case R.id.difficulty_button:
-          gameType = "sudden";
-          bundle.putString("gameType", gameType);
+          gameType = getString(R.string.sudden_game_string_key);
+          MainActivity.getBundle().putString(getString(R.string.game_type_string_key), gameType);
           break;
         case R.id.relaxed_button:
-          gameType = "relaxed";
-          bundle.putString("gameType", gameType);
+          gameType = getString(R.string.relaxed_game_string_key);
+          MainActivity.getBundle().putString(getString(R.string.game_type_string_key), gameType);
           break;
         default:
-          gameType = "relaxed";
-          bundle.putString("gameType", gameType);
+          gameType = getString(R.string.relaxed_game_string_key);
+          MainActivity.getBundle().putString(getString(R.string.game_type_string_key), gameType);
           break;
       }
 
-      categoriesFragment.setArguments(bundle);
+      categoriesFragment.setArguments(MainActivity.getBundle());
       getFragmentManager()
           .beginTransaction().replace(R.id.fragment_container, categoriesFragment)
-          .addToBackStack("main")
+          .addToBackStack(getString(R.string.main_fragment_tag))
           .commit();
     };
   }

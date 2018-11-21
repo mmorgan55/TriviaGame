@@ -19,7 +19,7 @@ import edu.cnm.deepdive.triviagame.view.PostGameFragment;
 
 public class MainActivity extends AppCompatActivity {
 
-  public static Bundle bundle = new Bundle();
+  private static Bundle bundle = new Bundle();
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -41,20 +41,24 @@ public class MainActivity extends AppCompatActivity {
         .findFragmentById(R.id.fragment_container) instanceof PostGameFragment) {
       Fragment fragment = new MainFragment();
       getSupportFragmentManager()
-          .popBackStack("main", android.support.v4.app.FragmentManager.POP_BACK_STACK_INCLUSIVE);
+          .popBackStack(getString(R.string.main_fragment_tag),
+              android.support.v4.app.FragmentManager.POP_BACK_STACK_INCLUSIVE);
+
       getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment)
           .commit();
 
     } else if (getSupportFragmentManager()
         .findFragmentById(R.id.fragment_container) instanceof GameFragment) {
       AlertDialog.Builder builder = new Builder(this);
-      builder.setTitle("Back to Game Select");
-      builder.setMessage("Are you sure to want to go back to game select?");
+      builder.setTitle(R.string.alert_dialog_title);
+      builder.setMessage(R.string.alert_dialog_message);
 
       builder.setPositiveButton("Yes", (dialog, which) -> {
         Fragment fragment = new MainFragment();
         getSupportFragmentManager()
-            .popBackStack("main", android.support.v4.app.FragmentManager.POP_BACK_STACK_INCLUSIVE);
+            .popBackStack(getString(R.string.main_fragment_tag),
+                android.support.v4.app.FragmentManager.POP_BACK_STACK_INCLUSIVE);
+
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment)
             .commit();
       });
@@ -97,6 +101,10 @@ public class MainActivity extends AppCompatActivity {
       intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
       startActivity(intent);
     });
+  }
+
+  public static Bundle getBundle() {
+    return bundle;
   }
 
   private class InitializeDatabaseTask extends AsyncTask<Void, Void, Void> {

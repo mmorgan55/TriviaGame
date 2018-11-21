@@ -1,7 +1,5 @@
 package edu.cnm.deepdive.triviagame.view;
 
-import static edu.cnm.deepdive.triviagame.controller.MainActivity.bundle;
-
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
@@ -12,8 +10,9 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import edu.cnm.deepdive.triviagame.GameController;
+import edu.cnm.deepdive.triviagame.controller.GameController;
 import edu.cnm.deepdive.triviagame.R;
+import edu.cnm.deepdive.triviagame.controller.MainActivity;
 
 public class DifficultyFragment extends Fragment {
 
@@ -53,28 +52,28 @@ public class DifficultyFragment extends Fragment {
 
       switch (id) {
         case R.id.easy_button:
-          difficulty = "easy";
-          bundle.putString("difficulty", difficulty);
+          difficulty = getString(R.string.easy_difficulty_key);
+          MainActivity.getBundle().putString(getString(R.string.difficulty_string_key), difficulty);
           break;
         case R.id.medium_button:
-          difficulty = "medium";
-          bundle.putString("difficulty", difficulty);
+          difficulty = getString(R.string.medium_difficulty_key);
+          MainActivity.getBundle().putString(getString(R.string.difficulty_string_key), difficulty);
           break;
         case R.id.hard_button:
-          difficulty = "hard";
-          bundle.putString("difficulty", difficulty);
+          difficulty = getString(R.string.hard_difficulty_key);
+          MainActivity.getBundle().putString(getString(R.string.difficulty_string_key), difficulty);
           break;
         case R.id.all_button:
-          difficulty = "all";
-          bundle.putString("difficulty", difficulty);
+          difficulty = getString(R.string.all_difficulty_key);
+          MainActivity.getBundle().putString(getString(R.string.difficulty_string_key), difficulty);
           break;
         default:
-          difficulty = "medium";
-          bundle.putString("difficulty", difficulty);
+          difficulty = getString(R.string.medium_difficulty_key);
+          MainActivity.getBundle().putString(getString(R.string.difficulty_string_key), difficulty);
           break;
       }
 
-      new GameController(getActivity(), bundle);
+      new GameController(getActivity(), MainActivity.getBundle());
     };
   }
 }

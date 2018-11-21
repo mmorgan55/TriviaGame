@@ -26,8 +26,8 @@ public abstract class GameFragment extends Fragment {
   public void onCreate(@Nullable Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
 
-    category = getArguments().getString("category");
-    difficulty = getArguments().getString("difficulty");
+    category = getArguments().getString(getString(R.string.category_string_key));
+    difficulty = getArguments().getString(getString(R.string.difficulty_string_key));
 
     questions = new ArrayList<>();
     answers = new ArrayList<>();
@@ -53,9 +53,9 @@ public abstract class GameFragment extends Fragment {
 
   protected void moveToPostGame(int questionsCorrect, String gameType) {
     Bundle bundle = new Bundle();
-    bundle.putInt("correct", questionsCorrect);
-    bundle.putInt("total", questions.size());
-    bundle.putString("gameType", gameType);
+    bundle.putInt(getString(R.string.correct_questions_string_key), questionsCorrect);
+    bundle.putInt(getString(R.string.total_questions_string_key), questions.size());
+    bundle.putString(getString(R.string.game_type_string_key), gameType);
     Fragment fragment = new PostGameFragment();
     fragment.setArguments(bundle);
     getFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).commit();
@@ -68,7 +68,7 @@ public abstract class GameFragment extends Fragment {
       TriviaDatabase db = TriviaDatabase.getInstance(getActivity());
       TriviaCategory triviaCategory = db.getTriviaCategoryDao().select(category);
 
-      if (triviaCategory != null && difficulty.equals("all")) {
+      if (triviaCategory != null && difficulty.equals(getString(R.string.all_difficulty_key))) {
         long catId = triviaCategory.getCategoryId();
         questions.addAll(db.getTriviaQuestionDao().select(catId));
         return null;

@@ -40,5 +40,20 @@
   <string name="relaxed_high_score_key">RELAXED_HIGH_SCORE</string>
   <string name="sudden_high_score_key">SUDDEN_HIGH_SCORE</string>
   <string name="time_high_score_key">TIME_HIGH_SCORE</string>
+  <string name="alert_dialog_title">Back to Game Select</string>
+  <string name="alert_dialog_message">Go back to game select?</string>
+  <string name="difficulty_string_key">difficulty</string>
+  <string name="easy_difficulty_key">easy</string>
+  <string name="medium_difficulty_key">medium</string>
+  <string name="hard_difficulty_key">hard</string>
+  <string name="all_difficulty_key">all</string>
+  <string name="game_type_string_key">gameType</string>
+  <string name="time_game_string_key">time</string>
+  <string name="sudden_game_string_key">sudden</string>
+  <string name="relaxed_game_string_key">relaxed</string>
+  <string name="category_string_key">category</string>
+  <string name="main_fragment_tag">main</string>
+  <string name="correct_questions_string_key">correct</string>
+  <string name="total_questions_string_key">total</string>
 
 </resources>

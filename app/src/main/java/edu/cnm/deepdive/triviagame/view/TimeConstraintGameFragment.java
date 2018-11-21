@@ -19,9 +19,10 @@ import java.util.TimerTask;
 
 public class TimeConstraintGameFragment extends GameFragment {
 
-  private static final String GAME_TYPE = "time";
   private static final int TIMER_START_DELAY = 0;
   private static final int TIMER_PERIOD = 1000;
+  private static final int TIME_ADDED = 5;
+  private static final int TIME_SUBTRACTED = 15;
 
   @BindView(R.id.time_question_text)
   TextView questionText;
@@ -81,11 +82,11 @@ public class TimeConstraintGameFragment extends GameFragment {
     if (isCorrect) {
       questionIndex++;
       questionsCorrect++;
-      currentTime += 5;
+      currentTime += TIME_ADDED;
       Toast.makeText(getContext(), R.string.time_correct_text, Toast.LENGTH_LONG).show();
       continueGame();
     } else {
-      currentTime -= 15;
+      currentTime -= TIME_SUBTRACTED;
       Toast.makeText(getContext(), R.string.time_incorrect_text, Toast.LENGTH_LONG).show();
       continueGame();
     }
@@ -102,7 +103,7 @@ public class TimeConstraintGameFragment extends GameFragment {
         timer.cancel();
         timer.purge();
         timerText.setText(getString(R.string.timer, currentTime));
-        moveToPostGame(questionsCorrect, GAME_TYPE);
+        moveToPostGame(questionsCorrect, getString(R.string.time_game_string_key));
       } else {
         for (TextView text : answerTexts) {
           text.setEnabled(false);
@@ -111,7 +112,7 @@ public class TimeConstraintGameFragment extends GameFragment {
         timer.purge();
         updateTally(questionsCorrect, correctTally);
         timerText.setText(getString(R.string.timer, currentTime));
-        moveToPostGame(questionsCorrect, GAME_TYPE);
+        moveToPostGame(questionsCorrect, getString(R.string.time_game_string_key));
       }
     }
   }

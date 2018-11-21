@@ -27,7 +27,7 @@ public class PostGameFragment extends android.support.v4.app.Fragment {
   @BindView(R.id.main_menu_button)
   Button mainMenuButton;
 
-  int questionsCorrect;
+  private int questionsCorrect;
 
   @Override
   public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
@@ -36,14 +36,16 @@ public class PostGameFragment extends android.support.v4.app.Fragment {
     View view = inflater.inflate(R.layout.fragment_post_game, container, false);
     ButterKnife.bind(this, view);
 
-    int totalQuestions = getArguments().getInt("total");
-    questionsCorrect = getArguments().getInt("correct");
-    String gameType = getArguments().getString("gameType");
+    int totalQuestions = getArguments().getInt(getString(R.string.total_questions_string_key));
+    questionsCorrect = getArguments().getInt(getString(R.string.correct_questions_string_key));
+    String gameType = getArguments().getString(getString(R.string.game_type_string_key));
     Fragment fragment = new MainFragment();
 
     mainMenuButton.setOnClickListener(v -> {
       getFragmentManager()
-          .popBackStack("main", android.support.v4.app.FragmentManager.POP_BACK_STACK_INCLUSIVE);
+          .popBackStack(getString(R.string.main_fragment_tag),
+              android.support.v4.app.FragmentManager.POP_BACK_STACK_INCLUSIVE);
+
       getFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).commit();
     });
 
@@ -83,7 +85,6 @@ public class PostGameFragment extends android.support.v4.app.Fragment {
   }
 
   private void setGradeText(String grade) {
-
     String text;
 
     switch (grade) {

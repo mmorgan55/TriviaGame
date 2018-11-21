@@ -1,7 +1,5 @@
 package edu.cnm.deepdive.triviagame.view;
 
-import static edu.cnm.deepdive.triviagame.controller.MainActivity.bundle;
-
 import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -17,6 +15,7 @@ import android.widget.ListView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import edu.cnm.deepdive.triviagame.R;
+import edu.cnm.deepdive.triviagame.controller.MainActivity;
 import edu.cnm.deepdive.triviagame.model.dao.TriviaCategoryDao;
 import edu.cnm.deepdive.triviagame.model.db.TriviaDatabase;
 import edu.cnm.deepdive.triviagame.model.entity.TriviaCategory;
@@ -58,16 +57,16 @@ public class CategoriesFragment extends Fragment {
     fab.setOnClickListener(v -> {
       AddCategoriesFragment fragment = new AddCategoriesFragment();
       fragment.setCategoriesFragment(this);
-      fragment.show(getFragmentManager(), "add categories dialog");
+      fragment.show(getFragmentManager(), null);
     });
   }
 
   private void setListViewListener() {
     categoryListView.setOnItemClickListener((parent, view, position, id) -> {
       categorySelected = categoryListView.getItemAtPosition(position).toString();
-      bundle.putString("category", categorySelected);
+      MainActivity.getBundle().putString(getString(R.string.category_string_key), categorySelected);
       getFragmentManager().beginTransaction().replace(R.id.fragment_container, difficultyFragment)
-          .addToBackStack("categories").commit();
+          .addToBackStack(null).commit();
     });
   }
 
