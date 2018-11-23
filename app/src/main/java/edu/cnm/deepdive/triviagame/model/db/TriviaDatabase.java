@@ -28,7 +28,7 @@ import org.apache.commons.text.StringEscapeUtils;
  */
 @Database(
     entities = {TriviaCategory.class, TriviaQuestion.class, TriviaAnswers.class},
-    version = 1,
+    version = 2,
     exportSchema = true
 )
 public abstract class TriviaDatabase extends RoomDatabase {
