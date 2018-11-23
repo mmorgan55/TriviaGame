@@ -14,7 +14,7 @@ CREATE TABLE IF NOT EXISTS `TriviaAnswers`
 (`answers_id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
 `question_id` INTEGER NOT NULL,
 `answer` TEXT NOT NULL,
-`isCorrect` INTEGER NOT NULL,
+`is_correct` INTEGER NOT NULL,
 FOREIGN KEY(`question_id`)
 REFERENCES `TriviaQuestion`(`question_id`) ON UPDATE NO ACTION ON DELETE CASCADE ),
 
