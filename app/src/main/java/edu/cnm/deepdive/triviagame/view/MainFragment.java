@@ -12,6 +12,9 @@ import butterknife.ButterKnife;
 import edu.cnm.deepdive.triviagame.R;
 import edu.cnm.deepdive.triviagame.controller.MainActivity;
 
+/**
+ * This class is used to keep track of the game that the user would like to play.
+ */
 public class MainFragment extends android.support.v4.app.Fragment {
 
   @BindView(R.id.time_button)

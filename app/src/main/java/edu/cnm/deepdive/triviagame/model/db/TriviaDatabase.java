@@ -22,6 +22,10 @@ import java.io.IOException;
 import okio.Okio;
 import org.apache.commons.text.StringEscapeUtils;
 
+/**
+ * This is the class that sets up the database with all necessary tables. It
+ * will also pull in data from a file when it is first initialized.
+ */
 @Database(
     entities = {TriviaCategory.class, TriviaQuestion.class, TriviaAnswers.class},
     version = 1,

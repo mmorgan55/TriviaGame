@@ -17,6 +17,11 @@ import edu.cnm.deepdive.triviagame.view.GameFragment;
 import edu.cnm.deepdive.triviagame.view.MainFragment;
 import edu.cnm.deepdive.triviagame.view.PostGameFragment;
 
+/**
+ * The main functionality of this class is to initialize the database, hold all
+ * of the fragments directly related to playing the game, and allow users to
+ * sign out of the app at any point.
+ */
 public class MainActivity extends AppCompatActivity {
 
   private static Bundle bundle = new Bundle();
@@ -35,6 +40,11 @@ public class MainActivity extends AppCompatActivity {
         .beginTransaction().replace(R.id.fragment_container, mainFragment).commit();
   }
 
+  /**
+   * Overrides the functionality of onBackPressed to always go back to the
+   * MainFragment when an instance of PostGameFragment or GameFragment is
+   * in view.
+   */
   @Override
   public void onBackPressed() {
     if (getSupportFragmentManager()

@@ -6,6 +6,9 @@ import android.arch.persistence.room.Query;
 import edu.cnm.deepdive.triviagame.model.entity.TriviaCategory;
 import java.util.List;
 
+/**
+ * This is the Data Access Object for the TriviaCategory Entity.
+ */
 @Dao
 public interface TriviaCategoryDao {
 

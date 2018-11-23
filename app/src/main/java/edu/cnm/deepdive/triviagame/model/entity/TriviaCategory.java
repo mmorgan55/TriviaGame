@@ -5,6 +5,9 @@ import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
 import android.support.annotation.NonNull;
 
+/**
+ * This is the entity class that creates a TriviaCategory.
+ */
 @Entity
 public class TriviaCategory {
 
@@ -16,6 +19,10 @@ public class TriviaCategory {
   @ColumnInfo(name = "category_title")
   private String categoryTitle;
 
+  /**
+   * Initializes a TriviaCategory object.
+   * @param categoryTitle The title of the category.
+   */
   public TriviaCategory(@NonNull String categoryTitle) {
     this.categoryTitle = categoryTitle;
   }

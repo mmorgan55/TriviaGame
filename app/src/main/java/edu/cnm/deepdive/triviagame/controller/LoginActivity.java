@@ -15,6 +15,10 @@ import com.google.android.gms.tasks.Task;
 import edu.cnm.deepdive.triviagame.R;
 import edu.cnm.deepdive.triviagame.TriviaApplication;
 
+/**
+ * This class requests that the user sign-in before using the application and
+ * will not appear again unless the user logs out of the app.
+ */
 public class LoginActivity extends AppCompatActivity {
 
   private static final int REQUEST_CODE = 1000;

@@ -3,8 +3,10 @@ package edu.cnm.deepdive.triviagame.model.pojo;
 import java.util.List;
 import com.squareup.moshi.Json;
 
+/**
+ * Class that is used when a OpenTDB api call is made.
+ */
 public class TriviaPojo {
-
 
   @Json(name = "response_code")
   private Integer responseCode;
@@ -27,6 +29,9 @@ public class TriviaPojo {
     this.results = results;
   }
 
+  /**
+   * Class that holds the data that is retrieved when the OpenTDB api is called.
+   */
   public static class TriviaResult {
 
     @Json(name = "category")

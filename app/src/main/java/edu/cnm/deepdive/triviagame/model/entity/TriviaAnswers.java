@@ -6,6 +6,10 @@ import android.arch.persistence.room.ForeignKey;
 import android.arch.persistence.room.PrimaryKey;
 import android.support.annotation.NonNull;
 
+/**
+ * This is the entity class for an answer to a TriviaQuestion. Each TriviaAnswers
+ * object is associated with exactly one question.
+ */
 @Entity(
     foreignKeys = {
         @ForeignKey(
@@ -29,9 +33,16 @@ public class TriviaAnswers {
   @ColumnInfo(name = "answer")
   private String answer;
 
-  @ColumnInfo
+  @ColumnInfo(name = "is_correct")
   private boolean isCorrect;
 
+  /**
+   * Initializes a TriviaAnswer object and associates it with a TriviaQuestion
+   * object.
+   * @param answer The text of the answer.
+   * @param isCorrect Whether or not the answer is correct. True if correct, false otherwise.
+   * @param questionId The id of the question it is associated with.
+   */
   public TriviaAnswers(@NonNull String answer, boolean isCorrect, long questionId) {
     this.answer = answer;
     this.isCorrect = isCorrect;

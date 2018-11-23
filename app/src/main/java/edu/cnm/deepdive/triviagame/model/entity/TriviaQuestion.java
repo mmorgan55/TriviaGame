@@ -6,6 +6,9 @@ import android.arch.persistence.room.ForeignKey;
 import android.arch.persistence.room.PrimaryKey;
 import android.support.annotation.NonNull;
 
+/**
+ *
+ */
 @Entity(
     foreignKeys = {
         @ForeignKey(
@@ -36,7 +39,14 @@ public class TriviaQuestion {
   public TriviaQuestion() {
   }
 
-  public TriviaQuestion(String question, String difficulty, long category_id) {
+  /**
+   * Initializes a TriviaQuestion object and associates it with a TriviaCategory
+   * object.
+   * @param question Text of the question.
+   * @param difficulty Difficulty of the question.
+   * @param category_id Id of the associated category.
+   */
+  public TriviaQuestion(@NonNull String question, @NonNull String difficulty, long category_id) {
     this.question = question;
     this.categoryId = category_id;
     this.difficulty = difficulty;
@@ -47,6 +57,7 @@ public class TriviaQuestion {
     return question;
   }
 
+  @NonNull
   @Override
   public String toString() {
     return getQuestion();
