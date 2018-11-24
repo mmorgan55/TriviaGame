@@ -23,7 +23,7 @@
   <string name="timer">%d secs</string>
   <string name="all_button_text">ALL</string>
 
-  <string name="add_categories_title">ADD CATEGORIES</string>
+  <string name="add_categories_title">ADD \nCATEGORIES</string>
   <string name="base_url">https://opentdb.com/</string>
   <string name="post_game_fragment_title">POST GAME RESULTS</string>
   <string name="main_menu_button_text">RETURN TO GAME SELECT</string>

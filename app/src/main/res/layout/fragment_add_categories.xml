@@ -9,11 +9,14 @@
   tools:context=".view.AddCategoriesFragment">
 
   <TextView
-    style="@style/TitleStyle"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:gravity="center"
     android:fontFamily="@font/faster_one"
-    android:text="@string/add_categories_title"/>
+    android:text="@string/add_categories_title"
+    android:textSize="38sp"
+    style="@style/TitleStyle"
+    />
 
   <android.support.design.widget.CoordinatorLayout
     android:layout_width="match_parent"
@@ -22,7 +25,10 @@
     <ListView
       android:id="@+id/add_category_list_view"
       android:layout_width="match_parent"
-      android:layout_height="wrap_content">
+      android:layout_height="wrap_content"
+      android:layout_marginTop="10dp"
+      android:dividerHeight="10dp"
+      android:divider="@color/common_google_signin_btn_text_dark_disabled">
     </ListView>
 
     <ProgressBar
