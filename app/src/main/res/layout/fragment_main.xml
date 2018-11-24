@@ -12,9 +12,9 @@
   <android.support.v7.widget.CardView
     android:id="@+id/title_card"
     android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    app:cardElevation="10dp"
-    app:cardBackgroundColor="@android:color/white">
+    android:layout_height="0dp"
+    android:layout_weight="0.5"
+    app:cardElevation="10dp">
 
     <TextView
       android:id="@+id/game_title"
@@ -22,12 +22,11 @@
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:layout_gravity="center"
-      android:padding="25dp"
+      android:padding="10dp"
       android:fontFamily="@font/faster_one"
       android:gravity="center"
       android:text="@string/game_title"
-      android:textAllCaps="false"
-      android:textSize="70sp"
+      android:textSize="60sp"
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toTopOf="parent"/>
   </android.support.v7.widget.CardView>
@@ -35,7 +34,9 @@
 
   <android.support.v7.widget.CardView
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="0dp"
+    android:layout_weight="0.5"
+    android:layout_marginTop="20dp"
     app:cardElevation="10dp"
     app:cardBackgroundColor="@android:color/white"
     app:layout_constraintBottom_toBottomOf="parent"
@@ -50,10 +51,11 @@
       <Button
         android:id="@+id/time_button"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.5"
         android:layout_margin="10dp"
         android:layout_gravity="center"
-        android:backgroundTint="@android:color/holo_orange_dark"
+        android:background="@drawable/play_time_button"
         android:text="@string/time_button_text"
         android:fontFamily="@font/faster_one"
         style="@style/CategoryName"/>
@@ -61,10 +63,11 @@
       <Button
         android:id="@+id/difficulty_button"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.5"
         android:layout_margin="10dp"
         android:layout_gravity="center"
-        android:backgroundTint="@android:color/holo_red_light"
+        android:background="@drawable/play_sudden_button"
         android:text="@string/sudden_button_text"
         android:fontFamily="@font/faster_one"
         style="@style/CategoryName"/>
@@ -72,10 +75,11 @@
       <Button
         android:id="@+id/relaxed_button"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.5"
         android:layout_margin="10dp"
         android:layout_gravity="center"
-        android:backgroundTint="@android:color/holo_purple"
+        android:background="@drawable/play_relax_button"
         android:text="@string/relax_button_text"
         android:fontFamily="@font/faster_one"
         style="@style/CategoryName"/>

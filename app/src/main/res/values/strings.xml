@@ -21,7 +21,7 @@
   <string name="tally_correct">Correct: %d</string>
   <string name="tally_incorrect">Incorrect: %d</string>
   <string name="timer">%d secs</string>
-  <string name="all_button_text">ALL DIFFICULTIES</string>
+  <string name="all_button_text">ALL</string>
 
   <string name="add_categories_title">ADD CATEGORIES</string>
   <string name="base_url">https://opentdb.com/</string>
