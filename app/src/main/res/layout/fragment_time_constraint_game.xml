@@ -6,52 +6,58 @@
   android:layout_width="match_parent"
   android:layout_height="match_parent"
   android:orientation="vertical"
+  android:padding="10dp"
+  android:background="@android:color/holo_blue_dark"
   tools:context=".view.RelaxedGameFragment">
 
-  <android.support.constraint.ConstraintLayout
+  <android.support.v7.widget.CardView
     android:layout_width="match_parent"
-    android:layout_height="46dp"
-    android:orientation="horizontal">
+    android:layout_height="0dp"
+    android:layout_weight="0.07">
+    <android.support.constraint.ConstraintLayout
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:orientation="horizontal">
 
-    <TextView
-      android:id="@+id/time_correct_tally"
-      style="@style/CorrectTallyStyle"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:layout_marginTop="8dp"
-      android:layout_marginStart="8dp"
-      android:text="@string/tally_correct"
-      app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toTopOf="parent"/>
+      <TextView
+        android:id="@+id/time_correct_tally"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="8dp"
+        android:text="@string/tally_correct"
+        style="@style/CorrectTallyStyle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
 
-    <TextView
-      android:id="@+id/time_timer"
-      style="@style/IncorrectTallyStyle"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:layout_marginTop="8dp"
-      android:layout_marginEnd="8dp"
-      android:text="@string/timer"
-      app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintTop_toTopOf="parent"/>
-  </android.support.constraint.ConstraintLayout>
+      <TextView
+        android:id="@+id/time_timer"
+        style="@style/IncorrectTallyStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:text="@string/timer"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+    </android.support.constraint.ConstraintLayout>
+  </android.support.v7.widget.CardView>
 
-  <RelativeLayout
+  <LinearLayout
     android:layout_width="match_parent"
-    android:layout_height="602dp"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_weight="0.2"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent">
 
     <android.support.v7.widget.CardView
-      android:id="@+id/time_question_view"
-      android:layout_width="wrap_content"
-      android:layout_height="267dp"
-      android:layout_marginTop="44dp"
-      android:layout_marginStart="71dp"
-      android:layout_marginEnd="70dp"
-      android:layout_alignParentEnd="true"
-      android:layout_alignParentStart="true"
-      android:layout_alignParentTop="true">
+      android:id="@+id/question_view"
+      android:layout_width="match_parent"
+      android:layout_height="0dp"
+      android:layout_weight="0.5"
+      android:layout_marginTop="10dp"
+      android:layout_gravity="center">
 
       <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
@@ -61,7 +67,9 @@
           android:id="@+id/time_question_text"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
-          android:padding="20dp"
+          android:layout_gravity="center"
+          android:padding="10dp"
+          style="@style/QuestionTextStyle"
           app:layout_constraintBottom_toBottomOf="parent"
           app:layout_constraintEnd_toEndOf="parent"
           app:layout_constraintStart_toStartOf="parent"
@@ -69,75 +77,70 @@
 
       </android.support.constraint.ConstraintLayout>
 
-
     </android.support.v7.widget.CardView>
 
     <android.support.v7.widget.CardView
       android:id="@+id/time_answers_view"
       android:layout_width="wrap_content"
       android:layout_height="156dp"
-      android:layout_marginBottom="75dp"
-      android:layout_marginStart="29dp"
-      android:layout_marginEnd="25dp"
-      android:layout_alignParentBottom="true"
-      android:layout_alignParentEnd="true"
-      android:layout_alignParentStart="true">
+      android:layout_gravity="center"
+      android:layout_marginTop="10dp">
 
       <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <Button
+        <TextView
           android:id="@+id/time_text_button1"
+          style="@style/AnswerTextStyle"
           android:layout_width="150dp"
           android:layout_height="55dp"
-          android:gravity="center"
           android:layout_marginTop="10dp"
           android:layout_marginStart="15dp"
           android:layout_alignParentStart="true"
           android:layout_alignParentTop="true"
           android:background="@drawable/answer_button_style"
-          style="@style/AnswerTextStyle"/>
+          android:gravity="center"/>
 
-        <Button
+        <TextView
           android:id="@+id/time_text_button2"
+          style="@style/AnswerTextStyle"
           android:layout_width="150dp"
           android:layout_height="55dp"
-          android:gravity="center"
           android:layout_marginTop="10dp"
           android:layout_marginEnd="15dp"
           android:layout_alignParentEnd="true"
           android:layout_alignParentTop="true"
           android:background="@drawable/answer_button_style"
-          style="@style/AnswerTextStyle"/>
+          android:gravity="center"/>
 
-        <Button
+        <TextView
           android:id="@+id/time_text_button3"
+          style="@style/AnswerTextStyle"
           android:layout_width="150dp"
           android:layout_height="55dp"
-          android:gravity="center"
           android:layout_marginBottom="10dp"
           android:layout_marginStart="15dp"
           android:layout_alignParentBottom="true"
           android:layout_alignParentStart="true"
           android:background="@drawable/answer_button_style"
-          style="@style/AnswerTextStyle"/>
+          android:gravity="center"/>
 
-        <Button
+        <TextView
           android:id="@+id/time_text_button4"
+          style="@style/AnswerTextStyle"
           android:layout_width="150dp"
           android:layout_height="55dp"
-          android:gravity="center"
           android:layout_marginBottom="10dp"
           android:layout_marginEnd="15dp"
           android:layout_alignParentBottom="true"
           android:layout_alignParentEnd="true"
           android:background="@drawable/answer_button_style"
-          style="@style/AnswerTextStyle"/>
+          android:gravity="center"/>
       </RelativeLayout>
 
     </android.support.v7.widget.CardView>
 
-  </RelativeLayout>
+  </LinearLayout>
 
 </LinearLayout>
