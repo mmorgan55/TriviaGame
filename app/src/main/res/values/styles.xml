@@ -19,7 +19,8 @@
   </style>
 
   <style name="TallyStyle" parent="AppTheme">
-    <item name="android:textSize">30sp</item>
+    <item name="android:textSize">25sp</item>
+    <item name="android:textStyle">bold|italic</item>
   </style>
 
   <style name="CorrectTallyStyle" parent="TallyStyle">
@@ -28,6 +29,11 @@
 
   <style name="IncorrectTallyStyle" parent="TallyStyle">
     <item name="android:textColor">#FFFF0000</item>
+  </style>
+
+  <style name="QuestionTextStyle" parent="AppTheme">
+    <item name="android:textSize">25sp</item>
+    <item name="android:textStyle">bold</item>
   </style>
   
   <style name="AnswerTextStyle" parent="AppTheme">

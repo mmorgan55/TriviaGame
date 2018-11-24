@@ -15,8 +15,7 @@
     android:fontFamily="@font/faster_one"
     android:text="@string/add_categories_title"
     android:textSize="38sp"
-    style="@style/TitleStyle"
-    />
+    style="@style/TitleStyle"/>
 
   <android.support.design.widget.CoordinatorLayout
     android:layout_width="match_parent"
@@ -43,8 +42,5 @@
       app:layout_constraintRight_toRightOf="parent"
       app:layout_constraintTop_toTopOf="parent"/>
   </android.support.design.widget.CoordinatorLayout>
-
-
-
 
 </LinearLayout>
