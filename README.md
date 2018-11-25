@@ -80,6 +80,7 @@ players by storing them in a database.
 [Link to the wireframes](TriviaGameWF.pdf)
 
 ## User Stories
+[Link to the user stories](USER_STORIES.md)
 
 ## Entity Relationship Diagram
 
