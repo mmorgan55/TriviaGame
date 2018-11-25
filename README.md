@@ -83,6 +83,7 @@ players by storing them in a database.
 [Link to the user stories](USER_STORIES.md)
 
 ## Entity Relationship Diagram
+[Link to the Entity Relationship Diagram](TriviaGameERD.pdf)
 
 ## JavaDocs
 
