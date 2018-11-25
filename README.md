@@ -78,6 +78,8 @@ players by storing them in a database.
 
 ## Wireframes
 
+## User Stories
+
 ## Entity Relationship Diagram
 
 ## JavaDocs
