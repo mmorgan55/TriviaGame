@@ -54,3 +54,36 @@ minor design flaws based on the size of the phone's screen.
 * [Google Sign-In Services](https://developers.google.com/identity/sign-in/android/start)
 * [Open Trivia Database](https://opentdb.com/)
 
+## Aesthetic/Cosmetic improvements
+#### List of improvements that could be made:
+* Make correct/incorrect answers more obvious with pop-up texts (not toasts) and sound effects.
+* Add more animations to make browsing through the app more pleasant to the eye.
+* Differentiate the types and levels of questions with either colors and tags.
+* Animate the questions as each one is brought up for a more interesting experience.
+* Use more external grpahic resources to make the app more interesting than just the solid colors that are
+used currently.
+
+## Functional Stretch Goals
+#### List of functional stretch goals:
+* Originally, I wanted this to be a multiplayer game, so that would be the first stretch goal.
+* A better scoring system for each game type to reflect how well each person did.
+* Rework the "Sudden Death" game mode to instead give three chances instead of one.
+* Better mix and matching of different categories and difficulties, such as being able to pick multiple or all
+categories.
+* Give ability to users to choose the amount of questions in certain game modes.
+* A highscore system by game-type, category, difficulty, and combinations of them all that can be viewed by all 
+players by storing them in a database.
+* More game modes.
+* A larger list of trivia questions.
+
+## Wireframes
+
+## Entity Relationship Diagram
+
+## JavaDocs
+
+## Licenses
+
+## Build Instructions
+
+## User Instructions
