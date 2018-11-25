@@ -77,6 +77,7 @@ players by storing them in a database.
 * A larger list of trivia questions.
 
 ## Wireframes
+[Link to the wireframes](TriviaGameWF.pdf)
 
 ## User Stories
 
