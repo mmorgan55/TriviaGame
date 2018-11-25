@@ -40,4 +40,17 @@ minor design flaws based on the size of the phone's screen.
 * App is locked in portrait mode.
 * All text and questions within app are in American english and no translations are being given.
   
-  
+## External Libraries
+#### External Libraries used:
+* com.jakewharton:butterknife:9.0.0-rc1
+* com.jakewharton:butterknife-compiler:9.0.0-rc1
+* com.squareup.retrofit2:retrofit:2.4.0
+* com.squareup.retrofit2:converter-moshi:2.4.0
+* org.apache.commons:commons-text:1.6
+* com.google.android.gms:play-services-auth:16.0.1
+
+## External Services
+#### External Services used:
+* [Google Sign-In Services](https://developers.google.com/identity/sign-in/android/start)
+* [Open Trivia Database](https://opentdb.com/)
+
