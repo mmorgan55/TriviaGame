@@ -88,6 +88,9 @@ players by storing them in a database.
 ## JavaDocs
 
 ## Licenses
+* [Link to RetroFit License](https://square.github.io/retrofit/) (License is at bottom of page)
+* [Link to Butterknife License](http://jakewharton.github.io/butterknife/) (License is at bottom of page)
+* [Link to Apache License](http://www.apache.org/licenses/)
 
 ## Build Instructions
 
