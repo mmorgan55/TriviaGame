@@ -35,7 +35,7 @@
 
   <string name="relaxed_high_score">Relaxed High Score: %d</string>
   <string name="sudden_high_score">Sudden Death High Score: %d</string>
-  <string name="time_high_score">Time Constraint High Score: %d</string>
+  <string name="time_high_score">Timed High Score: %d</string>
 
   <string name="relaxed_high_score_key">RELAXED_HIGH_SCORE</string>
   <string name="sudden_high_score_key">SUDDEN_HIGH_SCORE</string>
