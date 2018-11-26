@@ -77,13 +77,13 @@ players by storing them in a database.
 * A larger list of trivia questions.
 
 ## Wireframes
-[Link to the wireframes](TriviaGameWF.pdf)
+[Link to wireframes](TriviaGameWF.pdf)
 
 ## User Stories
-[Link to the user stories](USER_STORIES.md)
+[Link to user stories](USER_STORIES.md)
 
 ## Entity Relationship Diagram
-[Link to the Entity Relationship Diagram](TriviaGameERD.pdf)
+[Link to Entity Relationship Diagram](TriviaGameERD.pdf)
 
 ## Data Definition Language
 * [Link to SQL file](trivia_game.sql)
@@ -99,3 +99,4 @@ players by storing them in a database.
 * [Link to build instructions](Build_Instr.md)
 
 ## User Instructions
+* [Link to user instructions](User_Instr.md)
