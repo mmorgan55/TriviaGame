@@ -27,7 +27,7 @@
 * Buttons in all game fragments will overlap on any screen less than 720 pixels in width.
 * Sudden Death" button text will go onto two lines and partially disappear on any screen less than 720 
   pixels in width.
-* Difficulty" title in difficulty selection will go to two lines on any screen less than 720 pixels in width.
+* "Difficulty" title in difficulty selection will go to two lines on any screen less than 720 pixels in width.
 * If you are playing the timed game mode and hit the back button, the timer will not stop and could go below 0
   while the alert dialog is still up. This will not cause a crash even if an option is selected from the 
   dialog, though it will somewhat slow to disappear.
