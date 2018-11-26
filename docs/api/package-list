@@ -1,0 +1,8 @@
+edu.cnm.deepdive.triviagame
+edu.cnm.deepdive.triviagame.controller
+edu.cnm.deepdive.triviagame.model.dao
+edu.cnm.deepdive.triviagame.model.db
+edu.cnm.deepdive.triviagame.model.entity
+edu.cnm.deepdive.triviagame.model.pojo
+edu.cnm.deepdive.triviagame.service
+edu.cnm.deepdive.triviagame.view
