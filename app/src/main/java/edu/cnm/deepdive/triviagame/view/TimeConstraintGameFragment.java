@@ -17,6 +17,12 @@ import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
+/**
+ * This class is for the Timed game type. Users have limited time to get all
+ * questions correct and will gain/lose time based on correct/incorrect answers.
+ * Keeps track of the questions the user got correct and how much time the user
+ * has left.
+ */
 public class TimeConstraintGameFragment extends GameFragment {
 
   private static final int TIMER_START_DELAY = 0;

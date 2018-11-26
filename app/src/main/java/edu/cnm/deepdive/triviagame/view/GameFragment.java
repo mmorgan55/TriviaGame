@@ -14,9 +14,20 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * This class holds the some of the logic for each game type to be played. It
+ * also holds the the list of questions and list of answers that were selected
+ * by the user.
+ */
 public abstract class GameFragment extends Fragment {
 
+  /**
+   * Holds the questions for the current game being played.
+   */
   protected List<TriviaQuestion> questions;
+  /**
+   * Hold the answers to questions for the current game being played.
+   */
   protected List<TriviaAnswers> answers;
 
   private String category;
@@ -35,22 +46,49 @@ public abstract class GameFragment extends Fragment {
     new QuestionTask().execute();
   }
 
+  /**
+   * Methods that each game type invokes once the questions and answer lists
+   * have been populated.
+   */
   protected abstract void setupGame();
 
+  /**
+   * Updates the tallies for the game types with correct and incorrect tallies.
+   * @param correct Amount of questions that have the user has gotten correct.
+   * @param incorrect Amount of questions that have the user has gotten incorrect.
+   * @param correctTally The TextView that displays the correct tally.
+   * @param incorrectTally The TextView that displays the incorrect tally.
+   */
   protected void updateTally(int correct, int incorrect, TextView correctTally,
       TextView incorrectTally) {
     correctTally.setText(getString(R.string.tally_correct, correct));
     incorrectTally.setText(getString(R.string.tally_incorrect, incorrect));
   }
 
+  /**
+   * Updates the tallies for the game types with only a correct tally.
+   * @param correct Amount of questions that have the user has gotten correct.
+   * @param correctTally The TextView that displays the correct tally.
+   */
   protected void updateTally(int correct, TextView correctTally) {
     correctTally.setText(getString(R.string.tally_correct, correct));
   }
 
+  /**
+   * Checks if the selected answer is the correct one for the associated question,
+   * @param answer The answer selected by the user.
+   * @param correctAnswer The correct answer.
+   * @return True if answer is equal to correctAnswers, false otherwise.
+   */
   protected boolean isAnswerCorrect(String answer, TriviaAnswers correctAnswer) {
     return correctAnswer.getAnswer().equals(answer);
   }
 
+  /**
+   * Inflates PostGameFragment once the game is over.
+   * @param questionsCorrect Amount of questions the user got correct during the game.
+   * @param gameType The game type the user was playing.
+   */
   protected void moveToPostGame(int questionsCorrect, String gameType) {
     Bundle bundle = new Bundle();
     bundle.putInt(getString(R.string.correct_questions_string_key), questionsCorrect);

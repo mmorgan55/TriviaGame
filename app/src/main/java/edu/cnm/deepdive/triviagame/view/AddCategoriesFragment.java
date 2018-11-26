@@ -36,6 +36,11 @@ import retrofit2.Retrofit;
 import retrofit2.Retrofit.Builder;
 import retrofit2.converter.moshi.MoshiConverterFactory;
 
+/**
+ * This class is for adding new categories to the game. It uses Retrofit to make
+ * the api call. Once the call is made, it uses the created TriviaPojo object
+ * to put the questions into the database.
+ */
 public class AddCategoriesFragment extends DialogFragment {
 
   private static final Integer QUESTIONS_REQUESTED = 50;
@@ -115,7 +120,7 @@ public class AddCategoriesFragment extends DialogFragment {
     }
   }
 
-  public void setCategoriesFragment(CategoriesFragment categoriesFragment) {
+  void setCategoriesFragment(CategoriesFragment categoriesFragment) {
     this.categoriesFragment = categoriesFragment;
   }
 

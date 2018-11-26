@@ -13,7 +13,7 @@ import edu.cnm.deepdive.triviagame.R;
 import edu.cnm.deepdive.triviagame.controller.MainActivity;
 
 /**
- * This class is used to keep track of the game that the user would like to play.
+ * This class is for the user to select the game type that they want to play.
  */
 public class MainFragment extends android.support.v4.app.Fragment {
 

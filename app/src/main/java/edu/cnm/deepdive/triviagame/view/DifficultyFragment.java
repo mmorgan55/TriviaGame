@@ -14,6 +14,10 @@ import edu.cnm.deepdive.triviagame.controller.GameController;
 import edu.cnm.deepdive.triviagame.R;
 import edu.cnm.deepdive.triviagame.controller.MainActivity;
 
+/**
+ * This class allows users to select the difficulty of questions that they would
+ * like the questions to be during the game.
+ */
 public class DifficultyFragment extends Fragment {
 
   @BindView(R.id.easy_button)

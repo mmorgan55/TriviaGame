@@ -22,6 +22,11 @@ import edu.cnm.deepdive.triviagame.model.entity.TriviaCategory;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ *  This class displays the categories that are currently in the database that can be
+ *  selected and also holds the floating action button that can be used to add more
+ *  categories.
+ */
 public class CategoriesFragment extends Fragment {
 
   @BindView(R.id.category_list_view)
@@ -76,7 +81,7 @@ public class CategoriesFragment extends Fragment {
     new CheckCategoryTask().execute();
   }
 
-  public void refreshData() {
+  void refreshData() {
     new CheckCategoryTask().execute();
   }
 

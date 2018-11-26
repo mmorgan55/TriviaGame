@@ -14,6 +14,11 @@ import edu.cnm.deepdive.triviagame.model.entity.TriviaAnswers;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * This class is for the Relaxed game type. Keeps track of how many questions
+ * the user got correct/incorrect and only ends if all questions are answered
+ * or the user goes back to the main menu.
+ */
 public class RelaxedGameFragment extends GameFragment {
 
   @BindView(R.id.relaxed_correct_tally)
@@ -65,7 +70,7 @@ public class RelaxedGameFragment extends GameFragment {
     updateUI();
   }
 
-  public void updateUI() {
+  private void updateUI() {
     updateTally(questionsCorrect, questionsIncorrect, correctTally, incorrectTally);
     long qId = questions.get(questionIndex).getQuestionId();
     questionText.setText(questions.get(questionIndex).getQuestion());

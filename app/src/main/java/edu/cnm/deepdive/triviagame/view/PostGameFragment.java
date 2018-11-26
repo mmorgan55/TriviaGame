@@ -14,6 +14,10 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import edu.cnm.deepdive.triviagame.R;
 
+/**
+ * This is the class that comes after each game is completed. Displays results
+ * of the game and allows users to return to main menu.
+ */
 public class PostGameFragment extends android.support.v4.app.Fragment {
 
   @BindView(R.id.questions_correct)

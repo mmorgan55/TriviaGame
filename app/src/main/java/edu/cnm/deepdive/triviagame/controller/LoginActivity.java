@@ -17,7 +17,8 @@ import edu.cnm.deepdive.triviagame.TriviaApplication;
 
 /**
  * This class requests that the user sign-in before using the application and
- * will not appear again unless the user logs out of the app.
+ * will not appear again unless the user logs out of the app. Utilizes Google
+ * Sign-In.
  */
 public class LoginActivity extends AppCompatActivity {
 

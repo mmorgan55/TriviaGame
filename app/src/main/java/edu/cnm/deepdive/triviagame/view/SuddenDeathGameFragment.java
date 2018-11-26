@@ -14,7 +14,11 @@ import edu.cnm.deepdive.triviagame.model.entity.TriviaAnswers;
 import java.util.ArrayList;
 import java.util.List;
 
-
+/**
+ * This class is for the Sudden Death game type. Goes until the user goes through
+ * all questions or gets one wrong. Keeps track of the amount the user has gotten
+ * correct.
+ */
 public class SuddenDeathGameFragment extends GameFragment {
 
   @BindView(R.id.sudden_correct_tally)
