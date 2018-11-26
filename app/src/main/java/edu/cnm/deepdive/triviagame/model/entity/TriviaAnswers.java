@@ -7,8 +7,8 @@ import android.arch.persistence.room.PrimaryKey;
 import android.support.annotation.NonNull;
 
 /**
- * This is the entity class for an answer to a TriviaQuestion. Each TriviaAnswers
- * object is associated with exactly one question.
+ * This is the entity class for an answer to a TriviaQuestion object. Each
+ * TriviaAnswers object is associated with exactly one question.
  */
 @Entity(
     foreignKeys = {

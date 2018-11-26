@@ -6,7 +6,7 @@ import android.arch.persistence.room.PrimaryKey;
 import android.support.annotation.NonNull;
 
 /**
- * This is the entity class that creates a TriviaCategory.
+ * This is the entity class that creates a TriviaCategory object.
  */
 @Entity
 public class TriviaCategory {
