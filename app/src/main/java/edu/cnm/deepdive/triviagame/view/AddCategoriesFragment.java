@@ -64,10 +64,7 @@ public class AddCategoriesFragment extends DialogFragment {
 
     View view = inflater.inflate(R.layout.fragment_add_categories, container, false);
     ButterKnife.bind(this, view);
-    categories = new ArrayList<>();
-    prevAddedCategories = new ArrayList<>();
-    progressSpinner.setVisibility(View.GONE);
-    categoryMap = new HashMap<>();
+    initialize();
     new CheckAddCategoriesTask().execute();
 
     return view;
@@ -122,6 +119,13 @@ public class AddCategoriesFragment extends DialogFragment {
 
   void setCategoriesFragment(CategoriesFragment categoriesFragment) {
     this.categoriesFragment = categoriesFragment;
+  }
+
+  private void initialize() {
+    categories = new ArrayList<>();
+    prevAddedCategories = new ArrayList<>();
+    progressSpinner.setVisibility(View.GONE);
+    categoryMap = new HashMap<>();
   }
 
   private class AddCategoryAdapter extends ArrayAdapter<TriviaCategory> {

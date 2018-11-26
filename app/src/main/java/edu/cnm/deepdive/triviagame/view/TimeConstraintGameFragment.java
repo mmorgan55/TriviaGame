@@ -45,11 +45,11 @@ public class TimeConstraintGameFragment extends GameFragment {
   @BindView(R.id.time_text_button4)
   TextView answers4;
 
-  private int questionsCorrect = 0;
+  private int questionsCorrect;
   private Timer timer;
-  private int currentTime = 60;
+  private int currentTime;
   private List<TextView> answerTexts;
-  private int questionIndex = 0;
+  private int questionIndex;
   private OnClickListener listener;
   private TriviaAnswers correctAnswer;
 
@@ -62,6 +62,7 @@ public class TimeConstraintGameFragment extends GameFragment {
 
     answerTexts = new ArrayList<>();
     timer = new Timer();
+    currentTime = 60;
 
     setListener();
 
@@ -82,7 +83,6 @@ public class TimeConstraintGameFragment extends GameFragment {
     setTaskAndTimer();
     updateUI();
   }
-
 
   private void updateGame(boolean isCorrect) {
     if (isCorrect) {

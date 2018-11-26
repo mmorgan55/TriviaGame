@@ -34,9 +34,9 @@ public class SuddenDeathGameFragment extends GameFragment {
   @BindView(R.id.sudden_text_button4)
   TextView answers4;
 
-  private int questionsCorrect = 0;
+  private int questionsCorrect;
   private List<TextView> answerTexts;
-  private int questionIndex = 0;
+  private int questionIndex;
   private OnClickListener listener;
   private TriviaAnswers correctAnswer;
 

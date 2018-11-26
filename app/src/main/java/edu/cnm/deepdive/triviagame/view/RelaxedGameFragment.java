@@ -36,10 +36,10 @@ public class RelaxedGameFragment extends GameFragment {
   @BindView(R.id.relaxed_text_button4)
   TextView answers4;
 
-  private int questionsCorrect = 0;
-  private int questionsIncorrect = 0;
+  private int questionsCorrect;
+  private int questionsIncorrect;
   private List<TextView> answerTexts;
-  private int questionIndex = 0;
+  private int questionIndex;
   private OnClickListener listener;
   private TriviaAnswers correctAnswer;
 
@@ -49,6 +49,7 @@ public class RelaxedGameFragment extends GameFragment {
 
     View view = inflater.inflate(R.layout.fragment_relaxed_game, container, false);
     ButterKnife.bind(this, view);
+
 
     answerTexts = new ArrayList<>();
     setListener();
