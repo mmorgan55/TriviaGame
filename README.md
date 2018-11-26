@@ -80,18 +80,16 @@
 * A larger list of trivia questions.
 
 ## Wireframes
-[Link to wireframes](TriviaGameWF.pdf)
+* [Link to wireframes](TriviaGameWF.pdf)
 
 ## User Stories
-[Link to user stories](USER_STORIES.md)
+* [Link to user stories](USER_STORIES.md)
 
 ## Entity Relationship Diagram
-[Link to Entity Relationship Diagram](TriviaGameERD.pdf)
+* [Link to Entity Relationship Diagram](TriviaGameERD.pdf)
 
 ## Data Definition Language
 * [Link to SQL file](trivia_game.sql)
-
-## JavaDocs
 
 ## Licenses
 * [Link to RetroFit License](https://square.github.io/retrofit/) (License is at bottom of page)
