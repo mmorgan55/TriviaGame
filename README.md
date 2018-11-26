@@ -85,6 +85,9 @@ players by storing them in a database.
 ## Entity Relationship Diagram
 [Link to the Entity Relationship Diagram](TriviaGameERD.pdf)
 
+## Data Definition Language
+* [Link to SQL file](trivia_game.sql)
+
 ## JavaDocs
 
 ## Licenses
@@ -93,5 +96,6 @@ players by storing them in a database.
 * [Link to Apache License](http://www.apache.org/licenses/)
 
 ## Build Instructions
+* [Link to build instructions](Build_Instr.md)
 
 ## User Instructions
