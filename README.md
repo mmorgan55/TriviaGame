@@ -15,12 +15,13 @@
 ## App Readiness
 * The app is in a state of functional completeness and in a decent design state. Navigation in any fragment
   is functional, other than a minor issue when playing the timed game mode. All game modes can be played
-  without having any crashes (that I am aware of). There is one major bug that is known, but there are a few 
-  minor design flaws based on the size of the phone's screen.
+  without having any crashes (that I am aware of). There is one major bug that is known and a few minor 
+  design flaws based on the size of the phone's screen.
 
 #### Bugs:
 * Although it is unlikely, it is possible to pull in categories and not get a certain difficulty, which would 
-  case the app to crash if that category and difficulty combination were to be selected. 
+  cause the app to crash if that category and difficulty combination were to be selected. This is not so much
+  a bug, but an oversight in my implementation.
 * If a question is long enough, it is possible for the card view on each game fragment to cover the tallies
   at the top for any screen 1280 pixels or lower in height.
 * Buttons in all game fragments will overlap on any screen less than 720 pixels in width.
