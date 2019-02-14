@@ -55,5 +55,6 @@
   <string name="main_fragment_tag">main</string>
   <string name="correct_questions_string_key">correct</string>
   <string name="total_questions_string_key">total</string>
+  <string name="lives_counter">Lives: %d</string>
 
 </resources>

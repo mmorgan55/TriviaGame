@@ -31,6 +31,10 @@
     <item name="android:textColor">#FFFF0000</item>
   </style>
 
+  <style name="LivesStyle" parent="TallyStyle">
+    <item name="android:textColor">#FF0077FF</item>
+  </style>
+
   <style name="QuestionTextStyle" parent="AppTheme">
     <item name="android:textSize">25sp</item>
     <item name="android:textStyle">bold</item>
