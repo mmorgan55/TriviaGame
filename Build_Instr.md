@@ -11,8 +11,8 @@
 
 * When prompted to Open the project, click No.
 
-* From the currently opened project go to File > New > Project from existing sources and select the projecy
-directory that you just cloned.
+* From the currently opened project go to File > New > Project from existing sources and select the project
+  directory that you just cloned.
 
 * When the dialog pops up, make sure that Gradle is selected and hit next.
 
