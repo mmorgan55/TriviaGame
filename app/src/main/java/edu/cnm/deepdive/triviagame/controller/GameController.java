@@ -5,7 +5,7 @@ import android.support.v4.app.FragmentActivity;
 import edu.cnm.deepdive.triviagame.R;
 import edu.cnm.deepdive.triviagame.view.GameFragment;
 import edu.cnm.deepdive.triviagame.view.RelaxedGameFragment;
-import edu.cnm.deepdive.triviagame.view.SuddenDeathGameFragment;
+import edu.cnm.deepdive.triviagame.view.ThreeLivesGameFragment;
 import edu.cnm.deepdive.triviagame.view.TimeConstraintGameFragment;
 
 /**
@@ -22,7 +22,7 @@ public class GameController {
         fragment = new RelaxedGameFragment();
         break;
       case "sudden":
-        fragment = new SuddenDeathGameFragment();
+        fragment = new ThreeLivesGameFragment();
         break;
       case "time":
         fragment = new TimeConstraintGameFragment();

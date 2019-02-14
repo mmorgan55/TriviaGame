@@ -19,7 +19,7 @@ import java.util.List;
  * all questions or gets one wrong. Keeps track of the amount the user has gotten
  * correct.
  */
-public class SuddenDeathGameFragment extends GameFragment {
+public class ThreeLivesGameFragment extends GameFragment {
 
   @BindView(R.id.sudden_correct_tally)
   TextView correctTally;
@@ -47,7 +47,7 @@ public class SuddenDeathGameFragment extends GameFragment {
   public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
       Bundle savedInstanceState) {
 
-    View view = inflater.inflate(R.layout.fragment_sudden_death_game, container, false);
+    View view = inflater.inflate(R.layout.fragment_three_lives_game, container, false);
     ButterKnife.bind(this, view);
 
     answerTexts = new ArrayList<>();
@@ -103,7 +103,7 @@ public class SuddenDeathGameFragment extends GameFragment {
         for (TextView text : answerTexts) {
           text.setEnabled(false);
         }
-        moveToPostGame(questionsCorrect, getString(R.string.sudden_game_string_key));
+        moveToPostGame(questionsCorrect, getString(R.string.three_lives_string_key));
       } else {
         continueGame();
       }
@@ -119,7 +119,7 @@ public class SuddenDeathGameFragment extends GameFragment {
       for (TextView text : answerTexts) {
         text.setEnabled(false);
       }
-      moveToPostGame(questionsCorrect, getString(R.string.sudden_game_string_key));
+      moveToPostGame(questionsCorrect, getString(R.string.three_lives_string_key));
     }
   }
 

@@ -55,7 +55,7 @@ public class MainFragment extends android.support.v4.app.Fragment {
           MainActivity.getBundle().putString(getString(R.string.game_type_string_key), gameType);
           break;
         case R.id.difficulty_button:
-          gameType = getString(R.string.sudden_game_string_key);
+          gameType = getString(R.string.three_lives_string_key);
           MainActivity.getBundle().putString(getString(R.string.game_type_string_key), gameType);
           break;
         case R.id.relaxed_button:
