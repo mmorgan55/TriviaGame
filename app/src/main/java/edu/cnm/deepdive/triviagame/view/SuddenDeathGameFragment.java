@@ -23,6 +23,8 @@ public class SuddenDeathGameFragment extends GameFragment {
 
   @BindView(R.id.sudden_correct_tally)
   TextView correctTally;
+  @BindView(R.id.sudden_lives_counter)
+  TextView livesCounter;
   @BindView(R.id.sudden_question_text)
   TextView questionText;
   @BindView(R.id.sudden_text_button1)
@@ -35,6 +37,7 @@ public class SuddenDeathGameFragment extends GameFragment {
   TextView answers4;
 
   private int questionsCorrect;
+  private int lives;
   private List<TextView> answerTexts;
   private int questionIndex;
   private OnClickListener listener;
@@ -48,6 +51,7 @@ public class SuddenDeathGameFragment extends GameFragment {
     ButterKnife.bind(this, view);
 
     answerTexts = new ArrayList<>();
+    lives = 3;
 
     setListener();
 
@@ -66,6 +70,7 @@ public class SuddenDeathGameFragment extends GameFragment {
   @Override
   protected void setupGame() {
     updateUI();
+    updateLives(false);
   }
 
   private void updateUI() {
@@ -93,10 +98,16 @@ public class SuddenDeathGameFragment extends GameFragment {
       questionsCorrect++;
       continueGame();
     } else {
-      for (TextView text : answerTexts) {
-        text.setEnabled(false);
+      updateLives(true);
+      if (lives == 0) {
+        for (TextView text : answerTexts) {
+          text.setEnabled(false);
+        }
+        moveToPostGame(questionsCorrect, getString(R.string.sudden_game_string_key));
+      } else {
+        continueGame();
       }
-      moveToPostGame(questionsCorrect, getString(R.string.sudden_game_string_key));
+
     }
   }
 
@@ -110,6 +121,14 @@ public class SuddenDeathGameFragment extends GameFragment {
       }
       moveToPostGame(questionsCorrect, getString(R.string.sudden_game_string_key));
     }
+  }
+
+  private void updateLives(boolean answerWrong) {
+    if (answerWrong) {
+      lives--;
+    }
+
+    livesCounter.setText(getString(R.string.lives_counter, lives));
   }
 
   private void setListener() {
