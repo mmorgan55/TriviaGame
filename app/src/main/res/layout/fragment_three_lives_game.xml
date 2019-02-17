@@ -32,18 +32,38 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
 
-      <TextView
-        android:id="@+id/sudden_lives_counter"
-        style="@style/LivesStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+      <ImageSwitcher
+        android:id="@+id/life_one"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="84dp"
+        android:background="@color/colorAccent"
+        app:layout_constraintStart_toEndOf="@+id/sudden_correct_tally"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+      <ImageSwitcher
+        android:id="@+id/life_two"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="28dp"
+        android:background="@color/colorAccent"
+        app:layout_constraintStart_toEndOf="@+id/life_one"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+
+      <ImageSwitcher
+        android:id="@+id/life_three"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="16dp"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
-        android:text="@string/lives_counter"
+        android:background="@color/colorAccent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.942"
-        app:layout_constraintStart_toEndOf="@+id/sudden_correct_tally"
+        app:layout_constraintHorizontal_bias="0.619"
+        app:layout_constraintStart_toEndOf="@+id/life_two"
         app:layout_constraintTop_toTopOf="parent"/>
 
     </android.support.constraint.ConstraintLayout>
