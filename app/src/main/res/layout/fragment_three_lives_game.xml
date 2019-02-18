@@ -38,7 +38,6 @@
         android:layout_height="35dp"
         android:layout_marginTop="16dp"
         android:layout_marginStart="84dp"
-        android:background="@color/colorAccent"
         app:layout_constraintStart_toEndOf="@+id/sudden_correct_tally"
         app:layout_constraintTop_toTopOf="parent"/>
 
@@ -48,7 +47,6 @@
         android:layout_height="35dp"
         android:layout_marginTop="16dp"
         android:layout_marginStart="28dp"
-        android:background="@color/colorAccent"
         app:layout_constraintStart_toEndOf="@+id/life_one"
         app:layout_constraintTop_toTopOf="parent"/>
 
@@ -60,7 +58,6 @@
         android:layout_marginTop="16dp"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
-        android:background="@color/colorAccent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.619"
         app:layout_constraintStart_toEndOf="@+id/life_two"
