@@ -32,7 +32,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
 
-      <ImageSwitcher
+      <ImageView
         android:id="@+id/life_one"
         android:layout_width="35dp"
         android:layout_height="35dp"
@@ -42,7 +42,7 @@
         app:layout_constraintStart_toEndOf="@+id/sudden_correct_tally"
         app:layout_constraintTop_toTopOf="parent"/>
 
-      <ImageSwitcher
+      <ImageView
         android:id="@+id/life_two"
         android:layout_width="35dp"
         android:layout_height="35dp"
@@ -53,7 +53,7 @@
         app:layout_constraintTop_toTopOf="parent"/>
 
 
-      <ImageSwitcher
+      <ImageView
         android:id="@+id/life_three"
         android:layout_width="35dp"
         android:layout_height="35dp"

@@ -1,12 +1,16 @@
 package edu.cnm.deepdive.triviagame.view;
 
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.ImageSwitcher;
+import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.ViewSwitcher.ViewFactory;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import edu.cnm.deepdive.triviagame.R;
@@ -23,8 +27,12 @@ public class ThreeLivesGameFragment extends GameFragment {
 
   @BindView(R.id.sudden_correct_tally)
   TextView correctTally;
-  @BindView(R.id.sudden_lives_counter)
-  TextView livesCounter;
+  @BindView(R.id.life_one)
+  ImageView lifeOne;
+  @BindView(R.id.life_two)
+  ImageView lifeTwo;
+  @BindView(R.id.life_three)
+  ImageView lifeThree;
   @BindView(R.id.sudden_question_text)
   TextView questionText;
   @BindView(R.id.sudden_text_button1)
@@ -36,9 +44,12 @@ public class ThreeLivesGameFragment extends GameFragment {
   @BindView(R.id.sudden_text_button4)
   TextView answers4;
 
+  private Drawable lifeRing;
+  private Drawable lifeX;
   private int questionsCorrect;
-  private int lives;
+  private int livesIndex;
   private List<TextView> answerTexts;
+  private List<ImageView> lives;
   private int questionIndex;
   private OnClickListener listener;
   private TriviaAnswers correctAnswer;
@@ -51,7 +62,9 @@ public class ThreeLivesGameFragment extends GameFragment {
     ButterKnife.bind(this, view);
 
     answerTexts = new ArrayList<>();
-    lives = 3;
+    lives = new ArrayList<>();
+    lifeRing = getResources().getDrawable(R.drawable.life_ring);
+    lifeX = getResources().getDrawable(R.drawable.life_x);
 
     setListener();
 
@@ -63,6 +76,13 @@ public class ThreeLivesGameFragment extends GameFragment {
     answerTexts.add(answers2);
     answerTexts.add(answers3);
     answerTexts.add(answers4);
+    lives.add(lifeOne);
+    lives.add(lifeTwo);
+    lives.add(lifeThree);
+
+    lives.get(0).setImageDrawable(lifeRing);
+    lives.get(1).setImageDrawable(lifeRing);
+    lives.get(2).setImageDrawable(lifeRing);
 
     return view;
   }
@@ -99,7 +119,7 @@ public class ThreeLivesGameFragment extends GameFragment {
       continueGame();
     } else {
       updateLives(true);
-      if (lives == 0) {
+      if (livesIndex == 3) {
         for (TextView text : answerTexts) {
           text.setEnabled(false);
         }
@@ -125,10 +145,10 @@ public class ThreeLivesGameFragment extends GameFragment {
 
   private void updateLives(boolean answerWrong) {
     if (answerWrong) {
-      lives--;
+      lives.get(livesIndex).setImageDrawable(lifeX);
+      livesIndex++;
     }
 
-    livesCounter.setText(getString(R.string.lives_counter, lives));
   }
 
   private void setListener() {
