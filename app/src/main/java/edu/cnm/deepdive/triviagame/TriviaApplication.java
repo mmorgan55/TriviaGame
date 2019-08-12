@@ -1,6 +1,8 @@
 package edu.cnm.deepdive.triviagame;
 
 import android.app.Application;
+import com.facebook.stetho.Stetho;
+import com.facebook.stetho.okhttp3.StethoInterceptor;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -16,6 +18,7 @@ public class TriviaApplication extends Application {
   @Override
   public void onCreate() {
     super.onCreate();
+    Stetho.initializeWithDefaults(this);
     instance = this;
     GoogleSignInOptions options = new GoogleSignInOptions
         .Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
@@ -44,4 +47,7 @@ public class TriviaApplication extends Application {
   public void setAccount(GoogleSignInAccount account) {
     this.account = account;
   }
+
+
+
 }

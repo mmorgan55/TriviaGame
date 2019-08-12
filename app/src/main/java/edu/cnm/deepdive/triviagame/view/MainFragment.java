@@ -1,12 +1,13 @@
 package edu.cnm.deepdive.triviagame.view;
 
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
+import androidx.fragment.app.Fragment;
+import androidx.annotation.NonNull;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import edu.cnm.deepdive.triviagame.R;
@@ -15,7 +16,7 @@ import edu.cnm.deepdive.triviagame.controller.MainActivity;
 /**
  * This class is for the user to select the game type that they want to play.
  */
-public class MainFragment extends android.support.v4.app.Fragment {
+public class MainFragment extends Fragment {
 
   @BindView(R.id.time_button)
   Button timeButton;

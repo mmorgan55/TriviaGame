@@ -1,19 +1,19 @@
 package edu.cnm.deepdive.triviagame.view;
 
-import android.content.Context;
+import  android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.design.widget.FloatingActionButton;
-import android.support.v4.app.Fragment;
+import androidx.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import edu.cnm.deepdive.triviagame.R;
 import edu.cnm.deepdive.triviagame.controller.MainActivity;
 import edu.cnm.deepdive.triviagame.model.dao.TriviaCategoryDao;

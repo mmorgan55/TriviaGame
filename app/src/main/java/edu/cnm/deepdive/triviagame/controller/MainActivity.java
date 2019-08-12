@@ -2,13 +2,14 @@ package edu.cnm.deepdive.triviagame.controller;
 
 import android.content.Intent;
 import android.os.AsyncTask;
-import android.support.v4.app.Fragment;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AlertDialog.Builder;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AlertDialog.Builder;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import butterknife.ButterKnife;
 import edu.cnm.deepdive.triviagame.R;
 import edu.cnm.deepdive.triviagame.TriviaApplication;
@@ -52,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
       Fragment fragment = new MainFragment();
       getSupportFragmentManager()
           .popBackStack(getString(R.string.main_fragment_tag),
-              android.support.v4.app.FragmentManager.POP_BACK_STACK_INCLUSIVE);
+              FragmentManager.POP_BACK_STACK_INCLUSIVE);
 
       getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment)
           .commit();
@@ -67,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
         Fragment fragment = new MainFragment();
         getSupportFragmentManager()
             .popBackStack(getString(R.string.main_fragment_tag),
-                android.support.v4.app.FragmentManager.POP_BACK_STACK_INCLUSIVE);
+                FragmentManager.POP_BACK_STACK_INCLUSIVE);
 
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment)
             .commit();

@@ -3,13 +3,14 @@ package edu.cnm.deepdive.triviagame.view;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import edu.cnm.deepdive.triviagame.R;
@@ -18,7 +19,7 @@ import edu.cnm.deepdive.triviagame.R;
  * This is the class that comes after each game is completed. Displays results
  * of the game and allows users to return to main menu.
  */
-public class PostGameFragment extends android.support.v4.app.Fragment {
+public class PostGameFragment extends Fragment {
 
   @BindView(R.id.questions_correct)
   TextView questionsCorrectText;
@@ -48,7 +49,7 @@ public class PostGameFragment extends android.support.v4.app.Fragment {
     mainMenuButton.setOnClickListener(v -> {
       getFragmentManager()
           .popBackStack(getString(R.string.main_fragment_tag),
-              android.support.v4.app.FragmentManager.POP_BACK_STACK_INCLUSIVE);
+              FragmentManager.POP_BACK_STACK_INCLUSIVE);
 
       getFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).commit();
     });

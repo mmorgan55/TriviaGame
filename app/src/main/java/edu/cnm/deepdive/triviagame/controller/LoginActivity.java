@@ -1,10 +1,10 @@
 package edu.cnm.deepdive.triviagame.controller;
 
 import android.content.Intent;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Toast;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;

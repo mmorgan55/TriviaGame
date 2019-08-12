@@ -1,7 +1,7 @@
 package edu.cnm.deepdive.triviagame.controller;
 
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
+import androidx.fragment.app.FragmentActivity;
 import edu.cnm.deepdive.triviagame.R;
 import edu.cnm.deepdive.triviagame.view.GameFragment;
 import edu.cnm.deepdive.triviagame.view.RelaxedGameFragment;
